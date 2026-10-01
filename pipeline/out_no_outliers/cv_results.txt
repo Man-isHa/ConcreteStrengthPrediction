@@ -1,0 +1,26 @@
+======================================================================
+Modeling table: (706, 28)  papers=42
+Strength range: 1.0-100.0 MPa (mixing mortar/normal/UHPC)
+
+[A: absolute CS, all papers, all features]  model=histgb n=706 papers=42 repeats=25
+    R2=0.077+/-0.213  RMSE=17.13+/-1.79  MAE=13.25
+
+(papers with a 0% control: 24; RHA-blend rows used for B/C: 327)
+[B: relative-to-control CS]  model=histgb n=327 papers=22 repeats=9
+    R2=-0.433+/-0.306  RMSE=0.35+/-0.03  MAE=0.28
+
+-- Framing C: RHA-blend CS | control strength (feature-set ablation) --
+[C1: base [replacement, age, control]]  model=histgb n=327 papers=22 repeats=25
+    R2=0.311+/-0.339  RMSE=13.97+/-4.45  MAE=10.35
+[C2: base + chemistry]  model=histgb n=327 papers=22 repeats=25
+    R2=0.222+/-0.324  RMSE=14.81+/-3.75  MAE=11.16
+[C3: base + all features]  model=histgb n=327 papers=22 repeats=9
+    R2=0.180+/-0.393  RMSE=14.05+/-3.29  MAE=10.56
+[C4: base + text embeddings [MiniLM]]  model=histgb n=327 papers=22 repeats=25
+    R2=0.395+/-0.200  RMSE=13.18+/-3.05  MAE=9.88
+    >>> embeddings: R2 0.311 -> 0.395  => DROP (no real gain)
+
+[Optimal% via CS-argmax (framing C)]  papers=21
+    MAE vs reported optimum = 9.17 pts   (mean-baseline 3.49)
+[Optimal% via direct regressor]  papers=42
+    MAE=5.48 pts   (mean-baseline MAE=5.35 pts)

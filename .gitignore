@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+
+# Local agent / editor state
+.claude/
+.vscode/
+
+# OS noise
+Thumbs.db
+.DS_Store
+
+# Build artifacts (PDFs themselves ARE tracked; these are LaTeX leftovers)
+*.tmp.pdf
+reports/sources/latex_aux/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# NOTE: models/ is deliberately NOT ignored - the trained artifacts are part of the deliverable.

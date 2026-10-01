@@ -1,0 +1,1245 @@
+\documentclass[11pt]{article}
+% ---------------------------------------------------------------- packages
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\setlength{\emergencystretch}{1em}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black,
+            citecolor=blue!60!black}
+% figures live under pipeline/out/figs/ relative to this file
+\graphicspath{{pipeline/out/figs/}{figs/}}
+\captionsetup{font=small, labelfont=bf}
+
+\newcommand{\missingfigure}[1]{%
+  \fbox{\parbox[c][30mm][c]{0.85\linewidth}{\centering
+    Figure unavailable\\[4pt]\footnotesize\nolinkurl{#1}}}%
+}
+\newcommand{\paperfigure}[2][]{%
+  \IfFileExists{#2}{\includegraphics[#1]{#2}}{%
+    \IfFileExists{pipeline/out/figs/#2}{\includegraphics[#1]{pipeline/out/figs/#2}}{%
+      \IfFileExists{figs/#2}{\includegraphics[#1]{figs/#2}}{\missingfigure{#2}}}}%
+}
+
+\newcommand{\R}{$R^2$}
+\title{\textbf{Predicting Compressive Strength and Optimal Replacement Level\\
+for Rice-Husk-Ash Blended Concrete from a Sparse Literature Dataset}}
+\author{}
+\date{\today}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+We build a machine-learning pipeline to predict the compressive strength and the
+optimal cement-replacement level of rice-husk-ash (RHA) blended concrete, using a
+dataset compiled from \textbf{79 research papers}. The central obstacle is data
+sparsity: strength values are packed inside free-text cells as
+\emph{(replacement level $\times$ curing age)} grids. Parsing and exploding these
+cells---rather than any modeling choice---is the highest-leverage step, turning
+$\sim$70 packed rows into \textbf{756 clean data
+points across 44 papers}. Through a five-axis ablation study we find that
+(i)~absolute strength is essentially unpredictable across papers ($R^2<0$) because
+the corpus mixes mortars, normal concrete and ultra-high-performance concrete, but
+becomes learnable once the paper's own control (0\%) strength is supplied as an
+input; (ii)~a strongly-regularized, monotonically-constrained gradient-boosted
+model on just three inputs \emph{(replacement, age, control strength)} is the best
+predictor, reaching \textbf{\R{}~$=0.50\pm0.20$, MAE~$\approx$~10\,MPa}; and
+(iii)~text embeddings (MiniLM/BERT-style) provide \emph{no reliable gain} at this
+sample size. The optimal-replacement target cannot yet beat a naive prior---the
+derived predictor in fact degenerates to a constant. We conclude that the binding
+constraint is data quantity and the absence of base-mix descriptors, not model
+capacity.
+\end{abstract}
+
+% ============================================================================
+
+\section{Introduction}
+Rice husk ash is a pozzolanic by-product that can partially replace Portland cement,
+reducing both cost and $\mathrm{CO_2}$ footprint. The two engineering quantities of
+interest are the \textbf{compressive strength} of the resulting concrete and the
+\textbf{optimal replacement level}---the percentage of cement that can be replaced by
+RHA while maximizing strength. Our goal is a predictive model for both, trained on a
+dataset hand/LLM-extracted from the literature. The practical difficulties are
+(a)~pervasive missing values and (b)~selecting a model that performs well on a small,
+heterogeneous dataset. We take XGBoost as the baseline and interrogate the data and
+model choices rigorously.
+% ============================================================================
+
+\section{The Dataset: What It Actually Contains}
+The source file \texttt{RHA Master sheet v2.csv} contains 225 columns organized under
+a \textbf{four-row hierarchical header}: category ($\rightarrow$ \textsc{paper
+metadata}/\textsc{input}/\textsc{output}), section, feature (55 features), and a
+sub-field. Every feature is split into four columns---\texttt{Extracted Value},
+\texttt{Unit}, \texttt{Source Type}, \texttt{Exact Evidence}---of which only the first
+two carry predictive information; the latter two are provenance and are discarded. The
+file is \texttt{latin-1} encoded.
+The dataset contains \textbf{79 papers} with unique titles. Sparsity is uneven rather
+than uniform: among the 44 papers that yield strength data, availability of the 23
+retained features ranges from 96\% (processing method) and 89\% (SiO$_2$) down to 18\%
+(BET surface), i.e.\ \textbf{5--82\% missing}, with 8 of the 23 features more than half
+missing (Figure~\ref{fig:avail}). The prediction targets are present in 70~(strength),
+71~(optimum), and 76~(replacement levels) papers.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \paperfigure[width=\linewidth]{parse_yield.png}
+    \caption{Parse yield and the distribution of recovered strength points by
+    replacement level.}
+    \label{fig:yield}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \paperfigure[width=\linewidth]{data_availability.png}
+    \caption{Per-feature availability among the 44 yielding papers.}
+    \label{fig:avail}
+  \end{subfigure}
+  \caption{The dataset is small and sparse. Chemistry (SiO$_2$, oxides) and w/b are
+  reasonably populated; fineness measures (BET, Blaine, specific surface) are scarce.}
+\end{figure}
+
+% ============================================================================
+
+\section{Data Representation: Parsing the Packed Cells}
+The single most valuable observation is that each Compressive Strength cell encodes a
+\emph{grid} of measurements in one of $\sim$12 textual layouts, e.g.
+\begin{quote}\small\ttfamily
+3 days: 20 (7\%), 20 (10\%); 28 days: 44.5 (7\%), 46 (10\%); \dots
+\end{quote}
+
+We built a state-machine parser (\texttt{02\_parse\_explode.py}) that resolves, for
+each value, a \emph{curing age} and a \emph{replacement level} from inline qualifiers,
+segment headers, or persistent line context, and emits a tidy long table with one row
+per \emph{(paper, replacement\,\%, age)}. Precision safeguards include:
+\begin{itemize}\itemsep2pt
+  \item unsigned number matching, fixing mis-reads such as \texttt{RHA8-10\%}
+        $\rightarrow$ 10 (not $-10$);
+  \item a \textbf{per-paper whitelist}: a resolved replacement \% must match the
+        paper's declared levels (plus 0 for control), which rejects mis-labelled
+        sample IDs (\texttt{RHA1}, \texttt{M2}) and recovers trailing-code mixes
+        (\texttt{Aa-10}, \texttt{A35-10});
+  \item physical sanity clamps ($0\le\%\le100$, $0<\text{age}\le400$\,d,
+        $0.5\le\text{MPa}\le250$).
+\end{itemize}
+
+This recovers \textbf{756 data points across 44 of the 70 strength papers} (226 at the
+standard 28-day age). The 26 non-yielding papers are graph-derived narratives, pure
+ranges, or bare number lists with no age/level mapping---genuinely unrecoverable
+without the source PDFs, and logged to \texttt{parse\_failures.csv}.
+Figure~\ref{fig:curves} checks the parsed data against expected physics, but both
+checks must be made \emph{within} a paper: a raw cross-paper average is dominated by
+mix type (the corpus spans 1--205\,MPa), not by the variable of interest. Normalising
+each \emph{(paper, replacement level)} series by its own 28-day value, strength does
+rise with curing age---91\% of pre-28-day points fall below the series' own 28-day
+value and 82\% of later points exceed it, with the median ratio climbing from 0.53 at
+1\,d to 1.00 at 28\,d and 1.21 at 90\,d. The strength-vs-replacement shape, by
+contrast, is \emph{not} reliably unimodal: of the 33 papers reporting at least three
+distinct replacement levels at 28\,d, only 14 (42\%) peak at an interior level, while
+12 (36\%) are highest at the lowest level tested---often the 0\% control, meaning RHA
+never helped in that paper---and 7 (21\%) are still rising at the highest level tested.
+An interior optimum is therefore common but far from universal, which is exactly why
+the optimum-prediction task in Section~\ref{sec:opt} is hard.
+\begin{figure}[H]
+  \centering
+  \paperfigure[width=0.9\textwidth]{cs_curves.png}
+  \caption{Physics checks on the parsed data, computed within papers. \textbf{Left:}
+  each \emph{(paper, replacement level)} series is normalised by its own 28-day
+  strength; the median rises with age (shaded band is the IQR across series). Wiggles
+  at 2, 91 and 120\,d come from ages with very few series and are small-$n$ noise, not
+  a reversal of the trend. \textbf{Right:} the 28-day strength-vs-replacement curve has
+  an interior optimum in only 42\% of papers; in 36\% the best level tested is the
+  lowest one.}
+  \label{fig:curves}
+\end{figure}
+
+% ============================================================================
+
+\section{Feature Engineering}
+Numeric features (oxides, fineness, w/b, burn temperature/duration) are parsed as the
+mean of the numbers in each cell, robustly handling multi-sample entries such as
+``94.6 (RHA-A), 93.7 (RHA-B)''. High-cardinality but semantically redundant text
+fields are \textbf{canonicalized} into compact categoricals: activation method
+$\in\{$none, thermal, mechanical, both$\}$; mineralogy $\in\{$amorphous, mixed,
+crystalline$\}$; processing $\in\{$controlled, uncontrolled, \dots$\}$; pozzolanic
+reactivity as an ordinal. We deliberately apply \textbf{no imputation} for the
+tree models, which handle missing values natively by learning a default split
+direction; imputers (median/KNN/MICE) are evaluated separately and only ever fit
+\emph{inside} each cross-validation split to prevent leakage.
+% ============================================================================
+
+\section{Methodology}
+Because rows from the same paper are strongly correlated, all evaluation uses
+\textbf{grouped cross-validation by paper}: no paper appears in both training and test.
+Given the small sample, a single split is unreliable, so we report the mean and
+standard deviation of \textbf{repeated grouped hold-out} (\texttt{GroupShuffleSplit},
+30\% of papers held out, 40 repeats). We compare three target framings:
+\begin{description}\itemsep2pt
+  \item[A. Absolute strength, all papers] predict MPa directly from RHA features.
+  \item[B. Relative-to-control] predict strength normalized by the paper's 0\% control.
+  \item[C. Absolute strength given control] predict the RHA-blend strength using the
+        paper's control (0\%) strength as an additional input---always known in
+        practice, hence not leakage. Control rows themselves are excluded from
+        evaluation to avoid a trivial identity.
+\end{description}
+
+% ============================================================================
+
+\section{Ablation Study}
+We ablate five axes. All numbers are repeated grouped hold-out (mean\,$\pm$\,std) over
+40 repeats, except the HistGB row of Study~2 and the three imputer rows of Study~4,
+where 31 repeats survived (a split is discarded when a held-out fold ends up with no
+usable rows). Comparisons \emph{within} a study are like-for-like unless noted.
+
+\paragraph{Study 1 --- Target framing.}
+Absolute strength across papers is \emph{unpredictable} (\R{}~$=-0.78$); the corpus
+mixes mortars, normal concrete and UHPC (1--205\,MPa) whose baseline levels are set by
+mix factors absent from the data. Supplying the control strength (framing~C) makes the
+RHA effect learnable (Table~\ref{tab:s1}).
+\begin{table}[H]\centering\small
+\caption{Study 1: target framing (XGBoost, all structured features).}
+\label{tab:s1}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Framing & \R{} & std & RMSE & MAE \\
+\midrule
+\rowcolor{green!12}C: blend $\mid$ control strength & $0.395$ & $0.259$ & $16.45$ & $10.64$ \\
+B: relative-to-control & $-0.159$ & $0.300$ & $0.29$ & $0.22$ \\
+A: absolute, all papers & $-0.776$ & $1.549$ & $30.99$ & $20.95$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{table}
+
+
+\paragraph{Study 2 --- Model.}
+Random Forest and XGBoost dominate; HistGradientBoosting is unstable and linear
+Ridge fails badly on this tiny, collinear, missing-laden matrix
+(Table~\ref{tab:s2}). Random Forest posts the higher mean here (0.436 vs 0.395), but
+the gap is roughly one-sixth of the run-to-run spread of either model
+($\sigma\approx0.21$--$0.26$) and so is not a reliable ordering. We nonetheless carry
+\textbf{XGBoost} forward, because the largest single gain in the whole study comes from
+the monotone constraints of Study~5 ($0.442\rightarrow0.482$), which XGBoost supports
+natively and \texttt{RandomForestRegressor} does not. The tuned monotone XGBoost of
+Section~\ref{sec:final} reaches $0.50\pm0.20$, above the unconstrained Random Forest.
+
+\paragraph{Study 3 --- Feature set.}
+Parsimony wins decisively: the three-feature \emph{base}
+\{replacement, age, control\} is the best set, and \emph{every} added feature group
+degrades generalization---clear evidence of overfitting at $n\!=\!23$ papers
+(Table~\ref{tab:s3}, Figure~\ref{fig:ablfeat}).
+\begin{table}[H]\centering\small
+\begin{minipage}{0.46\textwidth}\centering
+\caption{Study 2: model (framing C, all features).}
+\label{tab:s2}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+Model & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}Random Forest & $0.436$ & $15.82$ \\
+XGBoost & $0.395$ & $16.45$ \\
+Mean baseline & $-0.310$ & $23.97$ \\
+HistGB & $-0.524$ & $22.28$ \\
+Ridge & $-14.7$ & $44.74$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}\centering
+\caption{Study 3: feature set (framing C, XGBoost).}
+\label{tab:s3}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+Feature set & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}base [repl, age, control] & $0.442$ & $15.54$ \\
+base + fineness & $0.435$ & $15.73$ \\
+base + categorical & $0.427$ & $15.93$ \\
+all + MiniLM text & $0.426$ & $16.13$ \\
+all + TF-IDF text & $0.403$ & $16.42$ \\
+all structured & $0.395$ & $16.45$ \\
+base + all numeric & $0.349$ & $16.85$ \\
+base + chemistry & $0.317$ & $17.18$ \\
+base + processing & $0.236$ & $17.69$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{minipage}
+\end{table}
+
+
+\paragraph{Study 4 --- Imputation.}
+For the tree models, native NaN handling matches explicit imputation on \R{}: native,
+median and KNN sit within 0.007 of one another, and only MICE clearly hurts
+(Table~\ref{tab:s4}). The lower RMSE of the median and KNN rows is \emph{not} evidence
+that they generalize better---those rows completed 31 of the 40 repeats, so their error
+is averaged over an easier subset of splits and is not directly comparable to the
+native row's 40. Since no imputer improves \R{} and each adds a fitted component that
+must be re-fit inside every split, we keep \textbf{native handling}.
+
+\paragraph{Study 5 --- Physics priors.}
+Adding \textbf{monotone constraints}---strength non-decreasing in curing age and in
+control strength---gives the single best result, \R{}~$=0.482\pm0.217$, encoding
+domain knowledge the tiny sample cannot reliably learn on its own (Table~\ref{tab:s5}).
+\begin{table}[H]\centering\small
+\begin{minipage}{0.46\textwidth}\centering
+\caption{Study 4: imputation (framing C).}
+\label{tab:s4}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+Scheme & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}XGB + native & $0.397$ & $16.40$ \\
+XGB + median$^{\dagger}$ & $0.396$ & $14.88$ \\
+XGB + KNN$^{\dagger}$ & $0.390$ & $14.92$ \\
+XGB + MICE$^{\dagger}$ & $0.249$ & $16.35$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+{\scriptsize $^{\dagger}$31 of 40 repeats; RMSE not comparable to the native row.}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}\centering
+\caption{Study 5: physics priors (base features).}
+\label{tab:s5}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+Prior & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}monotone(age, control) & $0.482$ & $15.02$ \\
+log + monotone & $0.458$ & $15.71$ \\
+plain & $0.442$ & $15.54$ \\
+log-target & $0.423$ & $16.09$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{minipage}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \paperfigure[width=0.6\linewidth]{abl_features.png}
+  \caption{Feature-set ablation: parsimony wins (repeated grouped hold-out, mean\,$\pm$\,std).}
+  \label{fig:ablfeat}
+\end{figure}
+
+% ============================================================================
+
+\section{Final Model and Results}
+\label{sec:final}
+
+\paragraph{Features used (framing C).} The final model takes exactly three inputs---no
+RHA chemistry, physical, or processing features are included, and Study~3 above is the
+evidence for why (every added feature group made generalization \emph{worse} at
+$n=23$ papers):
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lll}
+\toprule
+Feature & Meaning & Monotone constraint \\
+\midrule
+\texttt{replacement\_pct} & RHA cement-replacement level of the blend row (0--100\%) & none \\
+\texttt{age\_days} & Curing age at which strength is measured (days) & non-decreasing \\
+\texttt{ctrl\_strength} & The \emph{same paper's own} 0\% (control) compressive & non-decreasing \\
+ & strength at the matching curing age (MPa) & \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent The target is \texttt{strength\_mpa}, the RHA-blend row's own compressive
+strength. \texttt{ctrl\_strength} is looked up per \texttt{(paper\_id, age\_days)} from
+that paper's own 0\%-replacement rows (Section~\ref{sec:final} onward always assumes it
+is known at inference time, since it is the paper's own OPC baseline, not a property of
+the RHA blend being predicted). Combining these three features with monotone
+constraints and a light grouped hyper-parameter search yields a deliberately shallow
+model (\texttt{max\_depth}=2, \texttt{learning\_rate}=0.03, 300 trees). Its performance
+is
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+ & \R{} & RMSE (MPa) & MAE (MPa) \\
+\midrule
+\textbf{Final model} (repeated grouped hold-out) & $\mathbf{0.50\pm0.20}$ & $\mathbf{14.9}$ & $\mathbf{10.1}$ \\
+Mean baseline & $-0.31$ & $24.0$ & $17.4$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+Figure~\ref{fig:pva} shows out-of-fold predictions. Note that its panel title reports
+\R{}~$=0.63$, MAE~$=9.4$\,MPa, which is \emph{not} the headline number above: the
+scatter comes from a single 5-fold \texttt{GroupKFold} pass whose out-of-fold
+predictions are pooled into one \R{} over all 335 rows, whereas the table reports the
+mean of 40 grouped hold-outs that each train on fewer papers (70\% vs 80\%) and are
+scored split-by-split. The pooled single-pass figure is the more optimistic of the two;
+we quote the repeated hold-out as the honest estimate and show the pooled predictions
+only because they give one prediction per row to plot.
+The model tracks normal-strength concrete well but systematically
+\emph{under-predicts} the high end. Note that the 1--205\,MPa span quoted in Study~1
+describes framing~A; framing~C is evaluated on the 335 blend rows of 23 papers that
+also report a 0\% control, and that subset reaches 186\,MPa. Within it there is
+\textbf{exactly one} paper above 120\,MPa (8 points, 120--186\,MPa), and the model's
+predictions saturate near 90\,MPa there, under-shooting by 70\,MPa on average. The
+corpus does contain a second, even stronger paper---it holds the 205\,MPa maximum---but
+it reports no control rows at all and is therefore excluded from framing~C entirely,
+which is part of why 44 papers reduce to 23 here. With a single high-strength group in
+the evaluated set, grouped validation always places it wholly in the test fold, so the
+model has never seen a UHPC example when it is scored---an honest and interpretable
+failure mode, but one driven by a single group rather than by a subpopulation. That
+tail is also what pulls
+the residual distribution (Figure~\ref{fig:resid}) slightly negative: residuals are
+centred near zero (mean $-2.7$\,MPa, median $-2.2$\,MPa) but carry a long left tail
+reaching $-100$\,MPa, all of it from that one paper. Feature importance
+(Figure~\ref{fig:imp}) confirms that control strength (0.74) and curing age (0.17)
+carry most of the signal, with replacement level (0.09) modulating on top.
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \paperfigure[width=\linewidth]{pred_vs_actual.png}
+    \caption{Out-of-fold predictions.}
+    \label{fig:pva}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.57\textwidth}
+    \paperfigure[width=\linewidth]{residuals.png}
+    \caption{Residual diagnostics.}
+    \label{fig:resid}
+  \end{subfigure}
+  \caption{Final model behaviour, from a single pooled 5-fold \texttt{GroupKFold} pass
+  (\R{}~$=0.63$ pooled, versus the $0.50\pm0.20$ repeated-hold-out estimate quoted in
+  the table above). Colour encodes replacement level. The dashed line is the ideal
+  $y=x$; the points falling far below it at the right of (a) are the single UHPC paper.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \paperfigure[width=0.55\textwidth]{feature_importance.png}
+  \caption{Feature importance of the final model. The paper's control strength and the
+  curing age dominate; replacement level provides the RHA-specific modulation.}
+  \label{fig:imp}
+\end{figure}
+
+% ============================================================================
+
+\section{Predicting the Optimal Replacement Level}
+\label{sec:opt}
+We derive the optimum as the replacement level that maximizes the predicted 28-day
+strength curve of the final model, evaluated on held-out papers, and also test a direct
+per-paper regressor. Neither beats simply predicting the corpus-mean optimum: on the 20
+held-out papers with a reported optimum the argmax approach gives
+MAE~$=4.75$ percentage points against a mean-baseline of $3.45$, and the direct
+regressor gives $6.5$ against its own baseline of $5.3$ over 43~papers.
+Figure~\ref{fig:opt} shows why, and the failure is starker than ``fails to beat the
+baseline'' suggests: \textbf{the argmax model returns the same value, 7.5\%, for every
+one of the 21 held-out papers}. It is a constant predictor, and a miscalibrated one,
+since the corpus mean is 11.5\%. This is a direct consequence of the final model's
+structure---it is monotone and non-decreasing in control strength and age, and with
+\texttt{max\_depth}=2 there is almost no interaction between replacement level and the
+other two inputs, so changing a paper's control strength shifts the predicted strength
+curve vertically without moving the location of its maximum. Every paper therefore
+inherits the same argmax.
+The reported optima it is scored against are themselves concentrated but not tight:
+75\% of papers fall in 10--15\% (mean 11.5\%, median 10\%), yet the full range runs
+0--20\% with a standard deviation of 4.6 points. A constant-11.5\% prior already
+achieves MAE 3.45, so beating it requires resolving paper-to-paper shifts of a few
+percentage points---and with 20--43 labelled papers, and an interior optimum present in
+only 42\% of them (Section~3), that signal is not available. Predicting the optimum is
+best treated as an open problem on this corpus rather than a solved output.
+\begin{figure}[H]
+  \centering
+  \paperfigure[width=0.5\textwidth]{optimum_scatter.png}
+  \caption{Predicted vs reported optimal replacement level. The predictions form a
+  horizontal line: the model emits a constant 7.5\% for every held-out paper, below the
+  11.5\% corpus mean, and so loses to the mean prior it is compared against.}
+  \label{fig:opt}
+\end{figure}
+
+% ============================================================================
+
+\part*{Part II --- Sensitivity to the UHPC-Regime Outliers}
+\label{sec:part2}
+Sections~\ref{sec:final}--\ref{sec:opt} flagged, but did not remove, the two papers
+responsible for the corpus's 1--205\,MPa span. This part removes them and re-measures
+both target framings, to separate ``the model degrades on UHPC'' from ``the model is
+fine once UHPC is taken out of scope.''
+
+\section{Which Papers, and Why}
+\label{sec:part2-cutoff}
+The cutoff is applied at the \emph{paper} level, not the row level: a paper is dropped
+in full---every replacement level, every curing age---if its \textbf{maximum} reported
+compressive strength exceeds \textbf{120\,MPa}. This threshold is not a round-number
+guess; it sits in a genuine gap in the data. Of the 44 papers, only two ever cross it,
+and the next-highest paper after them tops out at exactly 100.0\,MPa (Table~\ref{tab:cutoff}).
+\begin{table}[H]\centering\small
+\begin{tabularx}{\linewidth}{@{}c>{\raggedright\arraybackslash}p{0.3\linewidth}c>{\raggedright\arraybackslash}X@{}}
+\toprule
+ID & Title (abridged) & Max str. & Why it is out of scope \\
+\midrule
+17 & ``...to produce ultra high performance concrete'' & 205.5\,MPa &
+  Explicitly UHPC. $w/b=0.15$--$0.23$ vs.\ $\approx0.35$--$0.50$ for the rest of the
+  corpus. Strength rises smoothly $51\to205.5$\,MPa with age---internally
+  consistent, just a different mix-design regime (silica fume / superplasticizer /
+  very low $w/b$), not ordinary RHA concrete. \\[0.4em]
+36 & ``Analysis of the effects of RHA on hydration...'' & 186.0\,MPa &
+  Reports 125--135\,MPa at \textbf{1 day} of curing, including for its own 0\%
+  control---not physically plausible at any $w/b$. Every value is flagged
+  \texttt{is\_range=True} (read off a graph axis, not a table), consistent with a
+  mis-read scale rather than genuine UHPC. \\
+\bottomrule
+\end{tabularx}
+\caption{The two papers removed by the 120\,MPa cutoff, and the highest
+strength reported by any of the 42 papers kept: 100.0\,MPa.}
+\label{tab:cutoff}
+\end{table}
+
+This directly tests the diagnosis already made in Section~\ref{sec:final}: that
+framing~A's negative \R{} comes from mixing mortars, normal concrete and UHPC on one
+strength scale, and that framing~C is largely insulated from this because it
+conditions on each paper's own control strength. Paper~17 was never in framing~C to
+begin with (it reports no 0\% control); paper~36 was one of its 23 papers.
+
+\paragraph{Reproducibility check.} Both sides below were re-run with the identical
+model class and hyper-parameter grid as Sections~\ref{sec:final}--\ref{sec:opt}. The
+unfiltered ``before'' run here reproduces the Section~\ref{sec:final} headline almost
+exactly (\R{}~$=0.503\pm0.197$, RMSE$=14.90$, MAE$=10.02$ vs.\ the original
+\R{}~$=0.50\pm0.20$, RMSE$=14.9$, MAE$=10.1$), confirming the numbers below are
+directly comparable to the rest of this report.
+
+\section{Results With and Without the UHPC Papers}
+\label{sec:part2-results}
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Framing A} (absolute strength, no baseline info) & \R{} & RMSE (MPa) & MAE (MPa) \\
+\midrule
+With UHPC papers (44 papers, 756 rows, 1--205.5\,MPa) & $-0.43\pm0.78$ & $29.5$ & $20.2$ \\
+Without UHPC papers (42 papers, 706 rows, 1--100\,MPa) & $\mathbf{+0.08\pm0.23}$ & $\mathbf{17.1}$ & $\mathbf{13.0}$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\begin{center}\footnotesize
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Framing C} (tuned, blend $\mid$ control) & \R{} & RMSE (MPa) & MAE (MPa) & OOF \R{} \\
+\midrule
+With UHPC papers (23 papers, 335 rows) & $0.50\pm0.20$ & $14.9$ & $10.0$ & $0.63$ \\
+Without UHPC papers (22 papers, 327 rows) & $\mathbf{0.52\pm0.16}$ & $\mathbf{11.4}$ & $\mathbf{8.6}$ & $0.60$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Optimal replacement} (argmax, 28-day, held-out papers) & MAE (pts) & Mean-baseline (pts) \\
+\midrule
+With UHPC papers (20 papers) & $4.75$ & $3.45$ \\
+Without UHPC papers (20 papers) & $4.75$ & $3.45$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+
+\section{Discussion}
+\label{sec:part2-discussion}
+The two framings respond differently, and the difference is diagnostic rather than
+incidental. \textbf{Framing A flips sign}: \R{} crosses from $-0.43$ to $+0.08$, and
+RMSE/MAE fall by 42\% and 36\% respectively (29.5$\to$17.1\,MPa; 20.2$\to$13.0\,MPa). A
+model that is never told a paper is UHPC has no way to know it should predict
+180\,MPa instead of 40\,MPa for a nominally similar input row; once the two UHPC-regime
+papers are removed, the remaining 42 papers occupy one coherent strength scale
+(1--100\,MPa) and the same features that were noise before now carry signal. \R{}~$=0.08$
+is still weak in absolute terms---framing~A was never going to become the recommended
+model---but the sign flip alone confirms the diagnosis.
+\textbf{Framing C improves modestly but genuinely}: \R{} rises from $0.50$ to $0.52$
+with a visibly tighter spread across repeats ($\pm0.20\to\pm0.16$), and RMSE/MAE both
+drop by double digits (14.9$\to$11.4\,MPa, $-24\%$; 10.0$\to$8.6\,MPa, $-14\%$). This is
+smaller than framing~A's swing, exactly as Section~\ref{sec:final} predicted:
+conditioning on the paper's own control strength already absorbs most of the
+cross-paper scale variation that framing~A is exposed to raw, so removing the outlier
+papers here mostly trims a noisy, hard-to-fit paper (36) from a 23-paper set rather than
+unlocking new signal. One number moves the other way---the pooled single-pass OOF
+\R{} used for the prediction-scatter figure drops slightly ($0.63\to0.60$)---which is
+expected: that figure is a single 5-fold split, more sensitive to exactly which papers
+land in which fold when there are only 22--23 of them, and is not the metric either
+number in the table above is drawn from. The optimal-replacement argmax MAE is
+\emph{exactly} unchanged (4.75 points against an unchanged 3.45-point baseline, both
+sides): neither dropped paper had a usable reported optimum, so that evaluation set of
+20 papers is identical before and after.
+The practical conclusion is that \textbf{outlier removal and the control-strength
+reframing are two different fixes for the same underlying problem}, and only one of
+them is needed if framing~C is what will be deployed. Framing~A's improvement after
+cleaning is useful mainly as confirmation that the corpus is well-behaved once UHPC is
+excluded, not as a replacement for framing~C, which remains the stronger predictor
+either way ($0.50$--$0.52$ \R{} vs.\ $0.08$ at best). If the eventual goal includes UHPC-range
+predictions, the two removed papers should be re-added as a separate, explicitly
+labelled regime (e.g.\ a categorical ``mix class'' feature) rather than silently
+dropped, since 8--38 data points is too little to train a UHPC-specific model on its
+own; for the conventional-concrete regime this report otherwise targets, dropping them
+is the right call.
+% ============================================================================
+
+\section{An LLM Ablation: Does Control Strength Matter Across Model Families?}
+\label{sec:part2-opus}
+Sections~\ref{sec:final} and Study~1 (Table~\ref{tab:s1}) established, with a trained
+regressor, that supplying a paper's own 0\% control strength is what makes RHA-blend
+strength learnable at all. Two independent LLM experiments ask the same question with
+no gradient-boosted model in the loop at all: given the same tabular rows, can a
+general-purpose LLM infer compressive strength from the paper's inputs alone, and does
+it too depend on being handed the control strength?
+
+\paragraph{Setup.} Six papers were held out at the \emph{paper} level---P036, P022,
+P007, P030, P054 and P064, none seen in training---giving a fixed benchmark of
+\textbf{57 test points} shared identically by both conditions and both models, so the
+ablation isolates one variable:
+\begin{description}\itemsep2pt
+  \item[WITH\_CONTROL] the model is given the paper's 28-day 0\% control strength as an
+        input feature, exactly as framing~C does for the ML model.
+  \item[NO\_CONTROL] control strength is withheld; only the RHA/mix inputs remain.
+\end{description}
+
+
+\paragraph{Two models.} \textbf{Claude Fable} was evaluated externally (results as
+reported); \textbf{gpt-oss:120b-cloud} (OpenAI's open-weight $\sim$117B-parameter
+model, MXFP4-quantized, accessed through Ollama's cloud proxy) was run for this report
+directly against the identical ground truth, one Ollama call per test paper per
+condition (12 calls total), each given that paper's held-out rows plus the \emph{entire}
+condition's training CSV as in-context reference data, prompted to return a strict JSON
+array of predictions. gpt-oss was reached only after two earlier choices failed:
+DeepSeek-R1 8B run locally took 10+ minutes for a single call at this context length on
+an 8\,GB laptop GPU (impractical for 12 calls), and \texttt{kimi-k2.6:cloud} returned
+402 Payment Required (a paid ollama.com plan). gpt-oss:120b-cloud is free-tier
+accessible, cloud-hosted, and answered every call in 20--100\,s. One call (NO\_CONTROL,
+paper P007) initially degenerated---the model echoed the four \emph{age} values back
+verbatim instead of predicting strength; it was retried once and produced a normal,
+non-degenerate answer, which is what is reported below. Because the two models were
+evaluated under different prompting protocols (Fable's exact prompt is not available to
+us), this is not a controlled head-to-head between Fable and gpt-oss---it is two
+\emph{separate} within-model ablations that happen to share the same benchmark, and
+both are compared only against themselves (WITH\_ vs NO\_CONTROL), not against each
+other.
+
+\subsection{Overall Result}
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Condition & \R{} & RMSE (MPa) & MAE (MPa) & Bias (MPa) \\
+\midrule
+\rowcolor{green!12}Fable, WITH\_CONTROL & $\mathbf{0.877}$ & $\mathbf{8.79}$ & $\mathbf{5.84}$ & $-2.21$ \\
+Fable, NO\_CONTROL & $0.392$ & $19.50$ & $12.83$ & $-6.25$ \\
+\rowcolor{green!12}gpt-oss:120b, WITH\_CONTROL & $\mathbf{0.887}$ & $\mathbf{8.41}$ & $7.17$ & $-1.48$ \\
+gpt-oss:120b, NO\_CONTROL & $0.487$ & $17.92$ & $12.78$ & $-6.82$ \\
+\midrule
+Final ML model (Section~\ref{sec:final}, for reference) & $0.50\pm0.20$ & $14.9$ & $10.1$ & --- \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent Both LLMs move the same way. For Fable, control strength lifts \R{} by
+$+0.485$ and cuts RMSE/MAE by roughly \textbf{55\%}. For gpt-oss, control strength
+lifts \R{} by $+0.400$ and cuts RMSE by \textbf{53\%} (17.92$\to$8.41\,MPa) and MAE by
+\textbf{44\%} (12.78$\to$7.17\,MPa)---the same qualitative effect Study~1 found for the
+ML model, now reproduced independently by \emph{two} completely different LLMs. The ML
+row is included only as context, \emph{not} as a matched comparison: it is a repeated
+grouped hold-out averaged over 40 different 70/30 paper splits, whereas all four LLM
+rows are single evaluations on one fixed six-paper split. Neither LLM's WITH\_CONTROL
+number should be read as ``beats the ML model''---the honest claim in both cases is the
+ablation \emph{within} that model, which needs no such caveat because both conditions
+share the identical test papers.
+
+\subsection{Result by Compressive-Strength Category}
+\label{sec:part2-opus-bins}
+Each test paper is assigned to one of three strength categories by its own 28-day
+control strength (Low $<30$\,MPa: P036, P022; Middle $30$--$60$\,MPa: P007, P030; High
+$\geq60$\,MPa: P054, P064). The category is a property of the \emph{paper}, not of each
+individual point---P054's points, for example, run from 42 to 78\,MPa---and it splits
+the 57 test points 24/18/15. It reveals where control strength actually earns its
+keep, for both models.
+\begin{center}\footnotesize
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+& \multicolumn{4}{c}{NO\_CONTROL (MAE / Bias, MPa)} & \multicolumn{4}{c}{WITH\_CONTROL (MAE / Bias, MPa)} \\
+& \multicolumn{2}{c}{Fable} & \multicolumn{2}{c}{gpt-oss} & \multicolumn{2}{c}{Fable} & \multicolumn{2}{c}{gpt-oss} \\
+Regime ($N$) & MAE & Bias & MAE & Bias & MAE & Bias & MAE & Bias \\
+\midrule
+Low, $<30$ (24) & $7.31$ & $+7.31$ & $7.02$ & $+5.86$ & $3.84$ & $+3.70$ & $5.59$ & $+5.26$ \\
+Mid, $30$--$60$ (18) & $3.19$ & $-1.87$ & $5.21$ & $-3.51$ & $3.85$ & $-2.89$ & $7.51$ & $-4.14$ \\
+High, $\geq60$ (15) & $33.22$ & $-33.22$ & $31.09$ & $-31.09$ & $\mathbf{11.43}$ & $-10.85$ & $\mathbf{9.30}$ & $-9.09$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent The pattern is sharp, matches the UHPC discussion of
+Section~\ref{sec:part2-cutoff}, and now holds for \emph{both} LLMs independently:
+\textbf{without} control strength, both models are reasonably behaved in the low and
+middle regimes but collapse on the high regime, under-predicting by a mean of
+$31$--$33$\,MPa---neither model has any way to know a given paper's own strength
+ceiling, so both regress toward the corpus-typical range. \textbf{With} control
+strength, high-regime MAE falls to $9.30$--$11.43$\,MPa (a $\sim$65--70\% reduction)
+because the model is now told, explicitly, which papers are high-baseline. The low and
+middle regimes---already easy without any baseline signal---show smaller, noisier
+shifts (gpt-oss's mid-regime MAE actually rises slightly, $5.21\to7.51$, well within the
+noise of a 15--18-point evaluation). This mirrors exactly why framing~C outperforms
+framing~A for the XGBoost model: the hard part of this corpus was never the RHA effect
+itself, it is locating each paper's baseline strength level, and \emph{any} sufficiently
+capable predictor---tree-based, or either of two unrelated LLM families---needs that
+baseline supplied to do well outside the middle of the strength range.
+
+\subsection{Where It Still Fails: Paper P064}
+Both models and both conditions agree on the single hardest case. Paper P064 (6 points,
+high replacement/high strength) is the worst-or-tied-worst per-paper error everywhere:
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{MAE, NO\_CONTROL} & \multicolumn{2}{c}{MAE, WITH\_CONTROL} \\
+Paper & Fable & gpt-oss & Fable & gpt-oss \\
+\midrule
+P064 (hardest) & $47.95$ & $33.70$ & $21.37$ & $12.89$ \\
+next-worst & $23.40$ (P054) & $29.34$ (P054) & $4.81$ (P054) & $7.68$ (P007) \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent Control strength shrinks P064's error substantially for both models (Fable
+$47.95\to21.37$; gpt-oss $33.70\to12.89$), but it remains the largest per-paper error by
+a wide margin in every configuration. At 28 days, NO\_CONTROL predictions undershoot
+this paper's true 90--111\,MPa range by 60--70\,MPa (Fable) or land in the 40s-to-60s
+(gpt-oss)---even with age and replacement given, neither model can guess this paper's
+unusually high strength scale without being told it. This is the same failure mode
+already documented for the final ML model in Section~\ref{sec:final} (systematic
+under-prediction at the high end, worst on the corpus's most extreme paper)---further
+evidence that the limitation is in the \emph{data} (a handful of unusually strong papers
+with no comparable neighbors to generalize from), not specific to any one modeling
+approach.
+
+\subsection{Summary}
+Two unrelated LLMs, evaluated independently and under different prompting protocols,
+replicate this report's central empirical claim, first established with a
+three-feature, monotone, depth-2 XGBoost tree: \textbf{a paper's own control strength
+is the dominant signal for predicting RHA-blend compressive strength, and its absence
+is felt almost entirely at the high-strength end of the corpus.} That three completely
+different predictors---a gradient-boosted tree and two general-purpose LLMs from
+different vendors---land on the same qualitative conclusion, on the same held-out
+papers, is considerably stronger evidence for that claim than any single result alone.
+% ============================================================================
+
+\part*{Part III --- Predicting Strength up to 60\,MPa, Given the Control Strength}
+\label{sec:part3}
+
+Part~III narrows the problem to the case of practical interest:
+\begin{itemize}\itemsep2pt
+  \item \textbf{Only concrete up to 60\,MPa.} Every data point with compressive strength
+        above 60\,MPa is removed; the high-strength regime is not of interest.
+  \item \textbf{The control strength is always an input} (framing~C). Alongside the RHA
+        replacement level and curing age, the model is told the strength of the same
+        paper's plain concrete (0\% RHA). This is known in practice---the plain mix can
+        always be tested first---and Parts~I and~II showed it is the most useful input.
+\end{itemize}
+Within this one setting, Part~III runs an ablation study for the machine-learning model
+(Section~\ref{sec:p3-ml}), makes gpt-oss as reproducible as possible
+(Section~\ref{sec:p3-llm}), and compares the two on identical test points
+(Sections~\ref{sec:p3-direct} and~\ref{sec:p3-matched-cv}).
+
+% ----------------------------------------------------------------------------
+\section{Data}
+\label{sec:p3-data}
+Removing the points above 60\,MPa leaves the following data.
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+Dataset & Before & After ($\leq60$\,MPa) \\
+\midrule
+ML corpus: RHA-blend rows with a control, papers & 335 rows, 23 papers & \textbf{308 rows, 21 papers} \\
+LLM benchmark: training rows & 215 & \textbf{193} \\
+LLM benchmark: test points (6 held-out papers) & 57 & \textbf{49} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent In every ML experiment, each row is one RHA blend
+\emph{(paper, replacement\,\%, curing age)}; its inputs are the replacement level, the
+age and the paper's control strength at the same age, and the target is its measured
+strength.
+
+\paragraph{Same evaluation as Part~I.} The ML results use exactly the evaluation of
+Part~I: the same scripts (\path{06_ablation.py}, \path{07_best_model.py}) and the same 40
+repeated grouped hold-outs (30\% of papers held out each time, so no paper is in both
+training and test), reported as mean $\pm$ standard deviation. The only difference
+between the Part~I and $\leq60$\,MPa columns below is the data.
+
+\paragraph{How to read the comparison.} RMSE and MAE are errors in MPa and can be
+compared directly. \R{} cannot, quite: it measures error relative to the spread of the
+true strengths, and removing the points above 60\,MPa almost halves that spread (standard
+deviation 25.9\,MPa $\to$ 13.7\,MPa). So a model can have smaller errors on the
+$\leq60$\,MPa data and still a lower \R{}.
+
+% ----------------------------------------------------------------------------
+\section{Machine-Learning Approach: Ablation Study}
+\label{sec:p3-ml}
+Four studies each vary one design choice and keep the rest fixed
+(Table~\ref{tab:p3abl}). The best value of each study is in bold, separately for
+Part~I and for $\leq60$\,MPa.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Ablation study with the control strength as input: Part~I (all points) against
+Part~III (points $\leq60$\,MPa), same 40 repeated grouped hold-outs.}
+\label{tab:p3abl}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{Part~I (all points)} & \multicolumn{3}{c}{Part~III ($\leq60$\,MPa)} \\
+\cmidrule(lr){3-5}\cmidrule(lr){6-8}
+Study & Configuration & \R{} & RMSE & MAE & \R{} & RMSE & MAE \\
+\midrule
+1 Model & Random Forest & $\mathbf{0.436\pm0.215}$ & $\mathbf{15.82}$ & $\mathbf{10.40}$ & $\mathbf{0.202\pm0.299}$ & $\mathbf{11.97}$ & $\mathbf{8.83}$ \\
+\quad (all features) & XGBoost & $0.395\pm0.259$ & $16.45$ & $10.64$ & $0.197\pm0.254$ & $12.08$ & $8.95$ \\
+ & HistGradientBoosting$^{*}$ & $-0.524\pm0.710$ & $22.28$ & $15.83$ & $0.079\pm0.304$ & $12.55$ & $9.07$ \\
+ & Mean baseline & $-0.310\pm0.366$ & $23.97$ & $17.40$ & $-0.147\pm0.267$ & $14.48$ & $12.32$ \\
+ & Ridge regression & $-14.7\pm46.1$ & $44.74$ & $27.65$ & $-11.2\pm32.4$ & $31.89$ & $20.25$ \\
+\midrule
+2 Features & base [replacement, age, control] & $\mathbf{0.442\pm0.213}$ & $\mathbf{15.54}$ & $10.66$ & $0.185\pm0.273$ & $12.17$ & $9.04$ \\
+\quad (XGBoost) & base + chemistry & $0.317\pm0.355$ & $17.18$ & $11.24$ & $0.111\pm0.289$ & $12.67$ & $9.47$ \\
+ & base + fineness & $0.435\pm0.297$ & $15.73$ & $\mathbf{10.50}$ & $0.210\pm0.237$ & $12.01$ & $8.96$ \\
+ & base + processing & $0.236\pm0.584$ & $17.69$ & $12.34$ & $0.193\pm0.236$ & $12.16$ & $9.58$ \\
+ & base + categorical & $0.427\pm0.221$ & $15.93$ & $10.86$ & $0.243\pm0.246$ & $11.71$ & $9.02$ \\
+ & base + all numeric & $0.349\pm0.336$ & $16.85$ & $11.01$ & $0.197\pm0.277$ & $12.05$ & $8.89$ \\
+ & all structured & $0.395\pm0.259$ & $16.45$ & $10.64$ & $0.197\pm0.254$ & $12.08$ & $8.95$ \\
+ & all + TF-IDF text & $0.403\pm0.238$ & $16.42$ & $10.72$ & $0.192\pm0.269$ & $12.12$ & $8.97$ \\
+ & all + MiniLM text & $0.426\pm0.215$ & $16.13$ & $10.53$ & $\mathbf{0.265\pm0.262}$ & $\mathbf{11.54}$ & $\mathbf{8.57}$ \\
+\midrule
+3 Missing values & native (no imputation) & $\mathbf{0.397\pm0.246}$ & $16.40$ & $10.60$ & $0.207\pm0.273$ & $11.98$ & $8.79$ \\
+\quad (XGBoost) & median imputation$^{*}$ & $0.396\pm0.221$ & $\mathbf{14.88}$ & $\mathbf{9.74}$ & $0.191\pm0.245$ & $11.81$ & $\mathbf{8.59}$ \\
+ & KNN imputation$^{*}$ & $0.390\pm0.268$ & $14.92$ & $10.14$ & $\mathbf{0.218\pm0.250}$ & $\mathbf{11.57}$ & $8.77$ \\
+ & MICE imputation$^{*}$ & $0.249\pm0.322$ & $16.35$ & $11.17$ & $0.083\pm0.239$ & $12.60$ & $9.60$ \\
+\midrule
+4 Physics priors & plain & $0.442\pm0.213$ & $15.54$ & $10.66$ & $0.185\pm0.273$ & $12.17$ & $9.04$ \\
+\quad (XGBoost, base) & log-target & $0.423\pm0.178$ & $16.09$ & $10.87$ & $0.080\pm0.304$ & $12.92$ & $9.52$ \\
+ & monotone in age and control & $\mathbf{0.482\pm0.217}$ & $\mathbf{15.02}$ & $\mathbf{10.21}$ & $\mathbf{0.308\pm0.262}$ & $\mathbf{11.16}$ & $\mathbf{8.52}$ \\
+ & log-target + monotone & $0.458\pm0.196$ & $15.71$ & $10.63$ & $0.203\pm0.300$ & $11.97$ & $9.04$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+
+\vspace{2pt}
+{\footnotesize $^{*}$Fewer than 40 splits could be fitted: 31 in Part~I, 21 for
+$\leq60$\,MPa. Errors are in MPa.}
+\end{table}
+
+\noindent The feature groups are the same as in Part~I: \emph{base} is replacement
+level, age and control strength; \emph{chemistry} the oxide contents, amorphous content
+and loss on ignition; \emph{fineness} particle size, surface area and specific gravity;
+\emph{processing} burning temperature and duration, grinding time and w/b ratio;
+\emph{categorical} activation method, mineralogy, processing type and pozzolanic
+reactivity; \emph{text} an 8-number summary of each paper's free-text description.
+\emph{Monotone} forces predicted strength never to fall as age or control strength rise.
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.62\linewidth]{pipeline/out_le60/figs/abl_features.png}
+  \caption{Study~2 on the $\leq60$\,MPa data: every feature set lies within one standard
+  deviation of every other (compare Figure~\ref{fig:ablfeat} for Part~I).}
+  \label{fig:p3ablfeat}
+\end{figure}
+
+\paragraph{What the comparison shows.}
+\begin{itemize}\itemsep2pt
+  \item \textbf{Errors are smaller on the $\leq60$\,MPa data in every row.} For the
+        XGBoost and Random Forest configurations, RMSE drops by 3--5.5\,MPa (for example
+        $16.45\to12.08$\,MPa for XGBoost with all features) and MAE by 1--3\,MPa. \R{} is
+        lower for all of these, for the reason given above; only the weak models
+        (HistGradientBoosting, mean baseline, Ridge) score higher \R{} on the
+        $\leq60$\,MPa data.
+  \item \textbf{Model:} in both datasets Random Forest and XGBoost are the two best models
+        and are within noise of each other; Ridge fails in both. HistGradientBoosting
+        recovers from failing badly (\R{} $-0.52$) to a positive score once the extreme
+        points are gone.
+  \item \textbf{Features:} in Part~I the three base inputs were best and most added groups
+        made things worse. On the $\leq60$\,MPa data the order changes---text embeddings
+        (0.265) and categorical descriptors (0.243) score highest, the base set 0.185---but
+        all sets are within one standard deviation of each other, so \textbf{no feature
+        group reliably adds anything beyond replacement, age and control strength} in
+        either dataset. Chemistry is among the worst in both.
+  \item \textbf{Missing values:} in both datasets native handling, median and KNN
+        imputation are equivalent and MICE is worst.
+  \item \textbf{Physics priors:} the monotone constraint is the best choice in both
+        datasets, and its gain is larger on the $\leq60$\,MPa data ($+0.12$ \R{},
+        against $+0.04$ in Part~I).
+\end{itemize}
+
+\noindent The winning recipe is therefore the same in both: XGBoost, the three base
+inputs, and monotone constraints.
+
+\subsection{Final Model}
+\label{sec:p3-final}
+That recipe, with the XGBoost settings tuned by grouped grid search on each dataset:
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrr}
+\toprule
+& Part~I (all points) & Part~III ($\leq60$\,MPa) \\
+\midrule
+Blend rows / papers & 335 / 23 & 308 / 21 \\
+Strength range (spread, SD) & 1--186\,MPa (25.9) & 1--59\,MPa (13.7) \\
+\midrule
+\R{} (40 repeated grouped hold-outs) & $\mathbf{0.50\pm0.20}$ & $0.35\pm0.25$ \\
+RMSE (MPa) & $14.9$ & $\mathbf{10.9}$ \\
+MAE (MPa) & $10.1$ & $\mathbf{8.2}$ \\
+Pooled 5-fold grouped \R{} (scatter plots) & $0.63$ & $0.44$ \\
+Worst out-of-fold under-prediction & $-100$\,MPa & $\mathbf{-30}$\,MPa \\
+\midrule
+Tuned settings & depth 2, min child 3, $\lambda=1$ & depth 4, min child 5, $\lambda=3$ \\
+Importance: control / age / replacement & 0.74 / 0.17 / 0.09 & 0.54 / 0.32 / 0.14 \\
+Optimum-\% MAE (average-optimum baseline) & 4.75 (3.45) pts & 4.17 (2.87) pts \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent On the $\leq60$\,MPa data the final model's RMSE is 27\% smaller
+($14.9\to10.9$\,MPa) and its MAE 19\% smaller ($10.1\to8.2$\,MPa), and the large under-predictions of
+Part~I, which all came from one UHPC paper, are gone (worst miss 30\,MPa instead of
+100\,MPa; Figure~\ref{fig:p3pva}). \R{} is lower ($0.50\to0.35$) because the target spread
+is halved, not because the model is worse. Using Part~I's tuned settings unchanged on the
+$\leq60$\,MPa data gives the same result ($0.35\pm0.27$, RMSE 10.4, MAE 8.0\,MPa), so the
+settings transfer. With the extreme papers removed, age and replacement level carry more
+of the signal than before. In both datasets the model predicts the same optimum
+replacement for every held-out paper (7.5\%) and loses to predicting the average optimum,
+for the reason explained in Section~\ref{sec:opt}.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.46\textwidth}
+    \includegraphics[width=\linewidth]{pipeline/out_le60/figs/pred_vs_actual.png}
+    \caption{Out-of-fold predictions.}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{pipeline/out_le60/figs/feature_importance.png}
+    \caption{Feature importance.}
+  \end{subfigure}
+  \caption{Final model on the $\leq60$\,MPa data (single pooled 5-fold grouped pass,
+  pooled \R{} 0.44). Compare Figures~\ref{fig:pva} and~\ref{fig:imp} for Part~I.}
+  \label{fig:p3pva}
+\end{figure}
+
+% ----------------------------------------------------------------------------
+\section{LLM Approach: gpt-oss with Maximum Reproducibility}
+\label{sec:p3-llm}
+gpt-oss:120b-cloud (run through Ollama's cloud service) is given the 193 training rows
+in its prompt and asked to predict the 49 test points of the six held-out papers. Each
+test row includes the paper's 28-day control strength.
+
+\subsection{One Fixed Prompt}
+\sloppy
+Every call uses the same versioned prompt template,
+\path{pipeline/prompts/rha_strength_v1.txt}, filled in the same way each time (training
+rows and test queries sorted by paper, replacement level and age). The finished prompt was
+byte-identical on all calls (same SHA-256 hash) and the model version was identical on all
+calls (Ollama digest \texttt{ac7f7a1e7785}), so any difference between answers comes from
+the model service, not from anything we changed.\par
+\fussy
+
+\begin{center}
+\begin{minipage}{0.92\linewidth}
+\footnotesize
+\begin{verbatim}
+You are a concrete materials scientist predicting the compressive strength of
+rice-husk-ash (RHA) blended concrete and mortar from published literature data.
+All strengths in this task are 60 MPa or below.
+
+TRAINING DATA
+Below are {n_train} measured data points from other papers, as CSV with a header
+row. Each row is one (paper, RHA replacement %, curing age) combination with its
+measured compressive_strength_mpa. Learn how the input columns relate to
+compressive_strength_mpa.
+--- BEGIN TRAINING CSV ---
+{train_csv}
+--- END TRAINING CSV ---
+
+TASK
+Predict compressive_strength_mpa for the {n_queries} query rows below. They come
+from papers that are NOT in the training data. Each row states its paper_id; rows
+with the same paper_id share one mix design, rows with different paper_ids do not.
+Each query includes control_strength_28d_mpa: the SAME paper's own 0% RHA (plain
+cement) 28-day compressive strength. Use it as that paper's baseline strength level.
+
+{queries}
+
+OUTPUT FORMAT
+Return only a JSON array of exactly {n_queries} numbers: one predicted compressive
+strength in MPa per query, in query order (Query 1 first). No units, no text, no
+code fence. Example for three queries: [12.3, 45.6, 30.1]
+\end{verbatim}
+\end{minipage}
+\end{center}
+
+\subsection{Ablation of Reproducibility Settings}
+\label{sec:p3-repro}
+Settings were added one at a time, and the prompt was sent five times under each:
+\begin{description}\itemsep1pt
+  \item[S0] temperature~0 and a fixed seed.
+  \item[S1] + fully greedy decoding (always take the single most likely token:
+        \path{top_k} = 1, \path{top_p} = 1, no repetition penalty) and a fixed output
+        length cap.
+  \item[S2] + a JSON schema requesting exactly 49 numbers. (The cloud service accepted
+        this option but did not enforce it.)
+  \item[S3] + low reasoning effort, so the model thinks for less time before answering.
+  \item[S4] one short prompt per paper instead of one prompt for all six papers.
+\end{description}
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{4}{c}{Single run (5 runs)} & & Median of \\
+\cmidrule(lr){2-5}
+Setting & \R{} & \R{} range & RMSE & MAE & Query SD & 5 runs, \R{} \\
+\midrule
+S0 temperature 0 + seed & $0.407\pm0.293$ & $-0.05$ to $0.77$ & $12.39$ & $8.87$ & $5.4$ & $0.587$ \\
+\rowcolor{green!12}S1 + greedy decoding & $\mathbf{0.585\pm0.154}$ & $0.31$ to $0.76$ & $\mathbf{10.53}$ & $\mathbf{7.82}$ & $\mathbf{3.1}$ & $0.711$ \\
+S2 + JSON schema & $0.465\pm0.402$ & $-0.33$ to $0.77$ & $11.49$ & $8.61$ & $6.1$ & $0.769$ \\
+S3 + low reasoning & $0.418\pm0.395$ & $-0.23$ to $0.83$ & $11.93$ & $9.19$ & $6.8$ & $0.711$ \\
+S4 one prompt per paper & $0.552\pm0.134$ & $0.36$ to $0.71$ & $10.99$ & $7.93$ & $4.1$ & $0.647$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent \emph{Query SD} is how much a single prediction moves between runs (median over
+the 49 test points, in MPa). The last column scores the per-point median of the five
+runs.
+
+\begin{itemize}\itemsep2pt
+  \item \textbf{No setting makes gpt-oss reproducible.} Under every setting, all five
+        runs gave different answers, and no test point got the same prediction in all
+        five. Temperature~0 and greedy decoding fix how the next word is \emph{chosen},
+        but the probabilities it is chosen from are computed on shared cloud GPUs, where
+        tiny rounding differences depend on which other users' requests are processed at
+        the same time. Once one token differs, the rest of the answer differs.
+  \item \textbf{Greedy decoding (S1) gave the smallest run-to-run spread and the best
+        accuracy}, so it was used for the final runs. The other settings did not reduce
+        the spread; low reasoning effort only halved the time per call (12 vs 24--29\,s).
+  \item \textbf{Taking the median of five runs helps under every setting}: \R{} 0.59--0.77,
+        above the average single run in each case.
+\end{itemize}
+
+\subsection{Final Runs}
+\label{sec:p3-final-llm}
+The S1 setting was run 15 times. Two answers were unusable (one had 50 numbers instead
+of 49, one was empty) and are excluded; the 13 valid runs were combined in two
+independent groups of five by taking the median prediction for each test point.
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrl}
+\toprule
+& \R{} & RMSE (MPa) & MAE (MPa) & Run-to-run disagreement \\
+\midrule
+Single run (13 valid; \R{} from $-0.72$ to $0.77$) & $0.486\pm0.376$ & $11.39$ & $8.57$ & 7.1\,MPa per point \\
+\rowcolor{green!12}Median of 5 runs, group 1 & $\mathbf{0.711}$ & $\mathbf{8.93}$ & $\mathbf{6.68}$ & \\
+\rowcolor{green!12}Median of 5 runs, group 2 & $\mathbf{0.695}$ & $\mathbf{9.18}$ & $\mathbf{7.34}$ & 1.0\,MPa per point between groups \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent A single gpt-oss run can land almost anywhere, from \R{} $-0.72$ to $0.77$.
+The median of five runs is both more accurate (\R{} $\approx0.70$) and consistent: two
+completely independent groups of five agree to within about 1\,MPa per test point.
+
+\subsection{Recommended Production Recipe}
+\label{sec:p3-recipe}
+\begin{enumerate}\itemsep2pt
+  \item Pin the model version, and refuse to run if it changes.
+  \item Use one versioned prompt template, filled in deterministically.
+  \item Decode greedily: temperature~0, fixed seed, \path{top_k} = 1, \path{top_p} = 1,
+        fixed length cap.
+  \item Check every answer (exactly one number per test point, all within 0--60\,MPa) and
+        retry the ones that fail: 2 of 15 final calls would have needed a retry.
+  \item Run five valid answers and use the per-point median.
+  \item Cache the final answer, keyed by prompt and model version, so the same request
+        always returns exactly the same result.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Machine Learning vs gpt-oss on the Same 49 Points}
+\label{sec:p3-direct}
+For a fair comparison, the final XGBoost model was trained on the LLM benchmark's own 193
+training rows, using replacement level, age and the 28-day control strength (the same
+information gpt-oss receives), and scored on the same 49 test points.
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrl}
+\toprule
+Model & \R{} & RMSE (MPa) & MAE (MPa) & Bias (MPa) & Same answer every time? \\
+\midrule
+\rowcolor{green!12}XGBoost (final model) & $\mathbf{0.778}$ & $\mathbf{7.82}$ & $\mathbf{6.21}$ & $-3.60$ & yes (identical) \\
+gpt-oss, median of 5 runs & $0.703$ & $9.06$ & $7.01$ & $-2.72$ & within $\approx1$\,MPa \\
+gpt-oss, single run & $0.486\pm0.376$ & $11.39$ & $8.57$ & $-1.79$ & no \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent By strength category (each test paper's category is set by its control
+strength, as in Section~\ref{sec:part2-opus-bins}; MAE in MPa):
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+Category (test points) & XGBoost & gpt-oss, median of 5 & gpt-oss bias \\
+\midrule
+Low, control $<30$\,MPa (24) & $\mathbf{4.1}$ & $4.4$ & $+4.2$ \\
+Middle, control $30$--$60$\,MPa (17) & $7.5$ & $\mathbf{7.3}$ & $-7.2$ \\
+High-baseline papers, control $\geq60$\,MPa (8) & $\mathbf{10.0}$ & $14.1$ & $-14.1$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent The three-input XGBoost model is more accurate than gpt-oss (\R{} 0.78 vs
+0.70), gives exactly the same answer every time, and runs in milliseconds instead of a
+30-second cloud call. The two are level on low- and middle-category papers; XGBoost's
+advantage comes from the two papers with the strongest control concrete, which gpt-oss
+under-predicts by 14\,MPa on average. With only six test papers, a gap of this size is
+suggestive rather than conclusive.
+
+% ----------------------------------------------------------------------------
+\section{gpt-oss on the Same 40 Grouped Hold-Outs as XGBoost}
+\label{sec:p3-matched-cv}
+Section~\ref{sec:p3-direct} used a single split of six papers. Here gpt-oss is evaluated
+exactly as the ML models were: on the same 40 repeated grouped hold-outs of the same 308
+blend rows from 21 papers. Each split holds out 7 papers (78--141 test points); the
+remaining $\approx$209 rows go into the prompt as training data. The held-out papers were
+checked to be identical to XGBoost's in all 40 splits.
+\begin{itemize}\itemsep1pt
+  \item \textbf{Inputs:} every available feature---replacement level, age, the same-age
+        control strength, and the chemistry, fineness, processing and categorical
+        descriptors (the XGBoost ``all features'' set).
+  \item \textbf{Prompt and settings:} the template of Section~\ref{sec:p3-llm}, with the
+        control sentence describing the same-age control, and the greedy settings (S1).
+  \item \textbf{Runs:} five per split (200 calls), each answer checked and retried up to
+        twice if invalid. 180 answers were valid first time and 20 needed a retry; all
+        200 were valid in the end. Each call took 33\,s on average (1.8\,h in total).
+\end{itemize}
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Model (40 grouped hold-outs, $\leq60$\,MPa) & \R{} (mean $\pm$ SD) & Median \R{} & RMSE (MPa) & MAE (MPa) \\
+\midrule
+XGBoost, final model (3 inputs, monotone) & $\mathbf{0.346\pm0.249}$ & $\mathbf{0.450}$ & $\mathbf{10.86}$ & $8.18$ \\
+XGBoost, all features & $0.197\pm0.254$ & $0.229$ & $12.08$ & $8.95$ \\
+gpt-oss, single run & $0.144\pm0.597$ & $0.294$ & $11.94$ & $8.55$ \\
+\rowcolor{green!12}gpt-oss, median of 5 runs & $0.259\pm0.518$ & $0.444$ & $11.10$ & $\mathbf{7.85}$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\noindent Because both models were scored on the same 40 splits, they can also be compared
+split by split (gpt-oss median of 5 runs against each XGBoost model; $p$ from a
+Wilcoxon signed-rank test on the 40 paired values):
+
+\begin{center}\small
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+gpt-oss (median of 5) against & Higher \R{} in & Lower MAE in & $p$ for MAE \\
+\midrule
+XGBoost, final model & 19 of 40 splits & 27 of 40 splits & 0.024 \\
+XGBoost, all features & 29 of 40 splits & 32 of 40 splits & 0.001 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\end{center}
+
+\paragraph{What this shows.}
+\begin{itemize}\itemsep2pt
+  \item \textbf{On a typical split, gpt-oss matches the best XGBoost model.} The median
+        \R{} is the same (0.444 vs 0.450), and gpt-oss's MAE is slightly but significantly
+        lower (7.85 vs 8.18\,MPa, $p=0.02$). The differences in RMSE and \R{} are not
+        significant ($p=0.87$ and $0.94$).
+  \item \textbf{Given the same information, gpt-oss beats XGBoost.} Against XGBoost with
+        all features it has lower MAE in 32 of 40 splits ($p=0.001$). XGBoost is only
+        better when it is limited to the three base inputs with monotone constraints.
+  \item \textbf{gpt-oss fails badly on a few splits}, which lowers its mean \R{} (0.26 vs
+        0.35) and doubles its spread ($\pm0.52$ vs $\pm0.25$). On the two worst splits it
+        scores \R{} $-1.44$ and $-1.25$, where XGBoost scores $-0.03$ and $0.15$. In both,
+        gpt-oss over-predicts corpus papers 22, 27 and 78 by about 20\,MPa (the ML corpus
+        numbers its papers differently from the six-paper benchmark). In these papers RHA
+        cuts strength to 49--70\% of the control on average, against 91\% for a typical
+        paper; gpt-oss assumes the blend stays close to its control strength, while
+        XGBoost has learned from the training papers that high replacement lowers
+        strength.
+  \item \textbf{Single runs are clearly worse}: \R{} $0.144\pm0.597$. Re-running the whole
+        40-split evaluation gives a different mean each time (0.11 to 0.17 over five
+        passes), and one prediction moves by 3.5\,MPa between runs (median). Taking the
+        median of five runs raises the mean \R{} by 0.12, so the production recipe of
+        Section~\ref{sec:p3-recipe} matters.
+  \item \textbf{Cost:} five 33-second cloud calls per split for gpt-oss, against
+        milliseconds for XGBoost, which also gives the same answer every time.
+\end{itemize}
+
+\noindent In short, gpt-oss is as accurate as the best XGBoost model on typical papers,
+but it breaks down on papers where RHA sharply lowers strength. The XGBoost final model
+is the more reliable choice.
+
+% ----------------------------------------------------------------------------
+\section{Part III Summary}
+\label{sec:p3-summary}
+\begin{itemize}\itemsep3pt
+  \item \textbf{Setting:} concrete up to 60\,MPa, with the paper's control strength as an
+        input (308 rows from 21 papers for ML; 49 test points from 6 papers for the
+        LLM comparison).
+  \item \textbf{Best ML model, same evaluation as Part~I:} XGBoost on replacement level,
+        age and control strength, with strength forced to rise with age and control
+        strength. Against Part~I, its errors are smaller (RMSE $14.9\to10.9$\,MPa, MAE
+        $10.1\to8.2$\,MPa) and its worst miss drops from 100 to 30\,MPa; its \R{} is lower
+        ($0.50\to0.35$) only because the $\leq60$\,MPa data has half the spread.
+  \item \textbf{Ablation:} the same recipe wins on both datasets. The monotone constraint
+        is the most valuable choice; no extra feature group reliably improves on the three
+        base inputs; the model type and the way missing values are handled make little
+        difference.
+  \item \textbf{gpt-oss is not reproducible} under any decoding setting, even at
+        temperature~0. Taking the median of five runs makes it accurate (\R{} 0.70) and
+        consistent (1\,MPa agreement); caching makes it identical.
+  \item \textbf{On the same 49 test points, XGBoost beats gpt-oss} (\R{} 0.78 vs 0.70) and
+        is fully reproducible, fast and free to run.
+  \item \textbf{On XGBoost's own 40 grouped hold-outs} (all features, median of five
+        runs), gpt-oss matches the best XGBoost model on a typical split (median \R{}
+        0.44 vs 0.45; MAE 7.85 vs 8.18\,MPa) but fails badly on papers where RHA
+        sharply lowers strength, so its mean \R{} is lower (0.26 vs 0.35) and twice as
+        variable. XGBoost remains the more reliable choice.
+\end{itemize}
+
+\end{document}

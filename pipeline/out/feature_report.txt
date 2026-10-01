@@ -1,0 +1,39 @@
+Yielding papers: 44  |  CS rows: 756
+Modeling table:  (756, 28)  ->  train_features.csv
+
+Dropped features (>95% missing): none
+
+Fill-rate among yielding papers (kept features):
+   88.6%  sio2
+   72.7%  cao
+   77.3%  al2o3
+   77.3%  fe2o3
+   70.5%  mgo
+   40.9%  so3
+   59.1%  na2o
+   63.6%  k2o
+   54.5%  loi
+   40.9%  amorphous_pct
+   68.2%  specific_gravity
+   40.9%  mean_particle_um
+   25.0%  specific_surface
+   18.2%  bet_surface
+   20.5%  blaine
+   79.5%  wb_ratio
+   54.5%  burn_temp_c
+   43.2%  burn_duration
+   40.9%  grind_duration
+   59.1%  pozzolanic_reactivity
+   75.0%  activation_method
+   61.4%  mineralogy
+   95.5%  processing_method
+
+Canonical category counts:
+  pozzolanic_reactivity: {2.0: 26, nan: 18}
+  activation_method: {'mechanical': 14, 'both': 12, nan: 11, 'thermal': 6, 'none': 1}
+  mineralogy: {nan: 17, 'mixed': 11, 'amorphous': 9, 'crystalline': 7}
+  processing_method: {'controlled_burn': 19, 'burn_other': 11, 'uncontrolled_burn': 8, 'other': 4, nan: 2}
+
+Optimum targets (yielding papers):
+  reported_optimum non-null : 43
+  empirical_optimum non-null: 39

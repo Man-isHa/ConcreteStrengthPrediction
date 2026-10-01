@@ -1,0 +1,83 @@
+framing-C modelling set: 823 blend rows over 44 papers
+
+Stage 1 - architecture search (model x features x duplicate handling x monotone)
+model    features         collapse  mono                R2    RMSE
+histgb   base             False     False +0.351+/-0.216   14.01
+histgb   base             False     True  +0.392+/-0.194   13.57
+histgb   base             True      False +0.358+/-0.209   13.94
+histgb   base             True      True  +0.395+/-0.206   13.54
+histgb   base+cat         False     False +0.397+/-0.193   13.49
+histgb   base+cat         False     True  +0.397+/-0.191   13.48
+histgb   base+cat         True      False +0.401+/-0.202   13.47
+histgb   base+cat         True      True  +0.385+/-0.197   13.63
+histgb   base+cat+fine    False     False +0.386+/-0.223   13.58
+histgb   base+cat+fine    False     True  +0.396+/-0.220   13.48
+histgb   base+cat+fine    True      False +0.374+/-0.209   13.77
+histgb   base+cat+fine    True      True  +0.360+/-0.211   13.94
+histgb   base+cat+chem    False     False +0.416+/-0.201   13.30
+histgb   base+cat+chem    False     True  +0.427+/-0.195   13.16
+histgb   base+cat+chem    True      False +0.386+/-0.200   13.67
+histgb   base+cat+chem    True      True  +0.384+/-0.193   13.68
+histgb   all structured   False     False +0.384+/-0.196   13.67
+histgb   all structured   False     True  +0.380+/-0.198   13.69
+histgb   all structured   True      False +0.348+/-0.204   14.06
+histgb   all structured   True      True  +0.348+/-0.198   14.07
+xgb      base             False     False +0.311+/-0.213   14.48
+xgb      base             False     True  +0.339+/-0.229   14.10
+xgb      base             True      False +0.341+/-0.184   14.18
+xgb      base             True      True  +0.353+/-0.223   13.94
+xgb      base+cat         False     False +0.377+/-0.177   13.76
+xgb      base+cat         False     True  +0.376+/-0.194   13.72
+xgb      base+cat         True      False +0.404+/-0.164   13.47
+xgb      base+cat         True      True  +0.396+/-0.196   13.48
+xgb      base+cat+fine    False     False +0.368+/-0.197   13.86
+xgb      base+cat+fine    False     True  +0.377+/-0.194   13.73
+xgb      base+cat+fine    True      False +0.413+/-0.167   13.38
+xgb      base+cat+fine    True      True  +0.420+/-0.169   13.28
+xgb      base+cat+chem    False     False +0.385+/-0.192   13.69
+xgb      base+cat+chem    False     True  +0.419+/-0.186   13.30
+xgb      base+cat+chem    True      False +0.425+/-0.178   13.25
+xgb      base+cat+chem    True      True  +0.438+/-0.175   13.07
+xgb      all structured   False     False +0.341+/-0.220   14.15
+xgb      all structured   False     True  +0.369+/-0.206   13.83
+xgb      all structured   True      False +0.388+/-0.167   13.69
+xgb      all structured   True      True  +0.406+/-0.168   13.46
+
+top 5 architectures:
+   xgb      base+cat+chem    collapse=True  mono=True   R2=+0.438+/-0.175
+   histgb   base+cat+chem    collapse=False mono=True   R2=+0.427+/-0.195
+   xgb      base+cat+chem    collapse=True  mono=False  R2=+0.425+/-0.178
+   xgb      base+cat+fine    collapse=True  mono=True   R2=+0.420+/-0.169
+   xgb      base+cat+chem    collapse=False mono=True   R2=+0.419+/-0.186
+
+Stage 2 - tuning xgb over 108 combinations x 40 repeats
+top 5 hyper-parameter settings:
+   R2=+0.448+/-0.175 RMSE=12.94 MAE= 9.91  {'max_depth': 2, 'learning_rate': 0.1, 'n_estimators': 500, 'min_child_weight': 5, 'reg_lambda': 3.0}
+   R2=+0.444+/-0.168 RMSE=13.00 MAE= 9.94  {'max_depth': 3, 'learning_rate': 0.1, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 3.0}
+   R2=+0.443+/-0.172 RMSE=13.02 MAE= 9.88  {'max_depth': 4, 'learning_rate': 0.05, 'n_estimators': 500, 'min_child_weight': 3, 'reg_lambda': 3.0}
+   R2=+0.442+/-0.171 RMSE=13.02 MAE= 9.94  {'max_depth': 3, 'learning_rate': 0.05, 'n_estimators': 500, 'min_child_weight': 3, 'reg_lambda': 3.0}
+   R2=+0.442+/-0.179 RMSE=13.01 MAE=10.00  {'max_depth': 2, 'learning_rate': 0.1, 'n_estimators': 500, 'min_child_weight': 3, 'reg_lambda': 3.0}
+
+FINAL MODEL
+   model     : xgb
+   features  : base+cat+chem -> ['replacement_pct', 'age_days', 'ctrl_strength', 'activation_method', 'processing_method', 'mineralogy', 'material_family', 'pozzolanic_reactivity', 'sio2', 'cao', 'al2o3', 'fe2o3', 'mgo', 'so3', 'na2o', 'k2o', 'loi', 'amorphous_pct']
+   collapse  : True (average duplicate mixes in training)
+   monotone  : True on ['age_days', 'ctrl_strength']
+   params    : {'max_depth': 2, 'learning_rate': 0.1, 'n_estimators': 500, 'min_child_weight': 5, 'reg_lambda': 3.0}
+   R2 = 0.448 +/- 0.175   RMSE = 12.94   MAE = 9.91
+   mean baseline: R2 = -0.080  RMSE = 18.42  MAE = 14.32
+
+pooled GroupKFold(5) OOF: R2=0.537 MAE=9.52 MPa  (optimistic vs the repeated hold-out above)
+
+top feature importances:
+   ctrl_strength                      0.477
+   na2o                               0.068
+   k2o                                0.056
+   loi                                0.039
+   pozzolanic_reactivity              0.037
+   age_days                           0.037
+
+optimum task: 32 held-out papers with a reported optimum
+   argmax MAE = 13.95 pts vs mean-prior 8.58 pts
+   predicted optima: 5 distinct values, range 0.0-45.0, std 6.78
+   reported optima: mean 17.8, median 13.5, range 5-45, std 10.33

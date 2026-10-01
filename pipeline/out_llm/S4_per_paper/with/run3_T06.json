@@ -1,0 +1,39 @@
+{
+ "setting": "S4_per_paper",
+ "cond": "with",
+ "run": 3,
+ "group": "T06",
+ "model": "gpt-oss:120b-cloud",
+ "digest": "ac7f7a1e778577c4418f6a25e46e0b45dced6746c75422d4b343aa1495a022ed",
+ "template_sha256": "5d369adc95da221e074dbbf1ff17435c622afa66b1a8c35849e40270bf63ef71",
+ "prompt_sha256": "69313ea080b0faba358b128ecc32154895fbc922ea4d33e73c07ae16ca3a9093",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "top_k": 1,
+  "top_p": 1.0,
+  "repeat_penalty": 1.0,
+  "num_predict": 16384
+ },
+ "schema": true,
+ "think": "low",
+ "elapsed_s": 5.6,
+ "thinking_chars": 970,
+ "keys": [
+  [
+   "T06",
+   25.0,
+   3.0
+  ],
+  [
+   "T06",
+   40.0,
+   3.0
+  ]
+ ],
+ "preds": [
+  55.0,
+  45.0
+ ],
+ "raw": "[55.0, 45.0]"
+}

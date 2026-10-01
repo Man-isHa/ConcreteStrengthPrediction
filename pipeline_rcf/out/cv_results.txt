@@ -1,0 +1,19 @@
+age-resolved rows: 1284 over 57 papers
+strength range   : 0.6-108.2 MPa
+
+[A: absolute, all papers]  n=1284 papers=57 repeats=40
+    R2=-0.184+/-0.320  RMSE=20.30  MAE=16.05
+
+with-control subset: 823 blend rows over 44 papers (control rows excluded from evaluation)
+    control strength range: 1.9-104.8 MPa
+
+[B: relative-to-control]  n=823 papers=44 repeats=40
+    R2=-0.170+/-0.234  RMSE=0.32  MAE=0.24
+[C: blend | control, all structured]  n=823 papers=44 repeats=40
+    R2=0.341+/-0.207  RMSE=14.18  MAE=10.77
+[C1: blend | control, base only]  n=823 papers=44 repeats=40
+    R2=0.311+/-0.213  RMSE=14.48  MAE=10.77
+[C2: base + chemistry]  n=823 papers=44 repeats=40
+    R2=0.350+/-0.213  RMSE=14.06  MAE=10.51
+
+best framing by mean R2: C2 (0.350)

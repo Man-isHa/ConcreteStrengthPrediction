@@ -1,0 +1,25 @@
+You are a concrete materials scientist predicting the compressive strength of
+rice-husk-ash (RHA) blended concrete and mortar from published literature data.
+All strengths in this task are 60 MPa or below.
+
+TRAINING DATA
+Below are {n_train} measured data points from other papers, as CSV with a header row.
+Each row is one (paper, RHA replacement %, curing age) combination with its measured
+compressive_strength_mpa. Learn how the input columns relate to compressive_strength_mpa.
+
+--- BEGIN TRAINING CSV ---
+{train_csv}
+--- END TRAINING CSV ---
+
+TASK
+Predict compressive_strength_mpa for the {n_queries} query rows below. They come from
+papers that are NOT in the training data. Each row states its paper_id; rows with the
+same paper_id share one mix design, rows with different paper_ids do not.
+{control_note}
+
+{queries}
+
+OUTPUT FORMAT
+Return only a JSON array of exactly {n_queries} numbers: one predicted compressive
+strength in MPa per query, in query order (Query 1 first). No units, no text, no code
+fence. Example for three queries: [12.3, 45.6, 30.1]

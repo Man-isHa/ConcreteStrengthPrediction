@@ -1,0 +1,83 @@
+framing-C modelling set: 688 blend rows over 41 papers
+
+Stage 1 - architecture search (model x features x duplicate handling x monotone)
+model    features         collapse  mono                R2    RMSE
+histgb   base             False     False +0.175+/-0.287   11.97
+histgb   base             False     True  +0.266+/-0.252   11.30
+histgb   base             True      False +0.193+/-0.254   11.85
+histgb   base             True      True  +0.232+/-0.273   11.55
+histgb   base+cat         False     False +0.268+/-0.221   11.30
+histgb   base+cat         False     True  +0.254+/-0.223   11.39
+histgb   base+cat         True      False +0.231+/-0.198   11.64
+histgb   base+cat         True      True  +0.210+/-0.242   11.75
+histgb   base+cat+fine    False     False +0.279+/-0.214   11.21
+histgb   base+cat+fine    False     True  +0.285+/-0.204   11.17
+histgb   base+cat+fine    True      False +0.262+/-0.188   11.39
+histgb   base+cat+fine    True      True  +0.260+/-0.196   11.40
+histgb   base+cat+chem    False     False +0.234+/-0.254   11.54
+histgb   base+cat+chem    False     True  +0.227+/-0.254   11.60
+histgb   base+cat+chem    True      False +0.182+/-0.221   11.99
+histgb   base+cat+chem    True      True  +0.159+/-0.253   12.12
+histgb   all structured   False     False +0.269+/-0.227   11.30
+histgb   all structured   False     True  +0.265+/-0.232   11.33
+histgb   all structured   True      False +0.261+/-0.215   11.37
+histgb   all structured   True      True  +0.253+/-0.225   11.42
+xgb      base             False     False +0.142+/-0.299   12.21
+xgb      base             False     True  +0.213+/-0.278   11.71
+xgb      base             True      False +0.165+/-0.311   12.02
+xgb      base             True      True  +0.214+/-0.301   11.66
+xgb      base+cat         False     False +0.223+/-0.246   11.63
+xgb      base+cat         False     True  +0.235+/-0.234   11.54
+xgb      base+cat         True      False +0.240+/-0.230   11.52
+xgb      base+cat         True      True  +0.236+/-0.241   11.55
+xgb      base+cat+fine    False     False +0.237+/-0.226   11.54
+xgb      base+cat+fine    False     True  +0.261+/-0.224   11.35
+xgb      base+cat+fine    True      False +0.259+/-0.217   11.36
+xgb      base+cat+fine    True      True  +0.270+/-0.205   11.29
+xgb      base+cat+chem    False     False +0.235+/-0.241   11.55
+xgb      base+cat+chem    False     True  +0.252+/-0.229   11.43
+xgb      base+cat+chem    True      False +0.242+/-0.237   11.49
+xgb      base+cat+chem    True      True  +0.253+/-0.229   11.42
+xgb      all structured   False     False +0.252+/-0.233   11.42
+xgb      all structured   False     True  +0.250+/-0.235   11.44
+xgb      all structured   True      False +0.257+/-0.226   11.38
+xgb      all structured   True      True  +0.264+/-0.221   11.33
+
+top 5 architectures:
+   histgb   base+cat+fine    collapse=False mono=True   R2=+0.285+/-0.204
+   histgb   base+cat+fine    collapse=False mono=False  R2=+0.279+/-0.214
+   xgb      base+cat+fine    collapse=True  mono=True   R2=+0.270+/-0.205
+   histgb   all structured   collapse=False mono=False  R2=+0.269+/-0.227
+   histgb   base+cat         collapse=False mono=False  R2=+0.268+/-0.221
+
+Stage 2 - tuning histgb over 96 combinations x 40 repeats
+top 5 hyper-parameter settings:
+   R2=+0.308+/-0.187 RMSE=11.02 MAE= 8.47  {'max_depth': 2, 'learning_rate': 0.03, 'max_iter': 300, 'l2_regularization': 3.0, 'min_samples_leaf': 20}
+   R2=+0.306+/-0.187 RMSE=11.03 MAE= 8.47  {'max_depth': 2, 'learning_rate': 0.03, 'max_iter': 300, 'l2_regularization': 1.0, 'min_samples_leaf': 20}
+   R2=+0.304+/-0.180 RMSE=11.05 MAE= 8.46  {'max_depth': 2, 'learning_rate': 0.05, 'max_iter': 300, 'l2_regularization': 3.0, 'min_samples_leaf': 20}
+   R2=+0.303+/-0.182 RMSE=11.06 MAE= 8.47  {'max_depth': 2, 'learning_rate': 0.03, 'max_iter': 500, 'l2_regularization': 3.0, 'min_samples_leaf': 20}
+   R2=+0.303+/-0.182 RMSE=11.06 MAE= 8.47  {'max_depth': 2, 'learning_rate': 0.05, 'max_iter': 300, 'l2_regularization': 1.0, 'min_samples_leaf': 20}
+
+FINAL MODEL
+   model     : histgb
+   features  : base+cat+fine -> ['replacement_pct', 'age_days', 'ctrl_strength', 'activation_method', 'processing_method', 'mineralogy', 'material_family', 'pozzolanic_reactivity', 'd10', 'd50', 'd90', 'mean_particle_um', 'specific_surface', 'bet_surface', 'blaine', 'specific_gravity', 'bulk_density', 'water_absorption']
+   collapse  : False (average duplicate mixes in training)
+   monotone  : True on ['age_days', 'ctrl_strength']
+   params    : {'max_depth': 2, 'learning_rate': 0.03, 'max_iter': 300, 'l2_regularization': 3.0, 'min_samples_leaf': 20}
+   R2 = 0.308 +/- 0.187   RMSE = 11.02   MAE = 8.47
+   mean baseline: R2 = -0.112  RMSE = 14.08  MAE = 11.56
+
+pooled GroupKFold(5) OOF: R2=0.319 MAE=8.82 MPa  (optimistic vs the repeated hold-out above)
+
+top feature importances:
+   ctrl_strength                      0.887
+   replacement_pct                    0.296
+   mean_particle_um                   0.108
+   pozzolanic_reactivity              0.020
+   water_absorption                   0.010
+   processing_method_crushing         0.007
+
+optimum task: 30 held-out papers with a reported optimum
+   argmax MAE = 12.72 pts vs mean-prior 8.85 pts
+   predicted optima: 4 distinct values, range 0.0-10.0, std 3.66
+   reported optima: mean 18.0, median 13.5, range 5-45, std 10.57

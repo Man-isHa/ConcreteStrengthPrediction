@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RHA versus RCF: Why the Two Corpora Need Different Models</title>
+<style>
+  @font-face { font-family:"CMU Serif"; font-weight:400; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-500-roman.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Serif"; font-weight:400; font-style:italic;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-500-italic.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Serif"; font-weight:700; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-700-roman.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Typewriter"; font-weight:400; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-typewriter-500-roman.woff2") format("woff2"); }
+
+  @page { size: A4; margin: 25.4mm; }
+  html { font-size: 11pt; }
+  body { font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif;
+         color: #000; line-height: 1.30; margin: 0; text-rendering: optimizeLegibility; }
+
+  h1 { font-size: 17.3pt; font-weight: 700; line-height: 1.22; text-align: center;
+       margin: 0 0 3mm; }
+  .sub { text-align: center; font-size: 11pt; margin-bottom: 9mm; }
+
+  h2 { font-size: 13.2pt; font-weight: 700; margin: 7.5mm 0 2mm; break-after: avoid; }
+  h3 { font-size: 11.6pt; font-weight: 700; margin: 5mm 0 1.5mm; break-after: avoid; }
+
+  p { margin: 0; text-align: justify; hyphens: auto; text-indent: 1.6em; }
+  p + p { margin-top: 0; }
+  h1 + p, h2 + p, h3 + p, .abstract p:first-child, .box p:first-child,
+  p.noindent, figure + p, table + p, .note + p, ul + p, ol + p { text-indent: 0; }
+  p + table, p + figure, p + ul, p + ol { margin-top: 2.5mm; }
+
+  ul, ol { margin: 2mm 0 3mm; padding-left: 8mm; text-align: justify; }
+  li { margin-bottom: 0.8mm; }
+
+  .abstract { width: 86%; margin: 0 auto 8mm; font-size: 10pt; line-height: 1.28; }
+  .abstract .t { text-align: center; font-weight: 700; margin-bottom: 1.5mm; }
+
+  table { border-collapse: collapse; margin: 1mm auto 4mm; font-size: 9.6pt;
+          break-inside: avoid; }
+  th, td { padding: 1.1mm 3mm; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { border-top: 1.1pt solid #000; border-bottom: 0.5pt solid #000; font-weight: 400; }
+  tbody tr:last-child td { border-bottom: 1.1pt solid #000; }
+  .win { background: #dff0d8; }
+  caption { caption-side: top; font-size: 9.4pt; text-align: left; margin-bottom: 1.2mm;
+            padding: 0 1mm; }
+  caption b, figcaption b { font-weight: 700; }
+
+  figure { margin: 4mm 0 4mm; break-inside: avoid; text-align: center; }
+  figure img { width: 100%; }
+  figcaption { font-size: 9.4pt; text-align: left; margin-top: 1.5mm; }
+  .two { display: flex; gap: 5mm; align-items: flex-end; }
+  .two figure { flex: 1; margin: 0; }
+  .note { font-size: 9.4pt; text-align: left; margin: -2mm 0 3mm; }
+
+  .box { border-top: 0.5pt solid #000; border-bottom: 0.5pt solid #000;
+         padding: 2.5mm 0; margin: 3.5mm 0; break-inside: avoid; }
+  .box p { text-indent: 0; }
+  code { font-family: "CMU Typewriter", Consolas, monospace; font-size: 9.6pt; }
+</style>
+</head>
+<body>
+
+<h1>Rice-Husk Ash versus Recycled Concrete Fines:<br>Why the Two Corpora Need Different Models</h1>
+<div class="sub">A side-by-side comparison of the two &le;&nbsp;60&nbsp;MPa strength studies &middot; September 2026</div>
+
+<div class="abstract">
+<div class="t">Abstract</div>
+<p>Both studies predict the compressive strength of blended concrete from a literature corpus,
+restricted to samples of 60&nbsp;MPa or below and validated by holding out whole papers. They agree
+on what makes the problem solvable and disagree on how to model it. Two ingredients transfer
+unchanged: the paper's own control strength, without which neither corpus is learnable, and the
+requirement that strength rise with curing age and with control strength. Two do not: RHA is best
+with three inputs and lightly regularised trees, while RCF needs the material descriptors and much
+larger leaves. A controlled swap of the two recipes shows each corpus is worse under the other's,
+and the cause is structural &mdash; RCF has twice the papers but 69% of its rows are repeat
+specimens, against 23% for RHA.</p>
+</div>
+
+<h2>1. The two corpora</h2>
+<table>
+<caption><b>Table 1:</b> The modelling sets after removing samples above 60&nbsp;MPa (blend rows with a same-age control).</caption>
+<thead><tr><th>Property</th><th>RHA</th><th>RCF</th></tr></thead>
+<tbody>
+<tr><td>Rows / papers</td><td>308 / 21</td><td>688 / 41</td></tr>
+<tr><td>Rows per paper</td><td>14.7</td><td>16.8</td></tr>
+<tr><td>Repeat specimens (rows sharing paper, level and age)</td><td>23%</td><td><strong>69%</strong></td></tr>
+<tr><td>Spread of the target (SD)</td><td>13.7 MPa</td><td>14.1 MPa</td></tr>
+<tr><td>Material</td><td>one ash, chemically similar across papers</td><td>powders, fines and blends of differing origin</td></tr>
+</tbody>
+</table>
+
+<h2>2. What transfers</h2>
+<p><strong>The control strength.</strong> On both corpora, predicting absolute strength without the
+paper's own 0%-replacement result is worse than predicting the corpus average (RHA R&sup2; = 0.14 at
+best, RCF &minus;0.13); supplying it makes the problem learnable. It is the top-ranked input in both
+final models, and it is legitimate: the plain mix can always be cast and tested first.</p>
+<p><strong>Physics constraints.</strong> Requiring strength never to fall as curing age or control
+strength rise is the single most valuable modelling choice in both studies &mdash; worth about
++0.12 R&sup2; on RHA and +0.07 on RCF.</p>
+<p><strong>What else behaves the same.</strong> Only tree ensembles work (Ridge and small neural nets
+fail badly on both); missing-value strategy barely matters; text embeddings of the papers never beat
+the structured columns; and grouped validation by paper is essential, since ordinary random splits
+would leak a paper's own control level into its test rows.</p>
+
+<h2>3. What differs, and by how much</h2>
+<p>The two recipes differ in exactly two places: which features they use, and how large a tree leaf
+must be. Holding everything else fixed &mdash; same splits, same monotone constraint, same learning
+rate and tree count &mdash; each recipe was run on both corpora.</p>
+
+<table>
+<caption><b>Table 2:</b> Cross-applying the recipes. Each corpus scores best under its own (green), and each factor can be read off separately.</caption>
+<thead><tr><th>Configuration</th><th>RHA R&sup2;</th><th>RCF R&sup2;</th></tr></thead>
+<tbody>
+<tr><td><strong>RHA recipe</strong> &mdash; base inputs only, small leaves (min. 5)</td><td class="win">0.346 &plusmn; 0.249</td><td>0.268 &plusmn; 0.218</td></tr>
+<tr><td>base inputs only, large leaves (min. 20)</td><td>0.328 &plusmn; 0.256</td><td>0.286 &plusmn; 0.212</td></tr>
+<tr><td>base + categorical + fineness, small leaves</td><td>0.251 &plusmn; 0.281</td><td>0.279 &plusmn; 0.218</td></tr>
+<tr><td><strong>RCF recipe</strong> &mdash; base + categorical + fineness, large leaves</td><td>0.267 &plusmn; 0.269</td><td class="win">0.309 &plusmn; 0.188</td></tr>
+</tbody>
+</table>
+
+<p class="noindent">Reading the table by column:</p>
+<ul>
+<li><strong>Adding the material descriptors</strong> costs RHA about 0.09 R&sup2; and gains RCF about
+0.02&ndash;0.03. On RHA the extra columns are noise; on RCF they carry signal.</li>
+<li><strong>Enlarging the leaves</strong> from 5 to 20 samples costs RHA 0.02 and gains RCF 0.02&ndash;0.03.</li>
+<li><strong>Together</strong>, using the wrong corpus's recipe costs 0.079 R&sup2; on RHA and 0.041 on RCF.</li>
+</ul>
+
+<h2>4. Why the method changed for RCF</h2>
+<p><strong>Reason 1: RCF has twice as many papers, so it can afford more inputs.</strong> Grouped
+validation means the effective sample size is the number of papers, not rows: 21 for RHA against 41
+for RCF. With 21 papers, adding a dozen sparsely reported powder properties gives the tree room to
+split on a column that happens to separate three training papers and means nothing on a held-out one
+&mdash; the feature-set study for RHA showed every added group within noise of the three base inputs,
+and the tuned model kept only those three. With 41 papers, the same columns become usable: RCF's base
+set alone is its <em>worst</em> configuration, and the descriptors lift it by a margin larger than the
+gap between any two tree models. Particle size in particular carries real signal for RCF (third-ranked
+input in the final model), which is unsurprising: recycled fines vary in grinding and origin, whereas
+rice-husk ash is chemically similar from paper to paper, so its properties add little beyond what the
+control strength already encodes.</p>
+
+<p><strong>Reason 2: RCF's rows are mostly repeat specimens, so it needs heavier regularisation.</strong>
+69% of RCF's rows share a (paper, replacement level, age) key with another row &mdash; several
+specimens of the same nominal mix, differing only by scatter the corpus does not explain &mdash;
+against 23% for RHA. A tree allowed to isolate three samples per leaf can fit that scatter exactly,
+and none of it transfers to a new paper. Forcing at least 20 samples per leaf blocks this. The effect
+is large enough to have looked like an algorithmic difference: HistGradientBoosting defaults to 20
+samples per leaf and XGBoost to about 3, which alone made HistGB appear the better library on RCF
+(0.269 vs 0.244). Equalising the setting reverses the ordering, and once both are tuned they finish
+level (0.308 vs 0.309). <strong>The library never mattered; the leaf size did.</strong></p>
+
+<h2>5. Final models, side by side</h2>
+<table>
+<caption><b>Table 3:</b> The tuned model each corpus settled on, scored by repeated grouped hold-out (40 repeats, 30% of papers held out).</caption>
+<thead><tr><th></th><th>RHA</th><th>RCF</th></tr></thead>
+<tbody>
+<tr><td>Model</td><td>XGBoost, depth 2</td><td>shallow boosted trees, depth 2<br>(HistGB or XGBoost, interchangeable)</td></tr>
+<tr><td>Inputs</td><td>3: replacement, age, control</td><td>18: + categorical descriptors, fineness</td></tr>
+<tr><td>Minimum samples per leaf</td><td>5</td><td>20</td></tr>
+<tr><td>Monotone in age and control</td><td>yes</td><td>yes</td></tr>
+<tr><td>R&sup2;</td><td>0.35 &plusmn; 0.25</td><td>0.31 &plusmn; 0.19</td></tr>
+<tr><td>RMSE / MAE (MPa)</td><td>10.9 / 8.2</td><td>11.0 / 8.4</td></tr>
+</tbody>
+</table>
+<p>The achievable accuracy is nearly identical &mdash; about 8&ndash;8.5 MPa of typical error on an
+unseen paper &mdash; despite the different routes. Neither corpus supports predicting the optimal
+replacement level: both optimum predictors lose to simply quoting the corpus-average optimum, and on
+RCF the target is additionally ill-posed, since in 66% of papers the strongest mix measured is the
+plain control.</p>
+
+<h2>6. The LLM comparison on each corpus</h2>
+<table>
+<caption><b>Table 4:</b> gpt-oss:120b against the tuned model on each corpus's fixed held-out papers. The two rows are not equally strict &mdash; see the note.</caption>
+<thead><tr><th>Corpus (held-out set)</th><th>Tuned ML</th><th>gpt-oss (median of runs)</th><th>Inputs matched?</th></tr></thead>
+<tbody>
+<tr><td>RHA &mdash; 6 papers, 49 points</td><td>0.778</td><td>0.703</td><td>no: the LLM also saw the paper id</td></tr>
+<tr><td>RCF &mdash; 6 papers, 59 points</td><td>0.789&ndash;0.807</td><td>0.602</td><td>yes: strictly enforced</td></tr>
+</tbody>
+</table>
+<div class="box">
+<p><strong>A caveat that applies to both studies.</strong> The RHA comparison, and an earlier RCF one,
+placed the paper identifier in the LLM's prompt while the tree model never received it. That column
+carries no strength information, but it tells the model which queries belong to the same paper, so it
+can anchor each block on that paper's control strength &mdash; something a tree cannot exploit. On
+RCF, measured directly, the identifier alone moves the LLM from R&sup2; 0.204 to 0.668 per run. The
+RCF figure above therefore withholds it from both sides; the RHA figure does not, and should be read
+as favourable to the LLM.</p>
+</div>
+<p>On both corpora a single LLM run is unreliable at temperature 0 &mdash; repeated identical prompts
+give R&sup2; anywhere from &minus;0.62 to 0.85 on RCF &mdash; so the median of five or more runs is
+the only usable form, and even then the tuned tree is ahead on strictly equal inputs.</p>
+
+<h2>7. Practical guidance</h2>
+<ol>
+<li><strong>Always supply the paper's own control strength</strong> and constrain strength to rise with
+age and control. These two choices transfer across corpora and matter more than anything else.</li>
+<li><strong>Let the corpus decide the feature set.</strong> Count papers, not rows: below roughly 25
+papers, keep to the three base inputs; above roughly 40, test the material descriptors, because they
+start to pay.</li>
+<li><strong>Set the minimum leaf size from the share of repeat specimens</strong>, not from library
+defaults. Where most rows are repeats, require 20 or more samples per leaf.</li>
+<li><strong>Do not port a tuned recipe between corpora unchanged</strong> &mdash; it costs 0.04&ndash;0.08
+R&sup2; here. Re-run the ablation; it is inexpensive.</li>
+<li><strong>Use the LLM as a fallback, not the primary tool</strong>, and if you do compare the two,
+give both sides exactly the same columns.</li>
+</ol>
+
+<h2>Sources</h2>
+<ul>
+<li>RHA: <code>rha_report.pdf</code> Part III; pipeline in <code>pipeline/13_ml_le60.py</code>,
+results in <code>pipeline/out_le60/</code>.</li>
+<li>RCF: <code>rcf_le60_report.pdf</code>; pipeline in <code>pipeline_rcf/09_ml_le60.py</code> and
+<code>pipeline_rcf/10_llm_le60.py</code>, results in <code>pipeline_rcf/out_le60/</code> and
+<code>out_llm_le60/</code>.</li>
+<li>Table 2 comes from a controlled cross-application run for this note: both corpora, the same 40
+grouped splits, monotone constraints fixed, varying only feature set and minimum leaf size.</li>
+</ul>
+
+</body>
+</html>

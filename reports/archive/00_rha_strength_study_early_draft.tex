@@ -1,0 +1,354 @@
+\documentclass[11pt]{article}
+
+% ---------------------------------------------------------------- packages
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[table]{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black,
+            citecolor=blue!60!black}
+
+% figures live under ../pipeline/out/figs/ relative to this file
+\graphicspath{{../pipeline/out/figs/}{figs/}}
+\captionsetup{font=small, labelfont=bf}
+\newcommand{\R}{$R^2$}
+
+\title{\textbf{Predicting Compressive Strength and Optimal Replacement Level\\
+for Rice-Husk-Ash Blended Concrete from a Sparse Literature Dataset}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We build a machine-learning pipeline to predict the compressive strength and the
+optimal cement-replacement level of rice-husk-ash (RHA) blended concrete, using a
+dataset compiled from \textbf{79 research papers}. The central obstacle is data
+sparsity: strength values are packed inside free-text cells as
+\emph{(replacement level $\times$ curing age)} grids. Parsing and exploding these
+cells---rather than any modeling choice---is the highest-leverage step, turning
+$\sim$70 packed rows into \textbf{756 clean data
+points across 44 papers}. Through a five-axis ablation study we find that
+(i)~absolute strength is essentially unpredictable across papers ($R^2<0$) because
+the corpus mixes mortars, normal concrete and ultra-high-performance concrete, but
+becomes learnable once the paper's own control (0\%) strength is supplied as an
+input; (ii)~a strongly-regularized, monotonically-constrained gradient-boosted
+model on just three inputs \emph{(replacement, age, control strength)} is the best
+predictor, reaching \textbf{\R{}~$=0.50\pm0.20$, MAE~$\approx$~10\,MPa}; and
+(iii)~text embeddings (MiniLM/BERT-style) provide \emph{no reliable gain} at this
+sample size. The optimal-replacement target cannot yet beat a naive prior. We
+conclude that the binding constraint is data quantity and the absence of base-mix
+descriptors, not model capacity.
+\end{abstract}
+
+% ============================================================================
+\section{Introduction}
+Rice husk ash is a pozzolanic by-product that can partially replace Portland cement,
+reducing both cost and $\mathrm{CO_2}$ footprint. The two engineering quantities of
+interest are the \textbf{compressive strength} of the resulting concrete and the
+\textbf{optimal replacement level}---the percentage of cement that can be replaced by
+RHA while maximizing strength. Our goal is a predictive model for both, trained on a
+dataset hand/LLM-extracted from the literature. The practical difficulties are
+(a)~pervasive missing values and (b)~selecting a model that performs well on a small,
+heterogeneous dataset. We take XGBoost as the baseline and interrogate the data and
+model choices rigorously.
+
+% ============================================================================
+\section{The Dataset: What It Actually Contains}
+The source file \texttt{RHA Master sheet v2.csv} contains 225 columns organized under
+a \textbf{four-row hierarchical header}: category ($\rightarrow$ \textsc{paper
+metadata}/\textsc{input}/\textsc{output}), section, feature (55 features), and a
+sub-field. Every feature is split into four columns---\texttt{Extracted Value},
+\texttt{Unit}, \texttt{Source Type}, \texttt{Exact Evidence}---of which only the first
+two carry predictive information; the latter two are provenance and are discarded. The
+file is \texttt{latin-1} encoded.
+
+The dataset contains \textbf{79 papers} with unique titles. Across these papers,
+individual features are 50--99\% missing (Figure~\ref{fig:avail}). The prediction
+targets are present in 70~(strength), 71~(optimum), and 76~(replacement levels)
+papers.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{parse_yield.png}
+    \caption{Parse yield and the distribution of recovered strength points by
+    replacement level.}
+    \label{fig:yield}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\linewidth]{data_availability.png}
+    \caption{Per-feature availability among the 44 yielding papers.}
+    \label{fig:avail}
+  \end{subfigure}
+  \caption{The dataset is small and sparse. Chemistry (SiO$_2$, oxides) and w/b are
+  reasonably populated; fineness measures (BET, Blaine, specific surface) are scarce.}
+\end{figure}
+
+% ============================================================================
+\section{Data Representation: Parsing the Packed Cells}
+The single most valuable observation is that each Compressive Strength cell encodes a
+\emph{grid} of measurements in one of $\sim$12 textual layouts, e.g.
+\begin{quote}\small\ttfamily
+3 days: 20 (7\%), 20 (10\%); 28 days: 44.5 (7\%), 46 (10\%); \dots
+\end{quote}
+We built a state-machine parser (\texttt{02\_parse\_explode.py}) that resolves, for
+each value, a \emph{curing age} and a \emph{replacement level} from inline qualifiers,
+segment headers, or persistent line context, and emits a tidy long table with one row
+per \emph{(paper, replacement\,\%, age)}. Precision safeguards include:
+\begin{itemize}\itemsep2pt
+  \item unsigned number matching, fixing mis-reads such as \texttt{RHA8-10\%}
+        $\rightarrow$ 10 (not $-10$);
+  \item a \textbf{per-paper whitelist}: a resolved replacement \% must match the
+        paper's declared levels (plus 0 for control), which rejects mis-labelled
+        sample IDs (\texttt{RHA1}, \texttt{M2}) and recovers trailing-code mixes
+        (\texttt{Aa-10}, \texttt{A35-10});
+  \item physical sanity clamps ($0\le\%\le100$, $0<\text{age}\le400$\,d,
+        $0.5\le\text{MPa}\le250$).
+\end{itemize}
+This recovers \textbf{756 data points across 44 of the 70 strength papers} (192 at the
+standard 28-day age). The 26 non-yielding papers are graph-derived narratives, pure
+ranges, or bare number lists with no age/level mapping---genuinely unrecoverable
+without the source PDFs, and logged to \texttt{parse\_failures.csv}. Figure
+\ref{fig:curves} confirms the expected physics: strength rises with curing age, and
+the strength-vs-replacement relationship is typically unimodal.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{cs_curves.png}
+  \caption{Physics sanity checks on the parsed data. Left: mean strength increases
+  monotonically with curing age. Right: per-paper 28-day strength vs replacement level
+  is typically unimodal, i.e.\ an interior optimum exists.}
+  \label{fig:curves}
+\end{figure}
+
+% ============================================================================
+\section{Feature Engineering}
+Numeric features (oxides, fineness, w/b, burn temperature/duration) are parsed as the
+mean of the numbers in each cell, robustly handling multi-sample entries such as
+``94.6 (RHA-A), 93.7 (RHA-B)''. High-cardinality but semantically redundant text
+fields are \textbf{canonicalized} into compact categoricals: activation method
+$\in\{$none, thermal, mechanical, both$\}$; mineralogy $\in\{$amorphous, mixed,
+crystalline$\}$; processing $\in\{$controlled, uncontrolled, \dots$\}$; pozzolanic
+reactivity as an ordinal. We deliberately apply \textbf{no imputation} for the
+tree models, which handle missing values natively by learning a default split
+direction; imputers (median/KNN/MICE) are evaluated separately and only ever fit
+\emph{inside} each cross-validation split to prevent leakage.
+
+% ============================================================================
+\section{Methodology}
+Because rows from the same paper are strongly correlated, all evaluation uses
+\textbf{grouped cross-validation by paper}: no paper appears in both training and test.
+Given the small sample, a single split is unreliable, so we report the mean and
+standard deviation of \textbf{repeated grouped hold-out} (\texttt{GroupShuffleSplit},
+30\% of papers held out, 40 repeats). We compare three target framings:
+\begin{description}\itemsep2pt
+  \item[A. Absolute strength, all papers] predict MPa directly from RHA features.
+  \item[B. Relative-to-control] predict strength normalized by the paper's 0\% control.
+  \item[C. Absolute strength given control] predict the RHA-blend strength using the
+        paper's control (0\%) strength as an additional input---always known in
+        practice, hence not leakage. Control rows themselves are excluded from
+        evaluation to avoid a trivial identity.
+\end{description}
+
+% ============================================================================
+\section{Ablation Study}
+We ablate five axes. All numbers are repeated grouped hold-out (mean\,$\pm$\,std).
+
+\paragraph{Study 1 --- Target framing.}
+Absolute strength across papers is \emph{unpredictable} (\R{}~$=-0.78$); the corpus
+mixes mortars, normal concrete and UHPC (1--205\,MPa) whose baseline levels are set by
+mix factors absent from the data. Supplying the control strength (framing~C) makes the
+RHA effect learnable (Table~\ref{tab:s1}).
+
+\begin{table}[H]\centering\small
+\caption{Study 1: target framing (XGBoost, all structured features).}
+\label{tab:s1}
+\begin{tabular}{lrrrr}
+\toprule
+Framing & \R{} & std & RMSE & MAE \\
+\midrule
+\rowcolor{green!12}C: blend $\mid$ control strength & $0.395$ & $0.259$ & $16.45$ & $10.64$ \\
+B: relative-to-control & $-0.159$ & $0.300$ & $0.29$ & $0.22$ \\
+A: absolute, all papers & $-0.776$ & $1.549$ & $30.99$ & $20.95$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Study 2 --- Model.}
+Random Forest and XGBoost dominate; HistGradientBoosting is unstable and linear
+Ridge fails badly on this tiny, collinear, missing-laden matrix
+(Table~\ref{tab:s2}).
+
+\paragraph{Study 3 --- Feature set.}
+Parsimony wins decisively: the three-feature \emph{base}
+\{replacement, age, control\} is the best set, and \emph{every} added feature group
+degrades generalization---clear evidence of overfitting at $n\!=\!23$ papers
+(Table~\ref{tab:s3}, Figure~\ref{fig:ablfeat}).
+
+\begin{table}[H]\centering\small
+\begin{minipage}{0.46\textwidth}\centering
+\caption{Study 2: model (framing C, all features).}
+\label{tab:s2}
+\begin{tabular}{lrr}
+\toprule
+Model & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}Random Forest & $0.436$ & $15.82$ \\
+XGBoost & $0.395$ & $16.45$ \\
+Mean baseline & $-0.310$ & $23.97$ \\
+HistGB & $-0.524$ & $22.28$ \\
+Ridge & $-14.7$ & $44.74$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}\centering
+\caption{Study 3: feature set (framing C, XGBoost).}
+\label{tab:s3}
+\begin{tabular}{lrr}
+\toprule
+Feature set & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}base [repl, age, control] & $0.442$ & $15.54$ \\
+base + fineness & $0.435$ & $15.73$ \\
+base + categorical & $0.427$ & $15.93$ \\
+all + MiniLM text & $0.426$ & $16.13$ \\
+all + TF-IDF text & $0.403$ & $16.42$ \\
+all structured & $0.395$ & $16.45$ \\
+base + chemistry & $0.317$ & $17.18$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table}
+
+\paragraph{Study 4 --- Imputation.}
+For the tree models, native NaN handling matches or beats explicit imputation; median
+imputation gives marginally better error, KNN is comparable, and MICE hurts. The
+recommendation is native handling (Table~\ref{tab:s4}).
+
+\paragraph{Study 5 --- Physics priors.}
+Adding \textbf{monotone constraints}---strength non-decreasing in curing age and in
+control strength---gives the single best result, \R{}~$=0.482\pm0.217$, encoding
+domain knowledge the tiny sample cannot reliably learn on its own (Table~\ref{tab:s5},
+Figure~\ref{fig:ablprior}).
+
+\begin{table}[H]\centering\small
+\begin{minipage}{0.46\textwidth}\centering
+\caption{Study 4: imputation (framing C).}
+\label{tab:s4}
+\begin{tabular}{lrr}
+\toprule
+Scheme & \R{} & RMSE \\
+\midrule
+XGB + native & $0.397$ & $16.40$ \\
+\rowcolor{green!12}XGB + median & $0.396$ & $14.88$ \\
+XGB + KNN & $0.390$ & $14.92$ \\
+XGB + MICE & $0.249$ & $16.35$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}\hfill
+\begin{minipage}{0.5\textwidth}\centering
+\caption{Study 5: physics priors (base features).}
+\label{tab:s5}
+\begin{tabular}{lrr}
+\toprule
+Prior & \R{} & RMSE \\
+\midrule
+\rowcolor{green!12}monotone(age, control) & $0.482$ & $15.02$ \\
+log + monotone & $0.458$ & $15.71$ \\
+plain & $0.442$ & $15.54$ \\
+log-target & $0.423$ & $16.09$ \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{abl_features.png}
+    \caption{Feature-set ablation: parsimony wins.}
+    \label{fig:ablfeat}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.49\textwidth}
+    \includegraphics[width=\linewidth]{abl_priors.png}
+    \caption{Physics-prior ablation: monotone constraints help.}
+    \label{fig:ablprior}
+  \end{subfigure}
+  \caption{Selected ablation results (repeated grouped hold-out, mean\,$\pm$\,std).}
+\end{figure}
+
+% ============================================================================
+\section{Final Model and Results}
+Combining the ablation winners---framing~C, base features, monotone constraints---and a
+light grouped hyper-parameter search yields a deliberately shallow model
+(\texttt{max\_depth}=2, \texttt{learning\_rate}=0.03, 300 trees). Its performance is
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+ & \R{} & RMSE (MPa) & MAE (MPa) \\
+\midrule
+\textbf{Final model} (repeated grouped hold-out) & $\mathbf{0.50\pm0.20}$ & $\mathbf{14.9}$ & $\mathbf{10.1}$ \\
+Mean baseline & $-0.31$ & $24.0$ & $17.4$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Figure~\ref{fig:pva} shows out-of-fold predictions: the model tracks normal-strength
+concrete well but systematically \emph{under-predicts} the handful of UHPC papers
+(120--190\,MPa), which it cannot extrapolate to from so few examples---an honest and
+interpretable failure mode. Residuals (Figure~\ref{fig:resid}) are roughly centred.
+Feature importance (Figure~\ref{fig:imp}) confirms that control strength and curing
+age carry most of the signal, with replacement level modulating on top.
+
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{0.4\textwidth}
+    \includegraphics[width=\linewidth]{pred_vs_actual.png}
+    \caption{Out-of-fold predictions.}
+    \label{fig:pva}
+  \end{subfigure}\hfill
+  \begin{subfigure}{0.57\textwidth}
+    \includegraphics[width=\linewidth]{residuals.png}
+    \caption{Residual diagnostics.}
+    \label{fig:resid}
+  \end{subfigure}
+  \caption{Final model behaviour. Colour encodes replacement level. The dashed line is
+  the ideal $y=x$.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{feature_importance.png}
+  \caption{Feature importance of the final model. The paper's control strength and the
+  curing age dominate; replacement level provides the RHA-specific modulation.}
+  \label{fig:imp}
+\end{figure}
+
+% ============================================================================
+\section{Predicting the Optimal Replacement Level}
+We derive the optimum as the replacement level that maximizes the predicted 28-day
+strength curve of the final model, evaluated on held-out papers, and also test a
+direct per-paper regressor. Neither approach beats simply predicting the corpus-mean
+optimum: the model achieves MAE~$\approx$~4.8 percentage points versus a mean-baseline
+of $\approx$~3.5 (Figure~\ref{fig:opt}). The reason is structural---reported optima
+cluster tightly around 10--15\%, so the naive prior is already strong, and with only
+$\sim$20--40 labelled papers there is insufficient signal to capture paper-specific
+shifts of the optimum.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{optimum_scatter.png}
+  \caption{Predicted vs reported optimal replacement level. Points cluster near
+  10--15\%; the model does not yet improve on the mean prior.}
+  \label{fig:opt}
+\end{figure}
+
+\end{document}

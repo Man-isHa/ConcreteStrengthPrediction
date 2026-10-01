@@ -1,0 +1,6 @@
+replacement_pct,age_days,ctrl_strength,material_family,processing_method,activation_method,mineralogy,pozzolanic_reactivity,mean_particle_um,specific_gravity
+10,28,42,powder,milling,none,mixed,medium,15,2.5
+20,28,42,powder,milling,none,mixed,medium,15,2.5
+30,28,42,powder,milling,none,mixed,medium,15,2.5
+20,7,33,fines,crushing,,,low,,
+20,90,48,,,,,,,

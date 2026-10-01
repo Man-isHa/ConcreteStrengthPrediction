@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6f3">
+  <title>Strength Desk | Concrete Blend Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/app.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Application navigation">
+      <a class="brand-mark" href="/" aria-label="Strength Desk home">S<span>.</span></a>
+      <div class="rail-rule"></div>
+      <div class="rail-label">TOOLS</div>
+      <button class="rail-tool active" aria-label="Strength chat" title="Strength chat">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5.5 4v-4.3A2.5 2.5 0 0 1 4 13.5z"/><path d="M8 8h8M8 11h5"/></svg>
+      </button>
+      <div class="rail-bottom"><span class="status-dot"></span><span>LOCAL</span></div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="crumb"><span class="crumb-muted">PREDICTION</span><span class="crumb-slash">/</span><span>STRENGTH CHAT</span></div>
+        <div class="model-status"><span class="status-dot"></span><span>LOCAL INFERENCE</span></div>
+      </header>
+
+      <section class="chat-layout" aria-label="Concrete strength prediction chat">
+        <div class="conversation-column">
+          <div class="conversation-heading">
+            <div>
+              <div class="eyebrow">BLENDED CONCRETE / COMPRESSIVE STRENGTH</div>
+              <h1>Strength desk<span class="heading-period">.</span></h1>
+            </div>
+            <div class="range-chip"><span class="range-chip-dot"></span>TRAINED TO 60 MPa</div>
+          </div>
+
+          <div class="messages" id="messages" aria-live="polite">
+            <article class="message assistant-message">
+              <div class="avatar assistant-avatar">S</div>
+              <div class="message-body">
+                <div class="message-meta"><strong>Strength Desk</strong><span>MODEL ASSISTANT</span></div>
+                <div class="bubble assistant-bubble">
+                  <p>I can estimate compressive strength for a mix containing <strong>rice-husk ash (RHA)</strong> or <strong>recycled concrete fines (RCF)</strong>.</p>
+                  <p>Enter the blend replacement, curing age, and the strength of the <strong>same mix without the additive, at the same age</strong>. If left blank, I’ll use clearly listed example assumptions and still run the prediction.</p>
+                </div>
+              </div>
+            </article>
+            <div id="result-messages"></div>
+          </div>
+
+          <form class="input-panel" id="prediction-form">
+            <div class="panel-topline">
+              <div class="panel-title"><span class="panel-step">01</span><span>Mix parameters</span></div>
+              <span class="panel-caption">EDIT BEFORE RUNNING</span>
+            </div>
+
+            <div class="material-choice" role="group" aria-label="Choose supplementary material">
+              <button class="material-option selected" type="button" data-material="RHA" aria-pressed="true">
+                <span class="material-code">RHA</span><span class="material-name">Rice-husk ash</span><span class="material-check">Selected</span>
+              </button>
+              <button class="material-option" type="button" data-material="RCF" aria-pressed="false">
+                <span class="material-code">RCF</span><span class="material-name">Recycled concrete fines</span><span class="material-check">Select</span>
+              </button>
+            </div>
+
+            <div class="progress-heading">
+              <span>Required inputs</span><span id="progress-copy">0 of 3 complete</span>
+            </div>
+            <div class="progress-track" role="progressbar" aria-label="Required inputs completed" aria-valuemin="0" aria-valuemax="3" aria-valuenow="0">
+              <span class="progress-fill" id="progress-fill"></span>
+            </div>
+
+            <div class="field-grid core-fields">
+              <label class="field required-field">
+                <span>Replacement <i>REQUIRED</i></span>
+                <span class="input-wrap"><input name="replacement_pct" type="number" min="0" max="100" step="any" placeholder="e.g. 10"><span class="unit">%</span></span>
+                <small>Percent of cement replaced</small>
+              </label>
+              <label class="field required-field">
+                <span>Curing age <i>REQUIRED</i></span>
+                <span class="input-wrap"><input name="age_days" type="number" min="0.01" step="any" placeholder="e.g. 28"><span class="unit">days</span></span>
+                <small>Age when strength is tested</small>
+              </label>
+              <label class="field required-field control-field">
+                <span>Plain-control strength <i>REQUIRED</i></span>
+                <span class="input-wrap"><input name="ctrl_strength" type="number" min="0.01" step="any" placeholder="e.g. 40"><span class="unit">MPa</span></span>
+                <small>Same mix, 0% replacement, same age</small>
+              </label>
+            </div>
+
+            <div class="optional-section" id="rcf-fields" hidden>
+              <div class="optional-heading"><span>RCF material descriptors</span><span>OPTIONAL / LEAVE BLANK IF UNKNOWN</span></div>
+              <div class="field-grid descriptor-grid">
+                <label class="field"><span>Material family</span><select name="material_family"><option value="">Not reported</option><option value="powder">Powder</option><option value="fines">Fines</option><option value="paste">Paste</option><option value="cdw">Construction waste (CDW)</option><option value="other">Other</option></select></label>
+                <label class="field"><span>Processing method</span><select name="processing_method"><option value="">Not reported</option><option value="crushing">Crushing</option><option value="milling">Milling</option><option value="thermal">Thermal</option><option value="combined">Combined</option><option value="other">Other</option></select></label>
+                <label class="field"><span>Activation method</span><select name="activation_method"><option value="">Not reported</option><option value="none">None</option><option value="carbonation">Carbonation</option><option value="chemical">Chemical</option><option value="mechanical">Mechanical</option><option value="multiple">Multiple</option><option value="thermal">Thermal</option></select></label>
+                <label class="field"><span>Mineralogy</span><select name="mineralogy"><option value="">Not reported</option><option value="calcite">Calcite</option><option value="mixed">Mixed</option><option value="portlandite">Portlandite</option><option value="quartz">Quartz</option><option value="other">Other</option></select></label>
+                <label class="field"><span>Pozzolanic reactivity</span><select name="pozzolanic_reactivity"><option value="">Not reported</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></label>
+                <label class="field"><span>d10 particle size</span><span class="input-wrap"><input name="d10" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
+                <label class="field"><span>d50 particle size</span><span class="input-wrap"><input name="d50" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
+                <label class="field"><span>d90 particle size</span><span class="input-wrap"><input name="d90" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
+                <label class="field"><span>Mean particle size</span><span class="input-wrap"><input name="mean_particle_um" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
+                <label class="field"><span>Specific surface area</span><span class="input-wrap"><input name="specific_surface" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
+                <label class="field"><span>BET surface area</span><span class="input-wrap"><input name="bet_surface" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
+                <label class="field"><span>Blaine fineness</span><span class="input-wrap"><input name="blaine" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
+                <label class="field"><span>Specific gravity</span><span class="input-wrap"><input name="specific_gravity" type="number" step="any" placeholder="Optional"><span class="unit">unitless</span></span></label>
+                <label class="field"><span>Bulk density</span><span class="input-wrap"><input name="bulk_density" type="number" step="any" placeholder="Optional"><span class="unit">kg/m³</span></span></label>
+                <label class="field"><span>Water absorption</span><span class="input-wrap"><input name="water_absorption" type="number" step="any" placeholder="Optional"><span class="unit">%</span></span></label>
+              </div>
+              <p class="unit-note">Use the model's canonical units shown. Convert reported values before entering them.</p>
+            </div>
+
+            <div class="submit-row">
+              <div class="default-note"><span class="info-mark">i</span><span>Blank core fields use example values: 10%, 28 days, 40 MPa.</span></div>
+              <button class="submit-button" type="submit"><span>Predict strength</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12m-5-5 5 5-5 5"/></svg></button>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+          </form>
+
+          <footer class="disclaimer"><span>RESEARCH ESTIMATE</span><span>Not a substitute for laboratory testing or design approval.</span></footer>
+        </div>
+
+        <aside class="context-rail" aria-label="Model notes">
+          <div class="context-header"><span class="context-kicker">REFERENCE</span><span class="context-index">01 / 02</span></div>
+          <div class="context-block">
+            <div class="context-icon control-icon">C</div>
+            <h2>The control matters</h2>
+            <p>Enter the strength of the plain mix at the <em>same curing age</em>. It is the model's most important reference input.</p>
+          </div>
+          <div class="context-divider"></div>
+          <div class="context-block accuracy-block">
+            <div class="context-icon accuracy-icon">±</div>
+            <h2>Typical held-out error</h2>
+            <div class="accuracy-values"><div><span>RHA</span><strong>8.18 <small>MPa</small></strong></div><div><span>RCF</span><strong>8.47 <small>MPa</small></strong></div></div>
+            <p>Mean absolute error on unseen papers. Individual predictions may differ more.</p>
+          </div>
+          <div class="context-divider"></div>
+          <div class="context-block scope-block">
+            <div class="scope-heading"><span class="scope-dot"></span>MODEL SCOPE</div>
+            <p>Both models were trained on concrete strengths up to <strong>60 MPa</strong>. Predictions beyond the training range are flagged as extrapolations.</p>
+          </div>
+          <div class="context-bottom"><span class="mini-grid"></span><span>LOCAL MODEL INFERENCE</span></div>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

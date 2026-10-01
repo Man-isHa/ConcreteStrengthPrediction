@@ -1,0 +1,20 @@
+# RHA prediction pipeline - Python 3.14.5 (Windows)
+# Core (already present in the target environment):
+numpy>=2.4
+pandas>=3.0
+scikit-learn>=1.9
+scipy>=1.17
+matplotlib>=3.10
+
+# Gradient-boosted baseline. xgboost 3.4.1 has a cp314 wheel and is used if present;
+# if it ever fails to install, the pipeline auto-falls back to sklearn's
+# HistGradientBoostingRegressor (no extra install needed) - both handle NaN natively.
+xgboost>=3.4
+
+# OPTIONAL - only for the text-embedding ablation in 04_model.py.
+# If absent, 04_model.py falls back to TF-IDF + TruncatedSVD automatically.
+# (Empirically embeddings gave no reliable gain on this dataset - see EDA_report.md.)
+sentence-transformers>=3.0
+# torch is a sentence-transformers dependency (2.12 already present).
+
+# NOTE: openpyxl is intentionally NOT required - the .xlsx companion file is ignored.

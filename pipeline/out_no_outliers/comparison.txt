@@ -1,0 +1,49 @@
+Backend for this comparison: histgb (xgboost.dll blocked by Application Control policy on this machine)
+
+Cutoff: drop papers with max reported strength > 120 MPa (whole paper, all rows).
+Papers dropped: [17, 36]  max strength = {17: 205.5, 36: 186.0}
+Highest max-strength among the papers KEPT: 100.0 MPa
+
+======================================================================
+BEFORE (all 44 papers, unfiltered): rows=756 papers=44 strength range 1.0-205.5 MPa
+======================================================================
+
+-- Framing A: absolute CS, all papers, all features --
+[A]  n=756 papers=44 repeats=40
+    R2=-0.434+/-1.231  RMSE=29.01+/-14.77  MAE=19.84
+
+(papers with a 0% control: 25; RHA-blend rows for framing C: 335)
+
+-- Framing C: tuned best model [replacement, age, control], monotone --
+    best HistGB params: {'max_depth': 4, 'learning_rate': 0.05, 'max_iter': 100, 'min_samples_leaf': 5, 'l2_regularization': 1.0}
+[C-tuned]  R2=0.507+/-0.205  RMSE=14.70  MAE=9.73
+[Optimal% via CS-argmax]  papers=20  MAE=6.38 pts (mean-baseline 3.45)
+
+======================================================================
+AFTER (outlier papers removed): rows=706 papers=42 strength range 1.0-100.0 MPa
+======================================================================
+
+-- Framing A: absolute CS, all papers, all features --
+[A]  n=706 papers=42 repeats=40
+    R2=0.146+/-0.197  RMSE=16.60+/-1.99  MAE=12.79
+
+(papers with a 0% control: 24; RHA-blend rows for framing C: 327)
+
+-- Framing C: tuned best model [replacement, age, control], monotone --
+    best HistGB params: {'max_depth': 4, 'learning_rate': 0.05, 'max_iter': 100, 'min_samples_leaf': 5, 'l2_regularization': 1.0}
+[C-tuned]  R2=0.489+/-0.178  RMSE=11.79  MAE=8.49
+[Optimal% via CS-argmax]  papers=20  MAE=6.62 pts (mean-baseline 3.45)
+
+======================================================================
+SUMMARY  (same HistGB backend on both sides -> isolates the outlier effect)
+======================================================================
+                                          BEFORE           AFTER
+rows / papers (framing A)                 756/44          706/42
+Framing A  R2                             -0.434           0.146
+Framing A  RMSE                            29.01           16.60
+Framing A  MAE                             19.84           12.79
+rows / papers (framing C)                 335/23          327/22
+Framing C  R2 (tuned)                      0.507           0.489
+Framing C  RMSE (tuned)                    14.70           11.79
+Framing C  MAE (tuned)                      9.73            8.49
+Optimum-% argmax MAE                        6.38            6.62

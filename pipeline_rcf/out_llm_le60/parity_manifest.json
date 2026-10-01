@@ -1,0 +1,48 @@
+{
+ "cut_mpa": 60.0,
+ "held_out_papers": [
+  51,
+  81,
+  37,
+  19,
+  80,
+  91
+ ],
+ "feature_columns": [
+  "replacement_pct",
+  "age_days",
+  "ctrl_strength",
+  "activation_method",
+  "processing_method",
+  "mineralogy",
+  "material_family",
+  "pozzolanic_reactivity",
+  "d10",
+  "d50",
+  "d90",
+  "mean_particle_um",
+  "specific_surface",
+  "bet_surface",
+  "blaine",
+  "specific_gravity",
+  "bulk_density",
+  "water_absorption"
+ ],
+ "target": "strength_mpa",
+ "n_train": 629,
+ "n_test": 59,
+ "train_papers": 35,
+ "duplicate_key_test_rows": 25,
+ "columns_hidden_from_both": [
+  "paper_id",
+  "row_id",
+  "mix_id",
+  "source",
+  "wb_block",
+  "graph_derived",
+  "mix_activation"
+ ],
+ "alignment": "query order == row_id order",
+ "train_inputs_sha256": "244da5f7b87d610bd1faec5bc0c1cb12549f04078c49deed8d8b6aed5f0e47d6",
+ "test_inputs_sha256": "d0fda2438999de187a5cd57bbc881ed3b890195e4a97ae27bcfec1014df5ad90"
+}

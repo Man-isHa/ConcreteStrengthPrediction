@@ -1,0 +1,14 @@
+test_id,study_id,year,material_class,source_of_parent_material,activation_class,thermal_activation_temp_C,pozzolanic_reactivity,d50_um,specific_gravity,SiO2_pct,CaO_pct,Al2O3_pct,Fe2O3_pct,MgO_pct,SO3_pct,LOI_pct,water_binder_ratio,replacement_levels_tested_pct
+B01,S04,2020,recycled concrete powder (RCP),C&D / demolition waste,carbonation + chemical + mechanical + thermal,800.0,high,15.5,NR,50.0,25.0,8.5,5.5,NR,NR,NR,0.436,"0, 5, 7.5, 10, 12.5, 15, 19, 20, 25, 30, 37.5, 40, 45, 50"
+B02,S05,2025,recycled concrete powder (RCP),other,other / unspecified,NR,high,NR,2.6,32.7,17.72,9.81,7.65,4.37,3.27,18.1,0.5,"10, 20, 30, 40, 50"
+B03,S17,2024,recycled concrete fines (RCF),lab-made parent concrete,carbonation + chemical,NR,high,3.95,NR,18.4,67.6,5.12,3.53,1.08,2.76,32.35,0.4,"5, 10, 20"
+B04,S24,2023,recycled concrete powder (RCP),concrete plant washout / returned,mechanical + thermal,650.0,reported (unclassified),NR,2.03,25.12,29.12,5.56,13.18,1.74,1.78,15.1,0.35,"10, 20, 30, 40"
+B05,S33,2024,mixed C&D / brick powder,other,chemical,NR,not reported,24.21,NR,NR,NR,NR,NR,NR,NR,NR,0.75,"5, 8, 11, 14, 17, 20"
+B06,S34,2023,fine recycled aggregate (FRA),C&D / demolition waste,carbonation,NR,high,NR,NR,NR,0.0,0.2,NR,NR,NR,NR,0.55,"10, 20, 30"
+B07,S44,2019,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),5.94,2.62,69.75,9.62,6.92,2.6,0.51,0.53,6.94,0.5,"5, 10"
+B08,S48,2020,recycled concrete powder (RCP),other,thermal,800.0,not reported,84.0,NR,20.5,56.75,8.42,3.99,3.84,3.49,1.04,0.5,30
+B09,S54,2022,recycled cement paste powder,waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),11.6,NR,22.0,62.0,6.0,4.0,4.0,NR,NR,0.5,"0, 7.5, 15, 30, 45"
+B10,S60,2023,recycled concrete powder (RCP),other,carbonation,100.0,high,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.417,30
+B11,S72,2023,recycled concrete powder (RCP),other,mechanical,NR,low / non-reactive,24.31,2.57,43.1,18.5,10.0,11.8,2.5,0.8,8.3,0.48,"0, 7, 15, 25"
+B12,S73,2020,recycled/dehydrated cement,waste cement paste / mortar,thermal,900.0,not reported,125.0,NR,NR,12.5,NR,NR,NR,NR,NR,0.629,"20, 50, 100"
+B13,S83,2025,mixed C&D / brick powder,C&D / demolition waste,carbonation + chemical + mechanical + thermal,1200.0,low / non-reactive,75.0,NR,NR,NR,NR,NR,NR,NR,NR,NR,"2.4, 2.6, 5, 6.1, 7, 7.5, 10, 12.5, 15, 20, 22.5, 25, 30, 35, 40, 45, 50, 60, 75, 80, 90, 100"

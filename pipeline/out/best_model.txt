@@ -1,0 +1,19 @@
+Blend rows: 335  papers: 23
+Features: ['replacement_pct', 'age_days', 'ctrl_strength']  monotone: {'replacement_pct': 0, 'age_days': 1, 'ctrl_strength': 1}
+
+Best hyper-parameters: {'max_depth': 2, 'learning_rate': 0.03, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 1.0}
+Repeated CV (40x, 30% papers held out):
+  R2 = 0.501 +/- 0.196
+  RMSE = 14.94 MPa   MAE = 10.06 MPa
+
+Top-5 hyper-parameter settings:
+  R2=0.501+/-0.196 RMSE=14.94 MAE=10.06  {'max_depth': 2, 'learning_rate': 0.03, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 1.0}
+  R2=0.499+/-0.196 RMSE=14.93 MAE=10.09  {'max_depth': 2, 'learning_rate': 0.03, 'n_estimators': 500, 'min_child_weight': 3, 'reg_lambda': 3.0}
+  R2=0.499+/-0.192 RMSE=15.04 MAE=10.07  {'max_depth': 2, 'learning_rate': 0.03, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 3.0}
+  R2=0.496+/-0.206 RMSE=15.04 MAE=10.02  {'max_depth': 4, 'learning_rate': 0.03, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 3.0}
+  R2=0.496+/-0.202 RMSE=15.05 MAE=10.06  {'max_depth': 3, 'learning_rate': 0.03, 'n_estimators': 300, 'min_child_weight': 3, 'reg_lambda': 3.0}
+
+GroupKFold OOF: R2=0.629  RMSE=15.75
+
+Optimal replacement (argmax of best model):
+  papers=20  MAE=4.75 pts  (mean-baseline 3.45)

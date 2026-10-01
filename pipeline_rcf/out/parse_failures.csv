@@ -1,0 +1,446 @@
+paper_id,source,segment
+4,sheet1,S10: 26.79
+4,sheet1,S30: 24.75
+6,sheet1,"45.22, 49.84, 43.01, 45.34, 41.96, 43.76, 66.63, 64.58, 57.23, 53.84, 42.09, 51.17, 49.32, 47.37, 46.92, 39.14, 45.55, 52.54, 52.22, 58.32, 44.29, 50.06, 50.85, 52.08"
+11,sheet1,Series 1: ~30.0 (Graph-derived)
+11,sheet1,Series 2: ~32.0 (Graph-derived)
+11,sheet1,Series 3: ~43.0 (Graph-derived)
+11,sheet1,Series 4: ~44.0 (Graph-derived)
+11,sheet1,Series 5: ~29.5 (Graph-derived)
+11,sheet1,Series 6: ~41.5 (Graph-derived)
+11,sheet1,Series 7: ~34.0 (Graph-derived)
+11,sheet1,Series 8: ~38.0 (Graph-derived)
+11,sheet1,Series 9 & 10 (Center): ~36.2 (Graph-derived)
+13,sheet1,N80R20: 179.78
+13,sheet1,N60R40: 184.26
+13,sheet1,N40R60: 180.32
+13,sheet1,N20R80: 177.30
+14,sheet1,45.4 (at 28 d for RP mix without activators)
+21,sheet1,200 °C: 14.34
+21,sheet1,400 °C: 14.97
+21,sheet1,600 °C: 16.68
+21,sheet1,700 °C: 23.71
+21,sheet1,800 °C: 17.53
+21,sheet1,200 °C: 26.20
+21,sheet1,400 °C: 29.92
+21,sheet1,600 °C: 23.16
+21,sheet1,700 °C: 33.43
+21,sheet1,800 °C: 28.44
+21,sheet1,200 °C: 38.98
+21,sheet1,400 °C: 42.64
+21,sheet1,600 °C: 39.82
+21,sheet1,700 °C: 47.71
+21,sheet1,800 °C: 36.98
+22,sheet1,"65.96, 60.69, 59.19, 56.18, 45.64, 61.68, 58.32, 49.44, 38.88, 38.40, 38.1, 43.2, 32.6, 31.3, 33.5, 33.7, 27.1, 22, 48.2, 47.1, 44.4, 38.1, 34.8, 36.9, 34.0, 26.1, 65.8"
+23,sheet1,"WA30: 1d (~31), 3d (~50.5), 7d (~54.5), 28d (~64.5)"
+23,sheet1,"RA30: 1d (~15), 3d (~38.5), 7d (~46), 28d (~52)"
+24,sheet1,S1: ~26.5 MPa
+24,sheet1,S2: ~23.5 MPa
+24,sheet1,S4: ~18 MPa
+24,sheet1,FS11: ~18.5 MPa
+24,sheet1,FS12: ~18.2 MPa
+24,sheet1,FS21: ~18 MPa
+24,sheet1,FS22: ~20.2 MPa
+24,sheet1,S1: ~42.3 MPa
+24,sheet1,S2: ~36.5 MPa
+24,sheet1,S3: ~32.5 MPa
+24,sheet1,S4: ~26.8 MPa
+24,sheet1,FS11: ~24.2 MPa
+24,sheet1,FS12: ~25.5 MPa
+24,sheet1,FS21: ~25 MPa
+24,sheet1,FS22: ~24.8 MPa
+24,sheet1,S1: 43.6 MPa
+24,sheet1,S2: 42.6 MPa
+24,sheet1,S3: 33.7 MPa
+24,sheet1,S4: 27.8 MPa
+24,sheet1,FS11: 36.2 MPa
+24,sheet1,FS12: 50.6 MPa
+24,sheet1,FS21: 33.8 MPa
+24,sheet1,FS22: 40.2 MPa
+26,sheet1,RCP-III: ~28.5
+26,sheet1,RCP-I: ~31.0
+26,sheet1,RCP-S: ~32.0
+26,sheet1,RCP-III: ~36.5
+26,sheet1,RCP-II: ~37.0
+26,sheet1,RCP-I: ~38.0
+26,sheet1,RCP-S: ~39.0
+28,sheet1,Ranges from 17.8 to 122.0 across reported matrix configurations
+31,sheet1,1d: ~10 MPa
+31,sheet1,2d: ~19 MPa
+31,sheet1,28d: ~48 MPa
+31,sheet1,90d: ~50 MPa
+31,sheet1,1d: ~10.5 MPa
+31,sheet1,7d: ~42 MPa
+31,sheet1,28d: ~51 MPa
+31,sheet1,90d: ~55 MPa
+32,sheet1,(J1): ~29.58
+32,sheet1,(J2): ~24.0
+32,sheet1,(J3): ~22.5
+32,sheet1,(J4): ~18.2
+32,sheet1,(JF12): ~36.0
+34,sheet1,"Figure 8 (7, 28, 56 days for all mixes)"
+36,sheet1,3d: 21.0
+36,sheet1,* 28d: 43.9
+36,sheet1,* 3d: 24.7
+36,sheet1,* 28d: 43.5
+36,sheet1,* 3d: 19.1
+36,sheet1,* 28d: 33.3
+36,sheet1,* 3d: 11.5
+36,sheet1,* 28d: 20.5
+41,sheet1,Fine RPP (7.5%): 2.6% lower
+41,sheet1,Fine RPP (45%): 40.1% lower
+41,sheet1,Coarse RPP (7.5%): 12.1% lower
+41,sheet1,Coarse RPP (45%): 50.3% lower
+41,sheet1,Fine RMP (7.5%): 2.6% higher
+41,sheet1,Fine RMP (15%): 2.3% lower
+41,sheet1,Fine RMP (30%): 21.1% lower
+41,sheet1,Fine RMP (45%): 38.1% lower
+41,sheet1,Fine RCP (7.5%): 0.8% lower
+41,sheet1,Fine RCP (15%): 6.2% lower
+41,sheet1,Fine RCP (30%): 22.2% lower
+41,sheet1,Fine RCP (45%): 37.9% lower
+41,sheet1,Coarse RCP (30%): 35.1% lower
+41,sheet1,Coarse RMP (7.5%): 7.2% lower
+41,sheet1,Coarse RMP (45%): 49.7% lower
+41,sheet1,Coarse RCP (7.5%): 9.3% lower
+41,sheet1,Coarse RCP (45%): 48.5% lower
+45,sheet1,"Varies depending on mix, replacement, age, and treatment (e.g., 3.91% reduction at 30% RCP at 28 days)"
+46,sheet1,29.3 (Fibre1.25)
+46,sheet1,31.2 (Fibre1.5)
+46,sheet1,33.4 (Fibre1.75)
+46,sheet1,28.6 (FibreL6)
+46,sheet1,31.1 (FibreL12)
+46,sheet1,31.5 (≤75 µm)
+46,sheet1,29.4 (75-150 µm)
+46,sheet1,26.6 (150-300 µm)
+53,sheet1,GRAPH-DERIVED
+54,sheet1,"~43 (at w/b=0.55), ~50 (at w/b=0.40), ~61 (at w/b=0.3)"
+59,sheet1,C100: ~56
+59,sheet1,C100: ~72.5
+59,sheet1,C100: ~74
+61,sheet1,"GRAPH-DERIVED: Evaluated on mortar cubes at 1, 2, 7, 28, and 90 days (presented in Fig. 7). Range approx. 10 to 65 MPa depending on mix and age."
+63,sheet1,Mortar (28 days): 33.17
+63,sheet1,Concrete (2 days): ~6.0
+63,sheet1,Concrete (7 days): ~19.5
+63,sheet1,Concrete (28 days): ~28.5
+63,sheet1,Concrete (90 days): ~33.5
+67,sheet1,Compressive strength of mortar evaluated directly or via SAI relative to control mix
+72,sheet1,"Comparable to, or even exceeds, OPC paste at 20%–30% replacement"
+76,sheet1,"K1: 9.61 (1d), 22.3 (3d), 34.3 (7d), 41.4 (14d), 45.4 (28d)"
+76,sheet1,"K2: 8.2 (1d), 18.5 (3d), 28.3 (7d), 38.1 (14d), 45.1 (28d)"
+76,sheet1,"K3: 5.9 (1d), 14.5 (3d), 22.7 (7d), 33.2 (14d), 44.8 (28d)"
+76,sheet1,"F1: 9.1 (1d), 21.2 (3d), 33.1 (7d), 42.5 (14d), 46.8 (28d)"
+76,sheet1,"F2: 8.5 (1d), 20.1 (3d), 32.2 (7d), 43.8 (14d), 48.2 (28d)"
+76,sheet1,"F3: 9.8 (1d), 22.5 (3d), 34.5 (7d), 45.1 (14d), 50.8 (28d)"
+80,sheet1,50MK: 52.5 MPa
+80,sheet1,50MK: 53.8 MPa
+80,sheet1,50MK: 51.7 MPa
+88,sheet1,400°C (28d): 32.42 MPa
+88,sheet1,600°C (28d): 33.93 MPa
+88,sheet1,700°C (28d): 34.7 MPa
+88,sheet1,800°C (28d): 36.92 MPa
+88,sheet1,<600°C (28d): 36.8 MPa
+88,sheet1,≥600°C (28d): 41.7 MPa
+97,sheet1,Multiple values reported across experimental conditions and ages; refer to Table 4 Experimental Matrix.
+99,sheet1,C-800-20: 20.4 ± 0.8
+99,sheet1,C-800-40: 20.8 ± 1.0
+99,sheet1,C-800-60: 16.3 ± 0.9
+99,sheet1,C-1000-20: 36.5 ± 1.3
+99,sheet1,C-1000-40: 29.5 ± 1.0
+99,sheet1,C-1000-60: 26.1 ± 0.8
+99,sheet1,C-1200-20: 5.5 ± 0.4
+99,sheet1,C-1200-40: 10.1 ± 0.5
+99,sheet1,C-1200-60: 12.3 ± 0.6
+100,sheet1,"Reduced compressive strength at high replacement levels without activation; improved with thermal activation or low replacement (e.g., ≤ 30%)"
+102,sheet1,Untreated RCF: 19.9
+102,sheet1,MCA10 RCF: 28.9
+102,sheet1,MCA30 RCF: 28.31
+102,sheet1,MCA40 RCF: 25.77
+102,sheet1,Untreated RCF: 29.13
+102,sheet1,MCA10 RCF: 40.19
+102,sheet1,MCA30 RCF: 39.38
+102,sheet1,MCA40 RCF: 36.81
+2,matrix,[no MPa] 100% baseline strength reference
+2,matrix,"[no MPa] 3-day: +19%, 28-day: +1%"
+2,matrix,"[no MPa] 3-day: +19%, 28-day: +11%"
+2,matrix,"[no MPa] 3-day: +8%, 28-day: +6%"
+2,matrix,"[no MPa] 3-day: +10%, 28-day: +3%"
+2,matrix,"[no MPa] 3-day: +6%, 28-day: +8%"
+2,matrix,"[no MPa] 3-day: +8%, 28-day: 0%"
+2,matrix,"[no MPa] 3-day: +11%, 28-day: -2%"
+2,matrix,"[no MPa] 3-day: +8%, 28-day: -2%"
+2,matrix,[no MPa] 100% baseline strength reference
+2,matrix,"[no MPa] 3-day: +5%, 28-day: +9%"
+2,matrix,"[no MPa] 3-day: +2%, 28-day: +4%"
+2,matrix,"[no MPa] 3-day: +12%, 28-day: -6%"
+2,matrix,"[no MPa] 3-day: +4%, 28-day: +6%"
+2,matrix,"[no MPa] 3-day: +24%, 28-day: +28%"
+2,matrix,"[no MPa] 3-day: +19%, 28-day: +21%"
+2,matrix,"[no MPa] 3-day: +14%, 28-day: +21%"
+2,matrix,[no MPa] 100% baseline strength reference
+2,matrix,"[no MPa] 3-day: 0%, 28-day: +4%"
+2,matrix,"[no MPa] 3-day: +18%, 28-day: +16%"
+2,matrix,"[no MPa] 3-day: +57%, 28-day: +18%"
+2,matrix,"[no MPa] 3-day: +12%, 28-day: +21%"
+2,matrix,"[no MPa] 3-day: +6%, 28-day: -8%"
+2,matrix,"[no MPa] 3-day: +8%, 28-day: +9%"
+2,matrix,"[no MPa] 3-day: +4%, 28-day: +16%"
+3,matrix,[no MPa] Graphically reported in Fig. 11
+3,matrix,[no MPa] Graphically reported in Fig. 11 (28-day: 28% decrease)
+3,matrix,[no MPa] Graphically reported in Fig. 11
+3,matrix,[no MPa] Graphically reported in Fig. 11 (28-day: 73% decrease)
+3,matrix,[no MPa] Graphically reported in Fig. 12
+3,matrix,[no MPa] Graphically reported in Fig. 12 (28-day: 25% decrease)
+3,matrix,[no MPa] Graphically reported in Fig. 12
+3,matrix,[no MPa] Graphically reported in Fig. 12 (28-day: 64% decrease)
+4,matrix,[no MPa] 44.32% of OPC (90-day)
+4,matrix,[no MPa] 46.51% of OPC (90-day)
+14,matrix,[aggregate replacement] 28 d Compressive Strength: ~31.3 MPa [GRAPH-DERIVED from Fig. 5]
+14,matrix,[aggregate replacement] 28 d Compressive Strength: ~40.8 MPa [GRAPH-DERIVED from Fig. 5]
+14,matrix,[no MPa] See NaOH-0 trends in Fig. 10
+14,matrix,[no MPa] See NaOH-1 trends in Fig. 10
+14,matrix,[no MPa] See NaOH-2 trends in Fig. 10
+14,matrix,[no MPa] See NaOH-3 trends in Fig. 10
+14,matrix,[no MPa] See NaOH-4 trends in Fig. 10
+14,matrix,[no MPa] See CaO-0 trends in Fig. 12
+14,matrix,[no MPa] See CaO-1 trends in Fig. 12
+14,matrix,[no MPa] See CaO-2 trends in Fig. 12
+14,matrix,[no MPa] See CaO-3 trends in Fig. 12
+14,matrix,[no MPa] See CaO-4 trends in Fig. 12
+14,matrix,[no MPa] See Na2SO4-0 trends in Fig. 13
+14,matrix,[no MPa] See Na2SO4-1 trends in Fig. 13
+14,matrix,[no MPa] See Na2SO4-2 trends in Fig. 13
+14,matrix,[no MPa] See Na2SO4-3 trends in Fig. 13
+14,matrix,[no MPa] See Na2SO4-4 trends in Fig. 13
+14,matrix,[no MPa] See Fig. 15
+14,matrix,[no MPa] See Fig. 15
+14,matrix,[no MPa] See Fig. 16
+14,matrix,[no MPa] See Fig. 16
+17,matrix,[no MPa] 65.1
+17,matrix,[no MPa] 59.7
+17,matrix,[no MPa] 47.1
+17,matrix,[no MPa] 23.1
+17,matrix,[no MPa] 44.2
+17,matrix,[no MPa] 48.4
+17,matrix,[no MPa] 51.3
+17,matrix,[no MPa] 45.6
+17,matrix,[no MPa] 39.7
+17,matrix,[no MPa] 27.1
+17,matrix,[no MPa] 76.5
+17,matrix,[no MPa] 74.9
+17,matrix,[no MPa] 66.9
+17,matrix,[no MPa] 1.2
+17,matrix,[no MPa] 9.3
+17,matrix,[no MPa] 21.6
+17,matrix,[no MPa] 15.9
+17,matrix,[no MPa] 26.4
+17,matrix,[no MPa] 24.6
+27,matrix,[no MPa] 56.42 / 70.92 / 104.83
+27,matrix,[no MPa] 22.50* / 39.50* / 68.20
+27,matrix,[no MPa] 17.10* / 33.76* / 54.52
+27,matrix,[no MPa] 15.10* / 28.00* / 48.50
+27,matrix,[no MPa] 11.60* / 23.70* / 43.00
+27,matrix,[no MPa] 8.70* / 18.00* / 35.00
+27,matrix,[no MPa] 22.00* / 42.00* / 72.10
+27,matrix,[no MPa] 19.80* / 36.80* / 63.20
+27,matrix,[no MPa] 15.50* / 30.80* / 51.00
+27,matrix,[no MPa] 10.80* / 25.20* / 52.80
+27,matrix,[no MPa] 9.00* / 22.50* / 42.50
+27,matrix,[no MPa] 23.50* / 45.20* / 75.00
+27,matrix,[no MPa] 23.25 / 40.01 / 73.46
+27,matrix,[no MPa] 20.50* / 33.20* / 65.40
+27,matrix,[no MPa] 16.00* / 30.30* / 51.80
+27,matrix,[no MPa] 12.90* / 27.00* / 47.50
+27,matrix,[no MPa] 23.00* / 40.50* / 69.50
+27,matrix,[no MPa] 17.90* / 37.80* / 66.80
+27,matrix,[no MPa] 16.20* / 34.80* / 56.50
+27,matrix,[no MPa] 12.40* / 28.50* / 49.20
+27,matrix,[no MPa] 10.20* / 25.40* / 37.50
+28,matrix,[no MPa] Compressive: Reported across aging cycles
+28,matrix,[no MPa] Compressive: Close to control mix
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+34,matrix,[no MPa] See Figure 8 & Figure 9
+39,matrix,[no MPa] Graph-derived (~91.2% of Control)
+39,matrix,[no MPa] Graph-derived (~96% to 101.4% of Control)
+39,matrix,[no MPa] Graph-derived (100% of untreated base level / lower than control)
+39,matrix,[no MPa] 112.2% of untreated RCF mortar
+39,matrix,[no MPa] 125.6% of untreated RCF mortar
+39,matrix,[no MPa] 126.3% of untreated RCF mortar
+39,matrix,[no MPa] 117.3% of untreated RCF mortar
+39,matrix,[no MPa] 113.1% of untreated RCF mortar
+39,matrix,[no MPa] Graph-derived (100% of untreated base level)
+39,matrix,[no MPa] 114.7% of untreated RCF mortar
+39,matrix,[no MPa] 121.2% of untreated RCF mortar
+39,matrix,[no MPa] 126.5% of untreated RCF mortar
+39,matrix,[no MPa] 126.3% of untreated RCF mortar
+39,matrix,[no MPa] 118.2% of untreated RCF mortar
+39,matrix,[no MPa] Graph-derived (~92.9% of untreated base level)
+39,matrix,[no MPa] Graph-derived (~104.3% to 110.5% of untreated RCF mortar)
+40,matrix,[no MPa] 100% SAI at all ages
+40,matrix,[no MPa] ~78.5% SAI at 28 days
+40,matrix,[no MPa] 88.9% SAI at 28 days
+40,matrix,[no MPa] 97.9% SAI at 28 days
+40,matrix,[no MPa] 95.6% SAI at 28 days
+41,matrix,[no MPa] 100% (Control baseline)
+41,matrix,[no MPa] 2.6% lower than plain
+41,matrix,[no MPa] 40.1% lower than plain
+41,matrix,[no MPa] 100% (Control baseline)
+41,matrix,[no MPa] 2.6% higher than plain
+41,matrix,[no MPa] 2.3% lower than plain
+41,matrix,[no MPa] 21.1% lower than plain
+41,matrix,[no MPa] 38.1% lower than plain
+41,matrix,[no MPa] 100% (Control baseline)
+41,matrix,[no MPa] 0.8% lower than plain
+41,matrix,[no MPa] 6.2% lower than plain
+41,matrix,[no MPa] 22.2% lower than plain
+41,matrix,[no MPa] 37.9% lower than plain
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=2.7, 3d=5.2, 7d=7.1, 28d=7.6, 56d=8.2; Compressive Strength (MPa): 1d=11.2, 3d=30.7, 7d=43.1, 28d=62.5, 56d=75.5"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=2.4, 3d=4.5, 7d=6.0, 28d=6.6, 56d=7.4; Compressive Strength (MPa): 1d=9.0, 3d=23.3, 7d=35.5, 28d=48.0, 56d=59.0"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=1.7, 3d=3.7, 7d=5.0, 28d=6.4, 56d=6.2; Compressive Strength (MPa): 1d=6.3, 3d=17.7, 7d=27.3, 28d=35.5, 56d=42.7"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=1.1, 3d=2.5, 7d=3.5, 28d=4.2, 56d=5.5; Compressive Strength (MPa): 1d=3.5, 3d=9.7, 7d=16.2, 28d=19.8, 56d=34.0"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=2.6, 3d=4.4, 7d=5.6, 28d=6.5, 56d=8.0; Compressive Strength (MPa): 1d=9.5, 3d=22.8, 7d=33.8, 28d=47.5, 56d=62.8"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=1.8, 3d=3.7, 7d=4.8, 28d=5.6, 56d=7.1; Compressive Strength (MPa): 1d=6.7, 3d=18.0, 7d=25.3, 28d=33.5, 56d=45.5"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=1.1, 3d=2.3, 7d=2.8, 28d=3.5, 56d=5.0; Compressive Strength (MPa): 1d=3.6, 3d=9.4, 7d=10.8, 28d=17.0, 56d=25.5"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=2.6, 3d=5.0, 7d=5.5, 28d=7.6, 56d=8.2; Compressive Strength (MPa): 1d=10.5, 3d=28.8, 7d=37.5, 28d=52.0, 56d=64.8"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=2.0, 3d=4.2, 7d=4.8, 28d=6.0, 56d=8.0; Compressive Strength (MPa): 1d=8.5, 3d=22.0, 7d=27.0, 28d=43.0, 56d=58.0"
+47,matrix,"[no MPa] Flexural Strength (MPa): 1d=1.4, 3d=3.1, 7d=3.5, 28d=5.2, 56d=6.8; Compressive Strength (MPa): 1d=5.2, 3d=13.8, 7d=17.0, 28d=30.0, 56d=41.8"
+54,matrix,[no MPa] C40 Grade / Comparable to reference
+54,matrix,[no MPa] 31% reduction in 28d compressive strength
+60,matrix,[aggregate replacement] 39.2 MPa
+60,matrix,[aggregate replacement] 40.3 MPa
+60,matrix,[aggregate replacement] 47.5 MPa
+60,matrix,[aggregate replacement] 51.0 MPa
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+61,matrix,[no MPa] Reported graphically in Fig. 7
+62,matrix,[no MPa] ~1.05 to 1.15 relative strength ratio
+62,matrix,[no MPa] ~1.10 to 1.20 relative strength ratio
+62,matrix,[no MPa] ~0.90 to 1.05 relative strength ratio
+62,matrix,[no MPa] Up to +23.6% (1 d) strength increase over control; >1.0 strength ratio at 28 d
+62,matrix,[no MPa] Strength ratio up to 1.46 (Peak relative strength)
+62,matrix,[no MPa] Reduced strength ratio relative to 20% due to clinker dilution
+62,matrix,[no MPa] >1.0 strength ratio up to 28 d
+62,matrix,[no MPa] Lower early strength ratio than 10% replacement
+62,matrix,[no MPa] Lower relative strength than 10% replacement
+62,matrix,[no MPa] +29.2% strength increase at 3 d curing age
+62,matrix,[no MPa] Enhanced early-age strength
+62,matrix,[no MPa] Lower late-age relative strength ratio
+64,matrix,[out of range] 22.6 MPa (PAI: 87%)
+64,matrix,[out of range] 21.6 MPa (PAI: 82%)
+64,matrix,[out of range] 22.8 MPa (PAI: 88%)
+64,matrix,[out of range] 24.0 MPa (PAI: 91%)
+67,matrix,[no MPa] AI = 57%
+67,matrix,[no MPa] SAI > 75%
+67,matrix,[no MPa] SAI > 70% at 28 d
+67,matrix,[no MPa] SAI > 60%
+67,matrix,[no MPa] SAI = 69.22%
+67,matrix,[no MPa] AI > 80%
+67,matrix,[no level] Maximum compressive strength achieved
+67,matrix,[no level] Optimal thermal activation efficiency
+67,matrix,[no MPa] AI = 77.4%
+67,matrix,[no MPa] AI = 72.6%
+67,matrix,[no MPa] AI = 75.0%
+67,matrix,[no MPa] AI = 90.4%
+67,matrix,[no MPa] 10% increase in SAI
+67,matrix,[no MPa] SAI > 75% at 7 d and 28 d
+67,matrix,[no MPa] AI = 53.5% (approx. graph-derived)
+67,matrix,[no MPa] AI = 56.3%
+67,matrix,[no MPa] AI = 60.2%
+67,matrix,[no MPa] AI = 76.4%
+72,matrix,[no MPa] Control / Baseline
+72,matrix,[no MPa] Higher compressive strength relative to control
+72,matrix,[no MPa] Lower compressive strength relative to control due to dilution
+72,matrix,[no MPa] Higher compressive strength relative to control (comparable to or exceeds OPC)
+72,matrix,[no MPa] Decreased relative compressive strength
+72,matrix,[no MPa] Flexural strength comparable to control; compressive strength reported
+77,matrix,"[no MPa] Peak at 8%, 11%, or 17% depending on combination; exceeds benchmark up to 17%"
+77,matrix,[no MPa] Measured at 7d and 28d; peak at 15% or 25% depending on combination
+84,matrix,[no level] 3d: 0 MPa; 7d: 0 MPa; 28d: 0 MPa
+84,matrix,[no level] 3d: 0 MPa; 7d: 1.175 MPa; 28d: 1.400 MPa
+84,matrix,[no level] 3d: 1.775 MPa; 7d: 2.275 MPa; 28d: 3.025 MPa
+84,matrix,[no level] 3d: 1.575 MPa; 7d: 2.050 MPa; 28d: 3.000 MPa
+84,matrix,[no level] 3d: 2.825 MPa; 7d: 3.100 MPa; 28d: 3.825 MPa
+84,matrix,[no level] 3d: 3.125 MPa; 7d: 4.175 MPa; 28d: 4.475 MPa
+84,matrix,[no level] 3d: 2.925 MPa; 7d: 4.150 MPa; 28d: 4.325 MPa
+84,matrix,[no level] 3d: 0 MPa; 7d: 0 MPa; 28d: 0 MPa
+84,matrix,[no level] 3d: 2.100 MPa; 7d: 2.800 MPa; 28d: 3.200 MPa
+84,matrix,[no level] 3d: 2.425 MPa; 7d: 3.075 MPa; 28d: 3.400 MPa
+87,matrix,"[no MPa] GRAPH-DERIVED: ~65 kg/cm² (3d), ~80 kg/cm² (7d), ~110 kg/cm² (28d)"
+87,matrix,"[no MPa] GRAPH-DERIVED: ~55 kg/cm² (3d), ~70 kg/cm² (7d), ~95 kg/cm² (28d)"
+87,matrix,"[no MPa] GRAPH-DERIVED: ~40 kg/cm² (3d), ~55 kg/cm² (7d), ~80 kg/cm² (28d)"
+87,matrix,"[no MPa] GRAPH-DERIVED: ~30 kg/cm² (3d), ~40 kg/cm² (7d), ~60 kg/cm² (28d)"
+88,matrix,[no MPa] 28 d CS: Decreased by 12.55% vs control; 28 d FS: Increased by 9.63% vs control
+88,matrix,[no MPa] 56 d FS: 18.33% higher vs control; 300 d FS: 10.26% lower vs control
+88,matrix,[no MPa] 28 d CS: Increased by 5.2%; 7 d FS: Increased by 7.4%
+88,matrix,[no MPa] 28 d CS: Decreased by 2.3%; 7 d FS: Decreased by 3.7%; 90 d FS: Decreased by 3.0%
+88,matrix,[no MPa] 28 d CS: Decreased by 7.1%; 7 d FS: Decreased by 0.7%; 90 d FS: Decreased by 9.4%
+88,matrix,[no MPa] Reported slightly lower CS than M-50WCP-600T due to excessive CaO
+88,matrix,[no MPa] 3 d CS: +17.62% vs control; 3 d FS: +5.56% vs control; 7 d FS: -9.59% vs control; 28 d FS: -15.12% vs control
+88,matrix,[no MPa] 3 d CS: -9.05% vs control; 3 d FS: -16.67% vs control; 7 d FS: -35.62% vs control; 28 d FS: -22.09% vs control
+88,matrix,[no MPa] 3 d CS: -45.24% vs control; 3 d FS: -35.19% vs control; 7 d FS: -50.68% vs control; 28 d FS: -37.21% vs control
+88,matrix,[no MPa] 28 d CS & FS: Equivalent to pure cement control mortar (+25% strength increase)
+88,matrix,[no MPa] 3 d CS: -1.76% to -7.17% vs control; 28 d CS: +10.27% to +12.57% vs control (+1.3% to +10.5% higher than untreated RCP mortar)
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1a)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1a)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1b)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1b)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1c)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1c)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1d)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1d)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1a)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1a)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1b)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1b)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1c)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1c)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1d)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 1d)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+97,matrix,"[no MPa] Measured at 2d, 28d, 56d, 98d (Fig. 2)"
+100,matrix,[no MPa] Higher porosity / base mechanical performance
+100,matrix,[no MPa] Improved performance due to C-S-H and ettringite decomposition
+100,matrix,"[no MPa] Improved hydration from belite, alite, and active CaO formation"
+100,matrix,[no MPa] Strength unaltered compared to reference GGBS mortar
+100,matrix,[no MPa] Enhanced strength and reactivity due to high reactive phase content
+100,matrix,[no MPa] Diminished performance/strength relative to 900C due to gypsum formation and smooth surface
+100,matrix,[no MPa] Enhanced compressive strength after 300 days
+100,matrix,[no MPa] Maintained/improved strength; optimal cost/carbon performance
+100,matrix,[no MPa] Fulfilled performance criteria
+100,matrix,[no MPa] Lower early strength unless highly refined or activated
+100,matrix,[no MPa] Substantially improved performance and resistance compared to non-activated cement mortar
+100,matrix,[no number] Improved microstructure and strength; higher NS (>3%) leads to agglomeration
+100,matrix,[no MPa] Improved performance beyond reference mortar; increased high-modulus hydration products
+101,matrix,[no MPa] Peak strength at 28 d (GRAPH-DERIVED from Fig. 14)
+101,matrix,"[no MPa] Consistently lower compressive strength than OPC at 3 d, 7 d, and 28 d (GRAPH-DERIVED from Fig. 14)"
+101,matrix,[no MPa] Highest compressive strength performance; +37.1% at 7 d and +23.39% at 28 d vs RP; +26.75% at 7 d and +13.54% at 28 d vs OPC

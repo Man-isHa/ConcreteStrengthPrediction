@@ -1,0 +1,31 @@
+You are a concrete materials scientist predicting the compressive strength of
+recycled-concrete-fines (RCF) blended concrete and mortar from published literature data.
+All strengths in this task are 60 MPa or below.
+
+TRAINING DATA
+Below are {n_train} measured data points from other papers, as CSV with a header row.
+Each row is one mix: replacement_pct is the percentage of cement replaced by RCF,
+age_days is the curing age, and ctrl_strength is that same paper's own 0% RCF (plain
+cement) strength AT THE SAME CURING AGE. The remaining columns describe the RCF powder:
+how it was activated and processed (activation_method, processing_method), its
+mineralogy and material family, its pozzolanic reactivity, and its chemistry (sio2, cao,
+al2o3, fe2o3, mgo, so3, na2o, k2o, loi, amorphous_pct, as percentages). Empty cells mean
+the paper did not report that property. compressive_strength_mpa is the measured strength
+of the blend. Learn how these inputs relate to compressive_strength_mpa.
+
+--- BEGIN TRAINING CSV ---
+{train_csv}
+--- END TRAINING CSV ---
+
+TASK
+Predict compressive_strength_mpa for the {n_queries} query rows below. They come from
+papers that are NOT in the training data. Rows sharing the same ctrl_strength and powder
+properties come from the same paper and share one mix design. Use ctrl_strength as that
+paper's baseline strength level at that curing age.
+
+{queries}
+
+OUTPUT FORMAT
+Return only a JSON array of exactly {n_queries} numbers: one predicted compressive
+strength in MPa per query, in query order (Query 1 first). No units, no text, no code
+fence. Example for three queries: [12.3, 45.6, 30.1]

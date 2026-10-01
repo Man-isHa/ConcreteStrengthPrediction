@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Predicting Compressive Strength of RCF-Blended Concrete up to 60 MPa</title>
+<style>
+  @font-face { font-family:"CMU Serif"; font-weight:400; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-500-roman.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Serif"; font-weight:400; font-style:italic;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-500-italic.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Serif"; font-weight:700; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-serif-700-roman.woff2") format("woff2"); }
+  @font-face { font-family:"CMU Typewriter"; font-weight:400; font-style:normal;
+    src:url("https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/fonts/cmu-typewriter-500-roman.woff2") format("woff2"); }
+
+  @page { size: A4; margin: 25.4mm; }
+  html { font-size: 11pt; }
+  body { font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif;
+         color: #000; line-height: 1.30; margin: 0; text-rendering: optimizeLegibility; }
+
+  h1 { font-size: 17.3pt; font-weight: 700; line-height: 1.22; text-align: center;
+       margin: 0 0 3mm; }
+  .sub { text-align: center; font-size: 11pt; margin-bottom: 9mm; }
+
+  h2 { font-size: 13.2pt; font-weight: 700; margin: 7.5mm 0 2mm; break-after: avoid; }
+  h3 { font-size: 11.6pt; font-weight: 700; margin: 5mm 0 1.5mm; break-after: avoid; }
+
+  p { margin: 0; text-align: justify; hyphens: auto; text-indent: 1.6em; }
+  p + p { margin-top: 0; }
+  h1 + p, h2 + p, h3 + p, .abstract p:first-child, .box p:first-child,
+  p.noindent, figure + p, table + p, .note + p, ul + p, ol + p { text-indent: 0; }
+  p + table, p + figure, p + ul, p + ol { margin-top: 2.5mm; }
+
+  ul, ol { margin: 2mm 0 3mm; padding-left: 8mm; text-align: justify; }
+  li { margin-bottom: 0.8mm; }
+
+  .abstract { width: 86%; margin: 0 auto 8mm; font-size: 10pt; line-height: 1.28; }
+  .abstract .t { text-align: center; font-weight: 700; margin-bottom: 1.5mm; }
+
+  table { border-collapse: collapse; margin: 1mm auto 4mm; font-size: 9.6pt;
+          break-inside: avoid; }
+  th, td { padding: 1.1mm 3mm; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { border-top: 1.1pt solid #000; border-bottom: 0.5pt solid #000; font-weight: 400; }
+  tbody tr:last-child td { border-bottom: 1.1pt solid #000; }
+  .win { background: #dff0d8; }
+  caption { caption-side: top; font-size: 9.4pt; text-align: left; margin-bottom: 1.2mm;
+            padding: 0 1mm; }
+  caption b, figcaption b { font-weight: 700; }
+
+  figure { margin: 4mm 0 4mm; break-inside: avoid; text-align: center; }
+  figure img { width: 100%; }
+  figcaption { font-size: 9.4pt; text-align: left; margin-top: 1.5mm; }
+  .two { display: flex; gap: 5mm; align-items: flex-end; }
+  .two figure { flex: 1; margin: 0; }
+  .note { font-size: 9.4pt; text-align: left; margin: -2mm 0 3mm; }
+
+  .box { border-top: 0.5pt solid #000; border-bottom: 0.5pt solid #000;
+         padding: 2.5mm 0; margin: 3.5mm 0; break-inside: avoid; }
+  .box p { text-indent: 0; }
+  code { font-family: "CMU Typewriter", Consolas, monospace; font-size: 9.6pt; }
+</style>
+</head>
+<body>
+
+<h1>Predicting the Compressive Strength of Concrete<br>Blended with Recycled Concrete Fines, up to 60&nbsp;MPa</h1>
+<div class="sub">Machine-learning and LLM study on a literature corpus of 85 papers &middot; September 2026</div>
+
+<div class="abstract">
+<div class="t">Abstract</div>
+<p> We restrict the recycled-concrete-fines (RCF) corpus to samples of
+60&nbsp;MPa or below and ask which prediction approach actually works, without assuming that the
+recipe found earlier for rice-husk ash (RHA) carries over. Nine machine-learning methods, ten
+feature sets, four ways of handling missing values and four physics priors were compared under
+paper-level grouped validation. The best model is <strong>HistGradientBoosting</strong> using the
+paper's own control strength, replacement level, curing age, categorical descriptors and fineness
+measurements, with strength required to rise with age and control strength:
+<strong>R&sup2; = 0.308 &plusmn; 0.187, MAE = 8.5&nbsp;MPa</strong>. A large language model
+(gpt-oss:120b) was then given <em>exactly</em> the same training rows, test points and input
+columns. On equal terms the machine-learning model is clearly ahead
+(<strong>R&sup2; 0.789 vs 0.602</strong>). Optimal replacement level cannot be predicted from this
+corpus. Two conclusions differ from the RHA study: RCF genuinely benefits from the extra material
+descriptors that added only noise for RHA, and what decides accuracy is not the choice of
+gradient-boosting library but how strongly it is regularised &mdash; at least 20 samples per leaf.</p>
+</div>
+
+<h2>1. The data, and what the 60&nbsp;MPa cut changes</h2>
+<p>The corpus holds 1825 parsed strength measurements from 85 papers. We drop every row measured
+above 60&nbsp;MPa, control rows included, because the high-strength regime is outside the range of
+interest.</p>
+
+<table>
+<caption><b>Table 1:</b> Corpus size before and after removing samples above 60&nbsp;MPa.</caption>
+<thead><tr><th>Quantity</th><th>All samples</th><th>&le;&nbsp;60 MPa</th></tr></thead>
+<tbody>
+<tr><td>Data points / papers</td><td>1825 / 85</td><td>1675 / 83</td></tr>
+<tr><td>Rows with a resolved curing age</td><td>1284</td><td>1165</td></tr>
+<tr><td>Modelling set: blends having a same-age control / papers</td><td>823 / 44</td><td><strong>688 / 41</strong></td></tr>
+<tr><td>Spread of the target (standard deviation)</td><td>18.1 MPa</td><td>14.1 MPa</td></tr>
+</tbody>
+</table>
+<p class="noindent" style="font-size:9.4pt">The cut removes 150 rows from 27 papers and costs 3 papers in the modelling set.</p>
+
+<p>Every model below is trained on those 688 rows and scored the same way: <strong>repeated grouped
+hold-out, 30% of papers held out, 40 repeats</strong>, so no paper ever appears in both training and
+test. Because the cut also narrows the spread of the target (18.1 &rarr; 14.1&nbsp;MPa), R&sup2;
+values here are not comparable with those from the full-data study; RMSE and MAE, both in MPa, are.</p>
+
+<h2>2. Which machine-learning method works best</h2>
+<p>Nine candidates, all on identical rows, features and splits.</p>
+<table>
+<caption><b>Table 2:</b> Model comparison on the &le;&nbsp;60&nbsp;MPa modelling set (repeated grouped hold-out, 40 repeats).</caption>
+<thead><tr><th>Model</th><th>R&sup2;</th><th>RMSE (MPa)</th><th>MAE (MPa)</th></tr></thead>
+<tbody>
+<tr class="win"><td>HistGradientBoosting</td><td>0.269 &plusmn; 0.227</td><td>11.30</td><td>8.60</td></tr>
+<tr><td>ExtraTrees</td><td>0.257 &plusmn; 0.216</td><td>11.40</td><td>8.85</td></tr>
+<tr><td>Random Forest</td><td>0.256 &plusmn; 0.246</td><td>11.37</td><td>8.66</td></tr>
+<tr><td>XGBoost</td><td>0.244 &plusmn; 0.238</td><td>11.48</td><td>8.74</td></tr>
+<tr><td>GradientBoosting</td><td>0.224 &plusmn; 0.278</td><td>11.59</td><td>8.75</td></tr>
+<tr><td>Mean baseline</td><td>&minus;0.112 &plusmn; 0.163</td><td>14.08</td><td>11.56</td></tr>
+<tr><td>Stack (RF + XGB + Ridge)</td><td>&minus;8.9 &plusmn; 56.5</td><td>17.80</td><td>11.50</td></tr>
+<tr><td>Ridge</td><td>&minus;845</td><td>93.3</td><td>43.3</td></tr>
+<tr><td>MLP (64, 32)</td><td>&minus;2.0 &times; 10<sup>5</sup></td><td>1036</td><td>393</td></tr>
+</tbody>
+</table>
+<p>The four tree ensembles sit within noise of one another: HistGradientBoosting leads and
+XGBoost &mdash; the winner on RHA &mdash; comes fourth, but the 0.025 between them is a ninth of the
+&plusmn;0.23 spread across splits, so the ordering means little on its own (see below). Ridge and the neural network
+fail outright: with sparse inputs and papers whose strength levels differ by an order of magnitude,
+an unconstrained linear or neural fit extrapolates wildly on unseen papers, and the stack inherits
+Ridge's failures. Only the tree ensembles beat predicting the corpus average.</p>
+
+<h3>Why HistGradientBoosting appears to beat XGBoost</h3>
+<p>The gap is not a property of the algorithms but of their defaults. HistGradientBoosting requires
+at least 20 samples in a leaf; XGBoost's <code>min_child_weight</code> of 3 lets it split down to
+about three. With 688 rows drawn from 41 papers, and whole papers held out, small leaves memorise
+the specimen scatter of individual papers &mdash; RCF has many repeat specimens at the same
+replacement level and age &mdash; which transfers to no other paper. Equalising that one setting
+reverses the ranking:</p>
+
+<table>
+<caption><b>Table 3:</b> The apparent library difference is a regularisation artefact.</caption>
+<thead><tr><th>Configuration</th><th>R&sup2;</th><th>MAE (MPa)</th></tr></thead>
+<tbody>
+<tr class="win"><td>XGBoost, min. 20 samples per leaf</td><td>0.289</td><td>8.54</td></tr>
+<tr><td>HistGradientBoosting, min. 20 (its default)</td><td>0.269</td><td>8.60</td></tr>
+<tr><td>XGBoost, min. 3 (its default)</td><td>0.244</td><td>8.74</td></tr>
+<tr><td>HistGradientBoosting, min. 3</td><td>0.208</td><td>8.88</td></tr>
+<tr><td>XGBoost with explicit 255-bin histogram</td><td>0.244</td><td>8.74</td></tr>
+</tbody>
+</table>
+<p>Histogram binning, the other common explanation, changes nothing: modern XGBoost already uses it
+by default. Tuned on equal footing &mdash; same feature set, same constraint, same 40 splits &mdash;
+the two libraries finish level, at R&sup2; = 0.309 &plusmn; 0.188 for XGBoost against
+0.308 &plusmn; 0.187 for HistGradientBoosting. <strong>The lesson is to regularise heavily, not to
+prefer a particular library.</strong></p>
+
+<h2>3. Which features earn their place</h2>
+<p>Feature groups added to the base inputs (replacement level, curing age, control strength), all
+using XGBoost so the rows are directly comparable.</p>
+<table>
+<caption><b>Table 4:</b> Feature sets, all evaluated with XGBoost on identical splits.</caption>
+<thead><tr><th>Feature set</th><th>R&sup2;</th><th>RMSE (MPa)</th><th>MAE (MPa)</th></tr></thead>
+<tbody>
+<tr class="win"><td>all structured</td><td>0.244 &plusmn; 0.238</td><td>11.48</td><td>8.74</td></tr>
+<tr><td>base + all numeric</td><td>0.241 &plusmn; 0.254</td><td>11.49</td><td>8.75</td></tr>
+<tr><td>base + categorical</td><td>0.224 &plusmn; 0.241</td><td>11.63</td><td>8.85</td></tr>
+<tr><td>all + MiniLM text embeddings</td><td>0.216 &plusmn; 0.229</td><td>11.70</td><td>8.91</td></tr>
+<tr><td>base + chemistry</td><td>0.205 &plusmn; 0.277</td><td>11.73</td><td>8.85</td></tr>
+<tr><td>all + TF-IDF text</td><td>0.203 &plusmn; 0.241</td><td>11.80</td><td>9.02</td></tr>
+<tr><td>base + fineness</td><td>0.181 &plusmn; 0.254</td><td>11.94</td><td>9.11</td></tr>
+<tr><td>base + processing</td><td>0.181 &plusmn; 0.287</td><td>11.93</td><td>9.06</td></tr>
+<tr><td>base [replacement, age, control]</td><td>0.142 &plusmn; 0.299</td><td>12.21</td><td>9.05</td></tr>
+<tr><td>base + mix descriptors</td><td>0.109 &plusmn; 0.313</td><td>12.42</td><td>9.21</td></tr>
+</tbody>
+</table>
+
+<div class="two">
+<figure><img src="../../pipeline_rcf/out_le60/figs/abl_model.png" alt="Model comparison"></figure>
+<figure><img src="../../pipeline_rcf/out_le60/figs/abl_features.png" alt="Feature sets"></figure>
+</div>
+<div class="note"><b>Figure 1:</b> Model comparison (left) and feature sets (right), both on the &le;&nbsp;60&nbsp;MPa data with paper-level grouped validation.</div>
+
+<p><strong>This is the clearest departure from the RHA study.</strong> There, the three base inputs
+were as good as anything and every added group merely added noise. Here, describing the powder
+genuinely helps: the base set alone reaches 0.142, and the material descriptors lift it to 0.244 —
+a larger gain than the gap between any two tree models. Text embeddings of the papers' free-text
+fields do not beat the structured columns. The likely reason is sample size: this modelling set has
+41 papers against RHA's 21, enough to support more inputs.</p>
+
+<p>A full architecture search (model &times; feature set &times; duplicate handling &times; monotone
+constraint; 40 configurations) confirms this and settles on a slightly leaner set:
+HistGradientBoosting with <strong>base + categorical + fineness</strong> at R&sup2; = 0.285, ahead of
+the same model on all structured features (0.269) and on the base set alone (0.266). Chemistry,
+favoured in the full-data study, does not survive the 60&nbsp;MPa cut.</p>
+
+<h2>4. Does the control strength help?</h2>
+<p>Yes — it is the single most valuable input, exactly as for RHA.</p>
+<table>
+<caption><b>Table 5:</b> Target framing: what supplying the paper's own control strength is worth.</caption>
+<thead><tr><th>Target framing</th><th>R&sup2;</th><th>RMSE (MPa)</th><th>Rows / papers</th></tr></thead>
+<tbody>
+<tr class="win"><td>C: blend strength given the paper's own control</td><td>0.244 &plusmn; 0.238</td><td>11.48</td><td>688 / 41</td></tr>
+<tr><td>A: absolute strength, no control supplied</td><td>&minus;0.130 &plusmn; 0.216</td><td>15.59</td><td>1165 / 56</td></tr>
+<tr><td>B: strength as a ratio to the control</td><td>&minus;0.162 &plusmn; 0.204</td><td>&mdash;</td><td>688 / 41</td></tr>
+</tbody>
+</table>
+<p>Without the control strength the model is worse than predicting the corpus average; with it, the
+problem becomes learnable. Predicting the <em>ratio</em> to the control does not work either. In the
+final model, control strength carries by far the largest importance (0.887, against 0.296 for
+replacement level). This is not leakage: the plain 0%-RCF mix can always be cast and tested first,
+so its strength is known before any prediction is needed.</p>
+
+<h2>5. Missing values and physics constraints</h2>
+<table>
+<caption><b>Table 6:</b> Missing-value handling (left) and physics priors (right).</caption>
+<thead><tr><th>Missing values (XGBoost)</th><th>R&sup2;</th><th>RMSE</th><th>Physics prior</th><th>R&sup2;</th><th>RMSE</th></tr></thead>
+<tbody>
+<tr><td class="win">median imputation</td><td class="win">0.249</td><td>11.42</td><td class="win">monotone in age &amp; control</td><td class="win">0.213</td><td>11.71</td></tr>
+<tr><td>native (no imputation)</td><td>0.244</td><td>11.48</td><td>plain</td><td>0.142</td><td>12.21</td></tr>
+<tr><td>KNN imputation</td><td>0.214</td><td>11.70</td><td>log target + monotone</td><td>0.118</td><td>12.29</td></tr>
+<tr><td>MICE imputation</td><td>0.192</td><td>11.89</td><td>log target</td><td>0.116</td><td>12.36</td></tr>
+</tbody>
+</table>
+<p>Missing-value handling barely matters: letting the tree handle gaps natively and filling them
+with column medians are equivalent, while the more elaborate imputers are slightly worse.
+<strong>Requiring strength to rise with curing age and with the control strength is worth more than
+any other single choice</strong>, lifting R&sup2; from 0.142 to 0.213 on the base inputs; the
+constraint survives into the tuned model. Log-transforming the target hurts.</p>
+
+<h2>6. The final machine-learning model</h2>
+<table>
+<caption><b>Table 7:</b> The final model and its measured performance.</caption>
+<thead><tr><th>Component</th><th style="text-align:left">Choice</th></tr></thead>
+<tbody>
+<tr><td>Model</td><td style="text-align:left">HistGradientBoosting — depth 2, learning rate 0.03, 300 iterations, L2 = 3.0, min. 20 samples per leaf</td></tr>
+<tr><td>Inputs (18)</td><td style="text-align:left">replacement %, curing age, control strength; activation method, processing method, mineralogy, material family, pozzolanic reactivity; d10, d50, d90, mean particle size, specific surface, BET surface, Blaine, specific gravity, bulk density, water absorption</td></tr>
+<tr><td>Constraint</td><td style="text-align:left">strength non-decreasing in curing age and in control strength</td></tr>
+<tr><td><strong>Performance</strong></td><td style="text-align:left"><strong>R&sup2; = 0.308 &plusmn; 0.187 &nbsp;|&nbsp; RMSE = 11.02 MPa &nbsp;|&nbsp; MAE = 8.47 MPa</strong></td></tr>
+<tr><td>Mean baseline</td><td style="text-align:left">R&sup2; = &minus;0.112 &nbsp;|&nbsp; RMSE = 14.08 MPa &nbsp;|&nbsp; MAE = 11.56 MPa</td></tr>
+<tr><td>Pooled 5-fold grouped</td><td style="text-align:left">R&sup2; = 0.319, MAE = 8.82 MPa (single split; more optimistic)</td></tr>
+</tbody>
+</table>
+
+<div class="two">
+<figure><img src="../../pipeline_rcf/out_le60/figs/pred_vs_actual.png" alt="Predicted vs actual"></figure>
+<figure><img src="../../pipeline_rcf/out_le60/figs/feature_importance.png" alt="Feature importance"></figure>
+</div>
+<div class="note"><b>Figure 2:</b> Out-of-fold predictions (left) and feature importance (right) for the final model.</div>
+
+<p>A tuned XGBoost with the same feature set and constraint is indistinguishable from this
+(R&sup2; = 0.309 &plusmn; 0.188 against 0.308 &plusmn; 0.187); either can be deployed, provided the
+minimum leaf size is kept large. The model explains about a third of the variation between held-out
+papers, with a typical error of 8.5&nbsp;MPa against a target spread of 14.1&nbsp;MPa. That is modest but honest, and part of the
+remaining error is irreducible from these columns: many (paper, replacement level, age) cells contain
+several distinct mixes whose treatment the corpus never records.</p>
+
+<h2>7. The LLM approach</h2>
+<p>Six papers spanning the control-strength range (12 to 60&nbsp;MPa) are held out — papers 51, 81,
+37, 19, 80 and 91 — giving <strong>59 test points</strong>; the remaining 35 papers (629 rows) are
+training data. Four of the six were also used in the earlier full-data benchmark; papers 27 and 44
+had to be replaced because the 60&nbsp;MPa cut leaves paper 27 with two rows and removes paper 44
+entirely.</p>
+
+<p>gpt-oss:120b (hosted, via Ollama) receives the 629 training rows as CSV inside one fixed prompt
+and returns a JSON array of 59 numbers. Decoding is greedy (temperature 0, fixed seed, top-k 1,
+top-p 1). The prompt was run <strong>15 times</strong>; every answer was validated and retried when
+malformed, and all 15 runs eventually produced a usable answer (14 on the first attempt). Each call
+takes about 32 seconds.</p>
+
+<table>
+<caption><b>Table 8:</b> gpt-oss:120b on the 59 held-out test points, 15 runs of one fixed prompt.</caption>
+<thead><tr><th>gpt-oss on the 59 held-out points</th><th>R&sup2;</th><th>RMSE (MPa)</th><th>MAE (MPa)</th></tr></thead>
+<tbody>
+<tr><td>Single run (mean of 15 &plusmn; SD)</td><td>0.204 &plusmn; 0.426</td><td>13.13</td><td>9.26</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;worst / best individual run</td><td>&minus;0.624 / 0.852</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>Median of 5 runs (three separate blocks)</td><td>0.560 / 0.666 / 0.464</td><td>10.14 / 8.83 / 11.19</td><td>6.76 / 5.46 / 7.53</td></tr>
+<tr class="win"><td>Median of all 15 runs</td><td>0.602</td><td>9.34</td><td>6.29</td></tr>
+</tbody>
+</table>
+<p>A single run is unreliable: R&sup2; ranges from &minus;0.62 to 0.85 across repetitions of the
+identical prompt, and a typical individual prediction shifts by about 9&nbsp;MPa between runs. Taking
+the per-point median of several runs is therefore essential, and pooling all 15 lifts the score to
+0.602.</p>
+
+<h2>8. Machine learning versus the LLM on the same test points</h2>
+<p>Both methods were given exactly the same information, and this was enforced rather than assumed.
+The rules below are recorded alongside the results in
+<code>pipeline_rcf/out_llm_le60/parity_manifest.json</code>.</p>
+
+<div class="box">
+<p><strong>What each method received.</strong> The same 6 held-out papers and the same 59 test rows,
+in one fixed order; the same 629 training rows; and the same 18 input columns — the prompt's training
+CSV and its query lines contain exactly the columns the ML model is fitted on, and nothing else.
+<strong>Neither method sees any identifier</strong>: paper id, row id, mix id and data source are
+withheld from the prompt because the ML model never receives them, and predictions are matched by
+query order alone. The measured strength of a test row is shown to neither method.</p>
+</div>
+
+<table>
+<caption><b>Table 9:</b> Machine learning against the LLM, identical inputs and identical test points.</caption>
+<thead><tr><th>Method (identical inputs, identical 59 test points)</th><th>R&sup2;</th><th>RMSE</th><th>MAE</th><th style="text-align:left">Repeatable?</th></tr></thead>
+<tbody>
+<tr class="win"><td>HistGradientBoosting (the final model)</td><td>0.789</td><td>7.03</td><td>5.52</td><td style="text-align:left">yes, identical every run</td></tr>
+<tr class="win"><td>XGBoost, tuned identically</td><td>0.807</td><td>6.71</td><td>5.04</td><td style="text-align:left">yes, identical every run</td></tr>
+<tr><td>gpt-oss, median of 15 runs</td><td>0.602</td><td>9.34</td><td>6.29</td><td style="text-align:left">within &asymp; 2.5 MPa per point</td></tr>
+<tr><td>gpt-oss, single run</td><td>0.204 &plusmn; 0.426</td><td>13.13</td><td>9.26</td><td style="text-align:left">no</td></tr>
+</tbody>
+</table>
+
+<p><strong>The machine-learning model wins on equal terms</strong> &mdash; with either boosting
+library, which again finish level &mdash; and it is also deterministic and
+returns in milliseconds rather than 32 seconds. Per paper the two are close on four of the six and
+diverge on two: gpt-oss is better on papers 91 (MAE 2.9 vs 9.8) and 37 (2.6 vs 3.6), while the tree
+model is better on 19 (2.4 vs 4.5) and 80 (8.7 vs 15.4).</p>
+
+<h3>What the paper identifier was worth</h3>
+<p>A separate diagnostic — deliberately <em>not</em> part of the comparison above — put the paper
+identifier back into the prompt. This is what earlier LLM benchmarks in this project did, while their
+ML counterparts never received that column.</p>
+<table>
+<caption><b>Table 10:</b> Diagnostic: what the paper identifier alone is worth to the LLM.</caption>
+<thead><tr><th>gpt-oss, same 59 test points</th><th>Single-run R&sup2;</th><th>Median-of-runs R&sup2;</th><th>Run-to-run spread</th></tr></thead>
+<tbody>
+<tr><td>paper id hidden (parity, 15 runs)</td><td>0.204 &plusmn; 0.426</td><td>0.602</td><td>9.1 MPa per point</td></tr>
+<tr><td>paper id visible (diagnostic, 5 runs)</td><td>0.668 &plusmn; 0.089</td><td>0.743</td><td>3.6 MPa per point</td></tr>
+</tbody>
+</table>
+<p>The identifier carries no strength information, yet it tells the model which query rows belong to
+the same paper, letting it anchor each block on that paper's control strength. Without it the model
+sometimes confuses the blocks, once predicting about 14&nbsp;MPa for a paper whose control strength
+is 47.7&nbsp;MPa. A tree model cannot exploit such grouping at all, so supplying it to the LLM alone
+makes a comparison unfair — which is why the headline table withholds it, and why LLM-favourable
+margins reported elsewhere in this project should be read with that caveat.</p>
+
+<h2>9. Can the optimal replacement level be predicted?</h2>
+<p>No. Of the 41 papers in the modelling set, 30 report an optimum. Sweeping the final model across
+replacement levels and taking the best predicted strength gives <strong>MAE = 12.7 percentage
+points, against 8.9 for simply predicting the corpus-mean optimum</strong>. The predicted optima take
+only four distinct values spanning 0–10%, whereas the reported optima run from 5% to 45%
+(mean 18%, SD 10.6).</p>
+<figure style="width:62%; margin-left:auto; margin-right:auto">
+  <img src="../../pipeline_rcf/out_le60/figs/optimum_scatter.png" alt="Predicted vs reported optimum">
+</figure>
+<div class="note"><b>Figure 3:</b> Predicted against reported optimum replacement level.</div>
+<p>Two deeper problems make the target ill-posed on this corpus. The 27 papers that report both an
+optimum and a measurable best mix <strong>disagree by 14.4 percentage points on average</strong>
+(r = 0.46); and for <strong>66% of papers the strongest mix actually measured is the 0% control</strong>,
+meaning RCF never improved strength, so an "optimum" becomes a matter of definition rather than a
+measured fact. We recommend not reporting an optimum-prediction model for RCF.</p>
+
+<h2>10. What we should use for RCF</h2>
+<ol>
+<li><strong>Model:</strong> a shallow gradient-boosted tree (depth 2) with strength required to rise
+with curing age and control strength. HistGradientBoosting and XGBoost are interchangeable once tuned
+(0.308 vs 0.309); what matters is keeping <strong>at least 20 samples per leaf</strong> &mdash; the
+library defaults differ on this and that alone moves R&sup2; by up to 0.08. Ridge and neural networks
+are unusable here.</li>
+<li><strong>Inputs:</strong> the paper's own control strength at the same age is essential, together
+with replacement level and curing age; add the categorical descriptors and the fineness measurements.
+Unlike RHA, these extra columns genuinely help.</li>
+<li><strong>Missing values:</strong> leave them to the model or fill with column medians; KNN and MICE
+are not worth the complexity.</li>
+<li><strong>Validation:</strong> always group by paper. Expect R&sup2; &asymp; 0.31 and a typical error
+near 8.5 MPa on unseen papers.</li>
+<li><strong>The LLM is not the primary tool.</strong> On identical inputs it trails the tuned model,
+needs the median of several runs to be stable at all, and costs about 32 seconds per call. It is a
+reasonable fallback where no trained model exists.</li>
+<li><strong>Do not report an optimal replacement level</strong> from this corpus.</li>
+</ol>
+
+<h3>Does the RHA recipe transfer?</h3>
+<p>Partly. What transfers completely is the control strength — on both corpora it is what makes the
+problem learnable — and the value of physics constraints. What does not transfer is the rest: RCF rewards the material descriptors that RHA punished,
+because RCF has roughly twice as many papers, and it needs noticeably heavier leaf-size
+regularisation than RHA's settings provide. Running RHA's exact recipe here (XGBoost on the three
+base inputs with monotone constraints) scores R&sup2; = 0.213 against 0.285 for RCF's own best
+architecture, giving away about a quarter of the achievable score.</p>
+
+<h2>Reproducing this report</h2>
+<ul>
+<li><code>pipeline_rcf/09_ml_le60.py</code> — builds the &le;&nbsp;60 MPa table and runs the ablation,
+architecture search and tuning &rarr; <code>pipeline_rcf/out_le60/</code>.</li>
+<li><code>pipeline_rcf/10_llm_le60.py</code> — <code>prep</code> builds the shared train/test tables
+and the parity manifest, <code>run</code> calls gpt-oss, <code>ml</code> fits the final model on the
+identical rows and columns, <code>score</code> aggregates &rarr;
+<code>pipeline_rcf/out_llm_le60/</code>.</li>
+<li>Prompt template: <code>pipeline/prompts/rcf_strength_le60_v2.txt</code> (its SHA-256, the full
+prompt hash and the model digest are logged with every call).</li>
+<li>All numbers in this report come from <code>out_le60/ablation.csv</code>,
+<code>out_le60/architecture_search.csv</code>, <code>out_le60/best_model.txt</code> and
+<code>out_llm_le60/</code>.</li>
+</ul>
+
+</body>
+</html>

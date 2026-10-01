@@ -1,0 +1,26 @@
+======================================================================
+Modeling table: (756, 28)  papers=44
+Strength range: 1.0-205.5 MPa (mixing mortar/normal/UHPC)
+
+[A: absolute CS, all papers, all features]  model=xgboost n=756 papers=44 repeats=25
+    R2=-0.461+/-0.843  RMSE=29.56+/-13.88  MAE=20.39
+
+(papers with a 0% control: 25; RHA-blend rows used for B/C: 335)
+[B: relative-to-control CS]  model=xgboost n=335 papers=23 repeats=25
+    R2=-0.162+/-0.305  RMSE=0.29+/-0.06  MAE=0.22
+
+-- Framing C: RHA-blend CS | control strength (feature-set ablation) --
+[C1: base [replacement, age, control]]  model=xgboost n=335 papers=23 repeats=25
+    R2=0.420+/-0.211  RMSE=14.99+/-6.05  MAE=10.78
+[C2: base + chemistry]  model=xgboost n=335 papers=23 repeats=25
+    R2=0.257+/-0.622  RMSE=16.31+/-7.88  MAE=11.08
+[C3: base + all features]  model=xgboost n=335 papers=23 repeats=25
+    R2=0.461+/-0.185  RMSE=14.75+/-6.73  MAE=9.85
+[C4: base + text embeddings [MiniLM]]  model=xgboost n=335 papers=23 repeats=25
+    R2=0.528+/-0.150  RMSE=13.76+/-6.18  MAE=9.47
+    >>> embeddings: R2 0.420 -> 0.528  => DROP (no real gain)
+
+[Optimal% via CS-argmax (framing C)]  papers=21
+    MAE vs reported optimum = 8.21 pts   (mean-baseline 3.49)
+[Optimal% via direct regressor]  papers=43
+    MAE=6.52 pts   (mean-baseline MAE=5.29 pts)

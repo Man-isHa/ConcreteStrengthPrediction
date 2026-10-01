@@ -1,0 +1,809 @@
+study_id,mix_id,material_class,source_of_parent_material,activation_class,thermal_activation_temp_C,pozzolanic_reactivity,d50_um,specific_gravity,SiO2_pct,CaO_pct,Al2O3_pct,Fe2O3_pct,MgO_pct,SO3_pct,LOI_pct,water_binder_ratio,cement_replacement_pct,curing_age_days,control_strength_mpa,compressive_strength_mpa,age_basis,value_flag
+S01,RCP0,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,0.0,7.0,24.2,24.2,reported,tabulated
+S01,RCP0,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,0.0,28.0,38.1,38.1,reported,tabulated
+S01,RCP0,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,0.0,60.0,42.3,42.3,reported,tabulated
+S01,RCP0,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,0.0,90.0,44.5,44.5,reported,tabulated
+S01,RCP10,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,10.0,7.0,24.2,25.5,reported,tabulated
+S01,RCP10,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,10.0,28.0,38.1,40.6,reported,tabulated
+S01,RCP10,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,10.0,60.0,42.3,45.2,reported,tabulated
+S01,RCP10,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,10.0,90.0,44.5,47.7,reported,tabulated
+S01,RCP20,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,20.0,7.0,24.2,22.7,reported,tabulated
+S01,RCP20,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,20.0,28.0,38.1,35.7,reported,tabulated
+S01,RCP20,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,20.0,60.0,42.3,38.5,reported,tabulated
+S01,RCP20,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,20.0,90.0,44.5,39.8,reported,tabulated
+S01,RCP30,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,30.0,7.0,24.2,20.7,reported,tabulated
+S01,RCP30,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,30.0,28.0,38.1,34.5,reported,tabulated
+S01,RCP30,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,30.0,60.0,42.3,36.5,reported,tabulated
+S01,RCP30,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,30.0,90.0,44.5,37.5,reported,tabulated
+S01,RCP40,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,40.0,7.0,24.2,20.7,reported,tabulated
+S01,RCP40,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,40.0,28.0,38.1,31.4,reported,tabulated
+S01,RCP40,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,40.0,60.0,42.3,34.1,reported,tabulated
+S01,RCP40,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,40.0,90.0,44.5,35.2,reported,tabulated
+S02,RPC-0%RP (NC) (w/b 0.4),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,0.0,28.0,41.25,48.5,assumed 28 d,approx / graph-derived
+S02,RPC-0%RP (NC) (w/b 0.5),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,0.0,28.0,41.25,34.0,assumed 28 d,approx / graph-derived
+S02,RPC-15%RP (w/b 0.4),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,15.0,28.0,41.25,47.3,assumed 28 d,approx / graph-derived
+S02,RPC-15%RP (w/b 0.5),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,15.0,28.0,41.25,36.0,assumed 28 d,approx / graph-derived
+S02,RPC-15%RP+15%FA (w/b 0.4),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,15.0,28.0,41.25,45.0,assumed 28 d,approx / graph-derived
+S02,RPC-15%RP+15%FA (w/b 0.5),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,15.0,28.0,41.25,35.5,assumed 28 d,approx / graph-derived
+S02,RPC-30%RP (w/b 0.4),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,30.0,28.0,41.25,44.8,assumed 28 d,approx / graph-derived
+S02,RPC-30%RP (w/b 0.5),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,30.0,28.0,41.25,33.0,assumed 28 d,approx / graph-derived
+S02,RPC-45%RP (w/b 0.4),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,45.0,28.0,41.25,38.3,assumed 28 d,approx / graph-derived
+S02,RPC-45%RP (w/b 0.5),recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,45.0,28.0,41.25,25.4,assumed 28 d,approx / graph-derived
+S03,J0 / S0,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,0.0,28.0,49.3,49.3,assumed 28 d,tabulated
+S03,J1 / S1,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,10.0,28.0,49.3,43.6,assumed 28 d,tabulated
+S03,F12 / FS12,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,15.0,28.0,49.3,50.6,assumed 28 d,tabulated
+S03,F22 / FS22,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,15.0,28.0,49.3,40.2,assumed 28 d,tabulated
+S03,J2 / S2,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,20.0,28.0,49.3,42.6,assumed 28 d,tabulated
+S03,F11 / FS11,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,21.0,28.0,49.3,36.2,assumed 28 d,tabulated
+S03,F21 / FS21,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,21.0,28.0,49.3,33.8,assumed 28 d,tabulated
+S03,J3 / S3,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,30.0,28.0,49.3,33.7,assumed 28 d,tabulated
+S03,J4 / S4,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,40.0,28.0,49.3,27.8,assumed 28 d,tabulated
+S09,NAC,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,0.0,28.0,40.7,46.6,assumed 28 d,tabulated
+S09,R0/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,0.0,28.0,40.7,34.8,assumed 28 d,tabulated
+S09,N10/0,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,10.0,28.0,40.7,37.8,assumed 28 d,tabulated
+S09,R10/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,10.0,28.0,40.7,32.8,assumed 28 d,tabulated
+S09,N25/0,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,25.0,28.0,40.7,27.7,assumed 28 d,tabulated
+S09,R25/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,25.0,28.0,40.7,23.3,assumed 28 d,tabulated
+S12,Control (0%),other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,0.0,7.0,41.5,41.5,reported,tabulated
+S12,Control (0%),other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,0.0,28.0,48.0,48.0,reported,tabulated
+S12,10% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,10.0,7.0,41.5,38.9,reported,tabulated
+S12,10% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,10.0,7.0,41.5,38.9,reported,tabulated
+S12,10% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,10.0,28.0,48.0,47.5,reported,tabulated
+S12,10% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,10.0,28.0,48.0,46.8,reported,tabulated
+S12,20% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,20.0,7.0,41.5,36.5,reported,tabulated
+S12,20% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,20.0,7.0,41.5,34.9,reported,tabulated
+S12,20% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,20.0,28.0,48.0,43.8,reported,tabulated
+S12,20% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,20.0,28.0,48.0,37.6,reported,tabulated
+S12,30% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,30.0,7.0,41.5,32.9,reported,tabulated
+S12,30% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,30.0,7.0,41.5,31.0,reported,tabulated
+S12,30% FHC,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,30.0,28.0,48.0,38.7,reported,tabulated
+S12,30% FHH,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,30.0,28.0,48.0,36.2,reported,tabulated
+S13,RC,fine recycled aggregate (FRA),lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.44,0.0,28.0,59.3,59.3,assumed 28 d,tabulated
+S13,GOR (C30R),fine recycled aggregate (FRA),lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.44,30.0,28.0,59.3,57.3,assumed 28 d,tabulated
+S13,C100R,fine recycled aggregate (FRA),lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.44,100.0,28.0,59.3,54.8,assumed 28 d,tabulated
+S14,C-RFC0,fine recycled aggregate (FRA),other,carbonation,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.0,28.0,38.45,38.45,assumed 28 d,tabulated
+S14,C-RFC25,fine recycled aggregate (FRA),other,carbonation,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,25.0,28.0,38.45,40.25,assumed 28 d,tabulated
+S14,C-RFC50,fine recycled aggregate (FRA),other,carbonation,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,50.0,28.0,38.45,42.5,assumed 28 d,tabulated
+S14,C-RFC75,fine recycled aggregate (FRA),other,carbonation,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,75.0,28.0,38.45,45.05,assumed 28 d,tabulated
+S14,C-RFC100,fine recycled aggregate (FRA),other,carbonation,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,100.0,28.0,38.45,46.05,assumed 28 d,tabulated
+S15,CCWP0,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,0.0,28.0,78.41,78.41,reported,tabulated
+S15,CCWP10,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,10.0,28.0,78.41,73.3,reported,tabulated
+S15,CCWP20,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,20.0,28.0,78.41,73.0,reported,tabulated
+S15,CCWP30,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,30.0,28.0,78.41,68.41,reported,tabulated
+S15,CCWP40,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,40.0,28.0,78.41,67.06,reported,tabulated
+S15,CCWP50,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,50.0,28.0,78.41,61.38,reported,tabulated
+S16,RGP0,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.0,28.0,42.3,42.3,assumed 28 d,tabulated
+S16,RGP10,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,10.0,28.0,42.3,42.2,assumed 28 d,tabulated
+S16,RGP20,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,20.0,28.0,42.3,36.7,assumed 28 d,tabulated
+S16,Fibre1.25,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,29.3,assumed 28 d,tabulated
+S16,Fibre1.5,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,31.2,assumed 28 d,tabulated
+S16,Fibre1.75,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,33.4,assumed 28 d,tabulated
+S16,FibreL12,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,31.1,assumed 28 d,tabulated
+S16,FibreL6,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,28.6,assumed 28 d,tabulated
+S16,PS 300,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,26.6,assumed 28 d,tabulated
+S16,PS150,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,29.4,assumed 28 d,tabulated
+S16,RGP30,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,30.0,28.0,42.3,32.4,assumed 28 d,tabulated
+S19,OPC,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,0.0,3.0,25.1,25.1,reported,approx / graph-derived
+S19,OPC,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,0.0,7.0,34.2,34.2,reported,approx / graph-derived
+S19,OPC,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,0.0,28.0,42.1,42.1,reported,approx / graph-derived
+S19,RCF5,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,5.0,3.0,25.1,24.3,reported,approx / graph-derived
+S19,RCF5,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,5.0,7.0,34.2,33.1,reported,approx / graph-derived
+S19,RCF5,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,5.0,28.0,42.1,40.5,reported,approx / graph-derived
+S19,RCF10,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,3.0,25.1,23.5,reported,approx / graph-derived
+S19,RCF10-400,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,3.0,25.1,24.1,reported,approx / graph-derived
+S19,RCF10-600,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,3.0,25.1,24.9,reported,approx / graph-derived
+S19,RCF10-800,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,3.0,25.1,23.8,reported,approx / graph-derived
+S19,RCF10,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,7.0,34.2,31.9,reported,approx / graph-derived
+S19,RCF10-400,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,7.0,34.2,32.8,reported,approx / graph-derived
+S19,RCF10-600,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,7.0,34.2,33.9,reported,approx / graph-derived
+S19,RCF10-800,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,7.0,34.2,32.1,reported,approx / graph-derived
+S19,RCF10,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,28.0,42.1,38.9,reported,approx / graph-derived
+S19,RCF10-400,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,28.0,42.1,39.79,reported,tabulated
+S19,RCF10-600,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,28.0,42.1,39.98,reported,tabulated
+S19,RCF10-800,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,10.0,28.0,42.1,39.75,reported,tabulated
+S19,RCF20,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,20.0,3.0,25.1,20.1,reported,approx / graph-derived
+S19,RCF20,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,20.0,7.0,34.2,27.5,reported,approx / graph-derived
+S19,RCF20,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,20.0,28.0,42.1,33.8,reported,approx / graph-derived
+S19,RCF30,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,30.0,3.0,25.1,16.2,reported,approx / graph-derived
+S19,RCF30,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,30.0,7.0,34.2,22.4,reported,approx / graph-derived
+S19,RCF30,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,30.0,28.0,42.1,28.1,reported,approx / graph-derived
+S20,CEM (ref),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,0.0,28.0,52.1,52.1,assumed 28 d,tabulated
+S20,RCP 5 (5%),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,5.0,28.0,52.1,57.3,assumed 28 d,tabulated
+S20,RCP 10 (10%),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,10.0,28.0,52.1,50.2,assumed 28 d,tabulated
+S20,RCP 15 (15%),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,15.0,28.0,52.1,51.8,assumed 28 d,tabulated
+S20,RCP 20 (20%),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,20.0,28.0,52.1,56.9,assumed 28 d,tabulated
+S20,RCP 25 (25%),recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,25.0,28.0,52.1,50.1,assumed 28 d,tabulated
+S21,Bendimerad [111],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,31.4,assumed 28 d,tabulated
+S21,Bogas [110] (HC+SP),recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,81.0,assumed 28 d,tabulated
+S21,Bogas [110] (HC+SP+AEA),recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,67.9,assumed 28 d,tabulated
+S21,Bogas [110] (NC),recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,50.2,assumed 28 d,tabulated
+S21,Carro-Lόpez [31],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,80.0,assumed 28 d,tabulated
+S21,"Cartuxo [104, 105] (Plain)",recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,51.17,assumed 28 d,tabulated
+S21,"Cartuxo [104, 105] (SP1)",recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,66.79,assumed 28 d,tabulated
+S21,"Cartuxo [104, 105] (SP2)",recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,80.64,assumed 28 d,tabulated
+S21,Dapena [19],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,52.0,assumed 28 d,tabulated
+S21,"Fan [27, 57] (Multi-stage)",recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,56.3,assumed 28 d,tabulated
+S21,"Fan [27, 57] (Single-stage)",recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,56.3,assumed 28 d,tabulated
+S21,Geng [101],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,46.7,assumed 28 d,tabulated
+S21,Khatib [28],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,46.7,assumed 28 d,tabulated
+S21,Levy [98],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,56.1,assumed 28 d,tabulated
+S21,Yaprak [100],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,45.0,assumed 28 d,tabulated
+S21,Zhang [37],recycled concrete powder (RCP),lab-made parent concrete,carbonation + chemical,NR,low / non-reactive,4.0,NR,66.1,8.15,11.1,2.7,NR,0.16,11.5,0.52,0.0,28.0,61.89,122.0,assumed 28 d,tabulated
+S23,PC,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,0.0,7.0,33.0,33.0,reported,approx / graph-derived
+S23,PC,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,0.0,28.0,45.8,45.8,reported,approx / graph-derived
+S23,PC,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,0.0,60.0,48.5,48.5,reported,approx / graph-derived
+S23,RCP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,7.0,33.0,30.0,reported,approx / graph-derived
+S23,RFP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,7.0,33.0,34.2,reported,approx / graph-derived
+S23,RMP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,7.0,33.0,27.8,reported,approx / graph-derived
+S23,RCP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,28.0,45.8,42.8,reported,approx / graph-derived
+S23,RFP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,28.0,45.8,40.2,reported,approx / graph-derived
+S23,RMP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,28.0,45.8,42.8,reported,approx / graph-derived
+S23,RCP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,60.0,48.5,45.6,reported,approx / graph-derived
+S23,RFP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,60.0,48.5,53.1,reported,approx / graph-derived
+S23,RMP10,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,10.0,60.0,48.5,47.7,reported,approx / graph-derived
+S23,RCP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,7.0,33.0,28.6,reported,approx / graph-derived
+S23,RFP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,7.0,33.0,31.3,reported,approx / graph-derived
+S23,RMP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,7.0,33.0,26.2,reported,approx / graph-derived
+S23,RCP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,28.0,45.8,37.7,reported,approx / graph-derived
+S23,RFP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,28.0,45.8,41.2,reported,approx / graph-derived
+S23,RMP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,28.0,45.8,35.7,reported,approx / graph-derived
+S23,RCP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,60.0,48.5,44.1,reported,approx / graph-derived
+S23,RFP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,60.0,48.5,42.6,reported,approx / graph-derived
+S23,RMP20,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,20.0,60.0,48.5,41.7,reported,approx / graph-derived
+S23,CC30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,7.0,33.0,22.9,reported,approx / graph-derived
+S23,RCP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,7.0,33.0,26.6,reported,approx / graph-derived
+S23,RFP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,7.0,33.0,29.5,reported,approx / graph-derived
+S23,RMP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,7.0,33.0,24.1,reported,approx / graph-derived
+S23,SS30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,7.0,33.0,24.1,reported,approx / graph-derived
+S23,CC30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,28.0,45.8,32.2,reported,approx / graph-derived
+S23,RCP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,28.0,45.8,33.1,reported,approx / graph-derived
+S23,RFP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,28.0,45.8,33.9,reported,approx / graph-derived
+S23,RMP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,28.0,45.8,32.3,reported,approx / graph-derived
+S23,SS30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,28.0,45.8,31.8,reported,approx / graph-derived
+S23,CC30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,60.0,48.5,36.5,reported,approx / graph-derived
+S23,RCP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,60.0,48.5,38.1,reported,approx / graph-derived
+S23,RFP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,60.0,48.5,38.6,reported,approx / graph-derived
+S23,RMP30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,60.0,48.5,37.8,reported,approx / graph-derived
+S23,SS30,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,30.0,60.0,48.5,39.9,reported,approx / graph-derived
+S26,Control,recycled concrete powder (RCP),other,chemical,NR,low / non-reactive,5.0,NR,33.4,44.9,8.4,1.0,5.4,NR,NR,0.5,0.0,28.0,39.17,39.17,assumed 28 d,tabulated
+S28,N-0.40-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,30.08,37.2,reported,tabulated
+S28,N-0.45-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,30.08,33.5,reported,tabulated
+S28,N-0.50-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,30.08,28.5,reported,tabulated
+S28,N-0.55-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,30.08,21.1,reported,tabulated
+S28,N-0.40-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,50.32,60.6,reported,tabulated
+S28,N-0.45-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,50.32,52.5,reported,tabulated
+S28,N-0.50-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,50.32,46.4,reported,tabulated
+S28,N-0.55-0,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,50.32,41.8,reported,tabulated
+S28,C-0.45-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,30.1,reported,tabulated
+S28,C-0.55-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,20.3,reported,tabulated
+S28,P-0.40-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,43.4,reported,tabulated
+S28,P-0.45-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,35.6,reported,tabulated
+S28,P-0.50-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,33.3,reported,tabulated
+S28,P-0.55-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,7.0,30.08,24.9,reported,tabulated
+S28,C-0.45-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,48.6,reported,tabulated
+S28,C-0.55-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,40.0,reported,tabulated
+S28,P-0.40-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,69.8,reported,tabulated
+S28,P-0.45-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,55.1,reported,tabulated
+S28,P-0.50-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,50.9,reported,tabulated
+S28,P-0.55-4,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,4.0,28.0,50.32,47.1,reported,tabulated
+S28,C-0.45-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,23.9,reported,tabulated
+S28,C-0.55-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,19.5,reported,tabulated
+S28,P-0.40-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,46.0,reported,tabulated
+S28,P-0.45-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,38.4,reported,tabulated
+S28,P-0.50-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,34.4,reported,tabulated
+S28,P-0.55-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,7.0,30.08,26.8,reported,tabulated
+S28,C-0.45-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,39.9,reported,tabulated
+S28,C-0.55-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,36.9,reported,tabulated
+S28,P-0.40-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,73.8,reported,tabulated
+S28,P-0.45-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,60.7,reported,tabulated
+S28,P-0.50-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,52.0,reported,tabulated
+S28,P-0.55-8,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,8.0,28.0,50.32,49.8,reported,tabulated
+S28,C-0.45-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,22.1,reported,tabulated
+S28,C-0.55-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,17.1,reported,tabulated
+S28,P-0.40-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,52.7,reported,tabulated
+S28,P-0.45-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,43.8,reported,tabulated
+S28,P-0.50-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,39.5,reported,tabulated
+S28,P-0.55-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,7.0,30.08,27.5,reported,tabulated
+S28,C-0.45-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,38.4,reported,tabulated
+S28,C-0.55-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,34.8,reported,tabulated
+S28,P-0.40-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,83.8,reported,tabulated
+S28,P-0.45-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,70.8,reported,tabulated
+S28,P-0.50-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,58.8,reported,tabulated
+S28,P-0.55-12,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,12.0,28.0,50.32,50.8,reported,tabulated
+S28,C-0.45-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,21.0,reported,tabulated
+S28,C-0.55-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,15.5,reported,tabulated
+S28,P-0.40-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,50.8,reported,tabulated
+S28,P-0.45-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,41.4,reported,tabulated
+S28,P-0.50-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,36.8,reported,tabulated
+S28,P-0.55-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,7.0,30.08,27.0,reported,tabulated
+S28,C-0.45-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,36.6,reported,tabulated
+S28,C-0.55-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,30.3,reported,tabulated
+S28,P-0.40-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,80.9,reported,tabulated
+S28,P-0.45-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,66.9,reported,tabulated
+S28,P-0.50-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,57.5,reported,tabulated
+S28,P-0.55-16,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,16.0,28.0,50.32,50.0,reported,tabulated
+S29,REF,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,0.0,7.0,50.87,50.87,reported,tabulated
+S29,REF,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,0.0,28.0,60.22,60.22,reported,tabulated
+S29,REF,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,0.0,90.0,65.94,65.94,reported,tabulated
+S29,CS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,38.98,reported,tabulated
+S29,CS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,39.36,reported,tabulated
+S29,CS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,41.65,reported,tabulated
+S29,CSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,39.2,reported,tabulated
+S29,MS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,39.15,reported,tabulated
+S29,MS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,39.02,reported,tabulated
+S29,MS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,41.01,reported,tabulated
+S29,MSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,37.98,reported,tabulated
+S29,WM105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,37.93,reported,tabulated
+S29,WM400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,39.74,reported,tabulated
+S29,WM500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,41.08,reported,tabulated
+S29,WMN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,7.0,50.87,38.11,reported,tabulated
+S29,CS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,50.19,reported,tabulated
+S29,CS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,51.19,reported,tabulated
+S29,CS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,53.45,reported,tabulated
+S29,CSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,47.23,reported,tabulated
+S29,MS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,49.56,reported,tabulated
+S29,MS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,51.06,reported,tabulated
+S29,MS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,52.28,reported,tabulated
+S29,MSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,46.25,reported,tabulated
+S29,WM105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,47.79,reported,tabulated
+S29,WM400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,50.12,reported,tabulated
+S29,WM500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,51.38,reported,tabulated
+S29,WMN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,28.0,60.22,47.12,reported,tabulated
+S29,CS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,55.84,reported,tabulated
+S29,CS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,56.44,reported,tabulated
+S29,CS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,59.47,reported,tabulated
+S29,CSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,52.94,reported,tabulated
+S29,MS105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,56.1,reported,tabulated
+S29,MS400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,56.5,reported,tabulated
+S29,MS500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,57.88,reported,tabulated
+S29,MSN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,51.33,reported,tabulated
+S29,WM105,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,53.09,reported,tabulated
+S29,WM400,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,55.13,reported,tabulated
+S29,WM500,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,56.44,reported,tabulated
+S29,WMN,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20.0,90.0,65.94,52.63,reported,tabulated
+S30,RCP 0,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,0.0,28.0,51.6,51.6,assumed 28 d,tabulated
+S30,RCP 10,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,10.0,28.0,51.6,41.3,assumed 28 d,tabulated
+S30,RCP 20,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,20.0,28.0,51.6,31.7,assumed 28 d,tabulated
+S30,RCP 30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,30.0,28.0,51.6,22.8,assumed 28 d,tabulated
+S30,RCP 40,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,40.0,28.0,51.6,13.6,assumed 28 d,tabulated
+S30,RCP 50,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,50.0,28.0,51.6,10.0,assumed 28 d,tabulated
+S32,RAC,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,0.0,7.0,36.8,36.8,reported,approx / graph-derived
+S32,RAC,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,0.0,28.0,43.2,43.2,reported,approx / graph-derived
+S32,RAC,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,0.0,56.0,48.3,48.3,reported,approx / graph-derived
+S32,FPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,7.0,36.8,35.8,reported,approx / graph-derived
+S32,RPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,7.0,36.8,33.6,reported,approx / graph-derived
+S32,FPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,28.0,43.2,43.1,reported,approx / graph-derived
+S32,RPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,28.0,43.2,42.2,reported,approx / graph-derived
+S32,FPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,56.0,48.3,49.6,reported,approx / graph-derived
+S32,RPAC1,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,5.5,56.0,48.3,47.7,reported,approx / graph-derived
+S32,RPAC2,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,11.0,7.0,36.8,31.8,reported,approx / graph-derived
+S32,FPAC2,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,11.0,28.0,43.2,44.75,reported,tabulated
+S32,RPAC2,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,11.0,28.0,43.2,38.0,reported,approx / graph-derived
+S32,FPAC2,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,11.0,56.0,48.3,51.85,reported,tabulated
+S32,RPAC2,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,11.0,56.0,48.3,44.6,reported,approx / graph-derived
+S32,FPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,7.0,36.8,31.4,reported,approx / graph-derived
+S32,RPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,7.0,36.8,27.5,reported,approx / graph-derived
+S32,FPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,28.0,43.2,42.1,reported,approx / graph-derived
+S32,RPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,28.0,43.2,36.6,reported,approx / graph-derived
+S32,FPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,56.0,48.3,48.8,reported,approx / graph-derived
+S32,RPAC3,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,16.5,56.0,48.3,41.9,reported,approx / graph-derived
+S32,FPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,7.0,36.8,28.6,reported,approx / graph-derived
+S32,RPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,7.0,36.8,23.6,reported,approx / graph-derived
+S32,FPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,28.0,43.2,35.1,reported,approx / graph-derived
+S32,RPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,28.0,43.2,31.0,reported,approx / graph-derived
+S32,FPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,56.0,48.3,42.1,reported,approx / graph-derived
+S32,RPAC4,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,22.0,56.0,48.3,37.3,reported,approx / graph-derived
+S35,Control,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,0.0,28.0,42.5,42.5,reported,approx / graph-derived
+S35,Control,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,0.0,90.0,50.5,50.5,reported,approx / graph-derived
+S35,RCP-I,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,28.0,42.5,31.0,reported,approx / graph-derived
+S35,RCP-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,28.0,42.5,30.0,reported,approx / graph-derived
+S35,RCP-III,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,28.0,42.5,28.5,reported,approx / graph-derived
+S35,RCP-S,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,28.0,42.5,32.0,reported,approx / graph-derived
+S35,RCP-I,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,90.0,50.5,38.0,reported,approx / graph-derived
+S35,RCP-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,90.0,50.5,37.0,reported,approx / graph-derived
+S35,RCP-III,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,90.0,50.5,36.5,reported,approx / graph-derived
+S35,RCP-S,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,high,NR,NR,50.93,18.18,13.55,6.37,2.73,0.92,11.32,0.5,30.0,90.0,50.5,39.0,reported,approx / graph-derived
+S36,Concrete Reference (REF),recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,2.0,31.9,31.9,reported,tabulated
+S36,Concrete Reference (REF),recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,7.0,44.3,45.8,reported,tabulated
+S36,Mortar Reference CEM I,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,7.0,44.3,42.8,reported,approx / graph-derived
+S36,Concrete Reference (REF),recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,28.0,55.75,57.0,reported,tabulated
+S36,Mortar Reference CEM I,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,28.0,55.75,54.5,reported,approx / graph-derived
+S36,Concrete Reference (REF),recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,56.0,61.5,61.5,reported,tabulated
+S36,Concrete Reference (REF),recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,90.0,59.55,62.3,reported,tabulated
+S36,Mortar Reference CEM I,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,0.0,90.0,59.55,56.8,reported,approx / graph-derived
+S36,Concrete RC10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,2.0,31.9,31.2,reported,tabulated
+S36,Concrete RC10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,7.0,44.3,44.1,reported,tabulated
+S36,Mortar C90F10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,7.0,44.3,43.5,reported,approx / graph-derived
+S36,Concrete RC10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,28.0,55.75,55.4,reported,tabulated
+S36,Mortar C90F10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,28.0,55.75,50.3,reported,approx / graph-derived
+S36,Concrete RC10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,56.0,61.5,58.9,reported,tabulated
+S36,Concrete RC10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,90.0,59.55,59.8,reported,tabulated
+S36,Mortar C90F10,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,10.0,90.0,59.55,55.2,reported,approx / graph-derived
+S36,Mortar C75F25,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,25.0,7.0,44.3,36.0,reported,approx / graph-derived
+S36,Mortar C75F25,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,25.0,28.0,55.75,44.5,reported,approx / graph-derived
+S36,Mortar C75F25,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,25.0,90.0,59.55,50.2,reported,approx / graph-derived
+S37,CP,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,0.0,1.0,17.94,17.94,reported,tabulated
+S37,CP,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,0.0,7.0,42.29,42.29,reported,tabulated
+S37,CP,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,0.0,28.0,47.53,47.53,reported,tabulated
+S37,CP,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,0.0,120.0,57.46,57.46,reported,tabulated
+S37,C10,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,10.0,1.0,17.94,13.55,reported,tabulated
+S37,C10,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,10.0,7.0,42.29,40.0,reported,tabulated
+S37,C10,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,10.0,28.0,47.53,45.78,reported,tabulated
+S37,C10,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,10.0,120.0,57.46,55.13,reported,tabulated
+S37,C20,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,20.0,1.0,17.94,11.86,reported,tabulated
+S37,C20,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,20.0,7.0,42.29,32.94,reported,tabulated
+S37,C20,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,20.0,28.0,47.53,42.38,reported,tabulated
+S37,C20,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,20.0,120.0,57.46,50.93,reported,tabulated
+S37,C30,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,30.0,1.0,17.94,10.23,reported,tabulated
+S37,C30,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,30.0,7.0,42.29,27.84,reported,tabulated
+S37,C30,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,30.0,28.0,47.53,35.38,reported,tabulated
+S37,C30,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,30.0,120.0,57.46,39.48,reported,tabulated
+S38,C0,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,0.0,1.0,14.5,14.5,reported,approx / graph-derived
+S38,RFP10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,8.0,1.0,14.5,15.2,reported,approx / graph-derived
+S38,RCP10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,8.2,1.0,14.5,12.3,reported,approx / graph-derived
+S38,RMP10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,8.2,1.0,14.5,12.5,reported,approx / graph-derived
+S38,RFP20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,16.1,1.0,14.5,13.1,reported,approx / graph-derived
+S38,RCP20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,16.5,1.0,14.5,11.2,reported,approx / graph-derived
+S38,RMP20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,16.5,1.0,14.5,11.8,reported,approx / graph-derived
+S38,RFP30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,24.1,1.0,14.5,10.2,reported,approx / graph-derived
+S38,RCP30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,24.7,1.0,14.5,9.8,reported,approx / graph-derived
+S38,RMP30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,24.7,1.0,14.5,10.1,reported,approx / graph-derived
+S39,REF,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,0.0,28.0,60.22,60.22,assumed 28 d,tabulated
+S39,CS105,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,50.19,assumed 28 d,tabulated
+S39,CS500,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,53.45,assumed 28 d,tabulated
+S39,MS105,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,49.56,assumed 28 d,tabulated
+S39,MS500,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,52.28,assumed 28 d,tabulated
+S39,WM105,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,47.79,assumed 28 d,tabulated
+S39,WM500,recycled concrete powder (RCP),C&D / demolition waste,thermal,500.0,not reported,NR,2.44,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.5,20.0,28.0,60.22,51.38,assumed 28 d,tabulated
+S40,NAC,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,0.0,28.0,36.8,36.8,assumed 28 d,tabulated
+S40,RPC1-10%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,10.0,28.0,36.8,36.5,assumed 28 d,approx / graph-derived
+S40,RPC2-10%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,10.0,28.0,36.8,35.5,assumed 28 d,approx / graph-derived
+S40,RPC3-10%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,10.0,28.0,36.8,34.0,assumed 28 d,approx / graph-derived
+S40,RPC1-20%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,20.0,28.0,36.8,34.0,assumed 28 d,approx / graph-derived
+S40,RPC2-20%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,20.0,28.0,36.8,32.5,assumed 28 d,approx / graph-derived
+S40,RPC3-20%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,20.0,28.0,36.8,31.5,assumed 28 d,approx / graph-derived
+S40,RPC1-30%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,30.0,28.0,36.8,26.0,assumed 28 d,approx / graph-derived
+S40,RPC2-30%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,30.0,28.0,36.8,26.0,assumed 28 d,approx / graph-derived
+S40,RPC3-30%,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,30.0,28.0,36.8,26.2,assumed 28 d,approx / graph-derived
+S41,NAC,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,0.0,28.0,35.65,42.8,assumed 28 d,tabulated
+S41,R0/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,0.0,28.0,35.65,28.5,assumed 28 d,tabulated
+S41,N10/0 (also reported as R10/0),other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,10.0,28.0,35.65,34.8,assumed 28 d,tabulated
+S41,R10/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,10.0,28.0,35.65,26.9,assumed 28 d,tabulated
+S41,N25/0 (also reported as R25/0),other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,25.0,28.0,35.65,26.5,assumed 28 d,tabulated
+S41,R25/50,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,NR,46.1,40.0,NR,NR,NR,NR,NR,0.595,25.0,28.0,35.65,18.3,assumed 28 d,tabulated
+S42,NFC-1,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,0.0,28.0,1.97,2.04,inferred from paper text,approx / graph-derived
+S42,NFC-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,0.0,28.0,1.97,1.9,inferred from paper text,approx / graph-derived
+S42,RPFC10-1,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,10.0,28.0,1.97,1.67,inferred from paper text,approx / graph-derived
+S42,RPFC10-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,10.0,28.0,1.97,1.5,inferred from paper text,approx / graph-derived
+S42,RPFC20-1,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,20.0,28.0,1.97,1.5,inferred from paper text,approx / graph-derived
+S42,RPFC20-11,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,20.0,28.0,1.97,1.3,inferred from paper text,approx / graph-derived
+S42,RPFC30-1,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,30.0,28.0,1.97,1.32,inferred from paper text,approx / graph-derived
+S42,RPFC30-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,30.0,28.0,1.97,1.2,inferred from paper text,approx / graph-derived
+S42,RPFC40-1,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,40.0,28.0,1.97,0.88,inferred from paper text,approx / graph-derived
+S42,RPFC40-II,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,40.0,28.0,1.97,0.76,inferred from paper text,approx / graph-derived
+S43,Addition 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,3.0,13.44,13.44,reported,tabulated
+S43,Substitution 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,3.0,13.44,13.44,reported,tabulated
+S43,Addition 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,27.25,27.25,reported,tabulated
+S43,Substitution 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,7.0,27.25,27.25,reported,tabulated
+S43,Addition 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,32.0,32.0,reported,tabulated
+S43,Substitution 0% (Control),recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,0.0,28.0,32.0,32.0,reported,tabulated
+S43,Addition 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,3.0,13.44,13.65,reported,tabulated
+S43,Substitution 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,3.0,13.44,13.27,reported,tabulated
+S43,Addition 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,7.0,27.25,27.95,reported,tabulated
+S43,Substitution 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,7.0,27.25,27.18,reported,tabulated
+S43,Addition 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,28.0,32.0,32.5,reported,tabulated
+S43,Substitution 2.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,2.5,28.0,32.0,31.6,reported,tabulated
+S43,Addition 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,3.0,13.44,14.58,reported,tabulated
+S43,Substitution 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,3.0,13.44,12.13,reported,tabulated
+S43,Addition 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,7.0,27.25,29.8,reported,tabulated
+S43,Substitution 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,7.0,27.25,25.82,reported,tabulated
+S43,Addition 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,28.0,32.0,34.6,reported,tabulated
+S43,Substitution 5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,5.0,28.0,32.0,30.03,reported,tabulated
+S43,Addition 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,3.0,13.44,14.3,reported,tabulated
+S43,Substitution 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,3.0,13.44,11.69,reported,tabulated
+S43,Addition 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,7.0,27.25,29.33,reported,tabulated
+S43,Substitution 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,7.0,27.25,23.94,reported,tabulated
+S43,Addition 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,28.0,32.0,34.1,reported,tabulated
+S43,Substitution 7.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,7.5,28.0,32.0,27.84,reported,tabulated
+S43,Addition 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,3.0,13.44,15.18,reported,tabulated
+S43,Substitution 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,3.0,13.44,11.04,reported,tabulated
+S43,Addition 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,7.0,27.25,31.0,reported,tabulated
+S43,Substitution 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,7.0,27.25,22.52,reported,tabulated
+S43,Addition 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,28.0,32.0,36.2,reported,tabulated
+S43,Substitution 10%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,10.0,28.0,32.0,26.19,reported,tabulated
+S43,Addition 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,3.0,13.44,13.9,reported,tabulated
+S43,Substitution 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,3.0,13.44,7.37,reported,tabulated
+S43,Addition 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,7.0,27.25,28.55,reported,tabulated
+S43,Substitution 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,7.0,27.25,15.08,reported,tabulated
+S43,Addition 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,28.0,32.0,33.2,reported,tabulated
+S43,Substitution 12.5%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,12.5,28.0,32.0,17.54,reported,tabulated
+S43,Addition 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,3.0,13.44,12.6,reported,tabulated
+S43,Substitution 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,3.0,13.44,7.31,reported,tabulated
+S43,Addition 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,7.0,27.25,25.8,reported,tabulated
+S43,Substitution 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,7.0,27.25,14.96,reported,tabulated
+S43,Addition 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,28.0,32.0,30.0,reported,tabulated
+S43,Substitution 15%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,15.0,28.0,32.0,17.4,reported,tabulated
+S43,Addition 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,3.0,13.44,12.0,reported,tabulated
+S43,Substitution 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,3.0,13.44,6.72,reported,tabulated
+S43,Addition 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,7.0,27.25,24.6,reported,tabulated
+S43,Substitution 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,7.0,27.25,13.75,reported,tabulated
+S43,Addition 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,28.0,32.0,28.0,reported,tabulated
+S43,Substitution 20%,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,20.0,28.0,32.0,16.0,reported,tabulated
+S45,C-0.43-NC,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,0.0,28.0,52.6,76.6,assumed 28 d,tabulated
+S45,C-0.63-OPC,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,0.0,28.0,52.6,57.72,assumed 28 d,tabulated
+S45,N-0.43-NC,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,0.0,28.0,52.6,45.48,assumed 28 d,tabulated
+S45,N-0.63-OPC,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,0.0,28.0,52.6,30.62,assumed 28 d,tabulated
+S45,C-0.43-BP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,72.72,assumed 28 d,tabulated
+S45,C-0.43-CP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,66.77,assumed 28 d,tabulated
+S45,C-0.43-GP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,70.55,assumed 28 d,tabulated
+S45,C-0.63-BP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,52.09,assumed 28 d,tabulated
+S45,C-0.63-CP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,49.69,assumed 28 d,tabulated
+S45,C-0.63-GP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,51.24,assumed 28 d,tabulated
+S45,N-0.43-BP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,43.35,assumed 28 d,tabulated
+S45,N-0.43-CP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,39.73,assumed 28 d,tabulated
+S45,N-0.43-GP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,41.51,assumed 28 d,tabulated
+S45,N-0.63-BP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,21.61,assumed 28 d,tabulated
+S45,N-0.63-CP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,20.61,assumed 28 d,tabulated
+S45,N-0.63-GP15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,15.0,28.0,52.6,26.59,assumed 28 d,tabulated
+S45,C-0.43-BP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,52.9,assumed 28 d,tabulated
+S45,C-0.43-CP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,64.28,assumed 28 d,tabulated
+S45,C-0.43-GP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,62.74,assumed 28 d,tabulated
+S45,C-0.63-BP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,43.56,assumed 28 d,tabulated
+S45,C-0.63-CP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,42.34,assumed 28 d,tabulated
+S45,C-0.63-GP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,41.09,assumed 28 d,tabulated
+S45,N-0.43-BP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,35.25,assumed 28 d,tabulated
+S45,N-0.43-CP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,34.73,assumed 28 d,tabulated
+S45,N-0.43-GP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,36.52,assumed 28 d,tabulated
+S45,N-0.63-BP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,16.52,assumed 28 d,tabulated
+S45,N-0.63-CP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,16.12,assumed 28 d,tabulated
+S45,N-0.63-GP30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,30.0,28.0,52.6,19.52,assumed 28 d,tabulated
+S45,C-0.43-BP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,43.18,assumed 28 d,tabulated
+S45,C-0.43-CP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,53.52,assumed 28 d,tabulated
+S45,C-0.43-GP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,50.73,assumed 28 d,tabulated
+S45,C-0.63-BP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,32.57,assumed 28 d,tabulated
+S45,C-0.63-CP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,33.05,assumed 28 d,tabulated
+S45,C-0.63-GP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,35.5,assumed 28 d,tabulated
+S45,N-0.43-BP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,22.43,assumed 28 d,tabulated
+S45,N-0.43-CP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,27.0,assumed 28 d,tabulated
+S45,N-0.43-GP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,28.25,assumed 28 d,tabulated
+S45,N-0.63-BP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,11.88,assumed 28 d,tabulated
+S45,N-0.63-CP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,10.9,assumed 28 d,tabulated
+S45,N-0.63-GP45,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,45.0,28.0,52.6,15.05,assumed 28 d,tabulated
+S46,0% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,0.0,3.0,21.0,21.0,reported,tabulated
+S46,0% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,0.0,7.0,35.1,35.1,reported,tabulated
+S46,0% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,0.0,28.0,43.9,43.9,reported,tabulated
+S46,10% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,10.0,3.0,21.0,24.7,reported,tabulated
+S46,10% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,10.0,7.0,35.1,32.8,reported,tabulated
+S46,10% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,10.0,28.0,43.9,43.5,reported,tabulated
+S46,30% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,30.0,3.0,21.0,19.1,reported,tabulated
+S46,30% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,30.0,7.0,35.1,24.0,reported,tabulated
+S46,30% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,30.0,28.0,43.9,33.3,reported,tabulated
+S46,50% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,50.0,3.0,21.0,11.5,reported,tabulated
+S46,50% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,50.0,7.0,35.1,15.2,reported,tabulated
+S46,50% RFP (Table 4 / Fig 11),recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,50.0,28.0,43.9,20.5,reported,tabulated
+S47,A0,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,0.0,3.0,26.4,26.4,reported,tabulated
+S47,A0,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,0.0,28.0,44.7,44.7,reported,tabulated
+S47,C1,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,13.9,28.0,44.7,41.0,reported,approx / graph-derived
+S47,B3,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,45.0,28.0,44.7,29.1,reported,tabulated
+S47,C3,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,45.0,28.0,44.7,31.4,reported,tabulated
+S47,D3,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,45.0,28.0,44.7,43.1,reported,tabulated
+S47,C4,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,60.0,28.0,44.7,23.0,reported,approx / graph-derived
+S47,D4,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,60.0,28.0,44.7,39.0,reported,approx / graph-derived
+S49,S1,recycled concrete powder (RCP),other,carbonation + chemical,NR,reported (unclassified),22.4,NR,51.8,22.8,13.6,5.6,1.4,0.8,NR,NR,0.0,3.0,26.9,26.9,reported,tabulated
+S49,S1,recycled concrete powder (RCP),other,carbonation + chemical,NR,reported (unclassified),22.4,NR,51.8,22.8,13.6,5.6,1.4,0.8,NR,NR,0.0,7.0,38.8,38.8,reported,tabulated
+S49,S1,recycled concrete powder (RCP),other,carbonation + chemical,NR,reported (unclassified),22.4,NR,51.8,22.8,13.6,5.6,1.4,0.8,NR,NR,0.0,28.0,43.5,43.5,reported,tabulated
+S51,REF,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,0.0,28.0,43.7,43.7,reported,tabulated
+S51,REF,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,0.0,90.0,45.7,45.7,reported,tabulated
+S51,5CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,5.0,28.0,43.7,40.9,reported,tabulated
+S51,5CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,5.0,90.0,45.7,48.0,reported,approx / graph-derived
+S51,15CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,15.0,28.0,43.7,37.6,reported,tabulated
+S51,15CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,15.0,90.0,45.7,43.0,reported,approx / graph-derived
+S51,25CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,25.0,28.0,43.7,34.8,reported,tabulated
+S51,25CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,25.0,90.0,45.7,31.9,reported,tabulated
+S51,35CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,35.0,28.0,43.7,26.0,reported,tabulated
+S51,35CDW,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,35.0,90.0,45.7,28.8,reported,tabulated
+S52,M-Control,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,0.0,28.0,37.8,37.8,assumed 28 d,tabulated
+S52,M-WCF-5C,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,5.0,28.0,37.8,37.3,assumed 28 d,tabulated
+S52,M-WCF-10C,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,10.0,28.0,37.8,33.8,assumed 28 d,tabulated
+S52,M-WCF-20C,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,20.0,28.0,37.8,31.8,assumed 28 d,tabulated
+S52,M-WCF-30C,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,30.0,28.0,37.8,29.0,assumed 28 d,tabulated
+S53,N100R0,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,0.0,28.0,177.13,177.13,assumed 28 d,tabulated
+S53,N80R20,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,20.0,28.0,177.13,179.78,assumed 28 d,tabulated
+S53,N60R40,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,40.0,28.0,177.13,184.26,assumed 28 d,tabulated
+S53,N40R60,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,60.0,28.0,177.13,180.32,assumed 28 d,tabulated
+S53,N20R80,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,80.0,28.0,177.13,177.3,assumed 28 d,tabulated
+S53,N0R100,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,not reported,NR,2.61,NR,NR,NR,NR,NR,NR,NR,0.18,100.0,28.0,177.13,173.05,assumed 28 d,tabulated
+S55,Series 11 (Control),recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,0.0,28.0,41.0,41.0,inferred from paper text,approx / graph-derived
+S55,Series 1,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,30.0,inferred from paper text,approx / graph-derived
+S55,Series 10,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,36.2,inferred from paper text,approx / graph-derived
+S55,Series 12 (Control),recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,24.0,inferred from paper text,approx / graph-derived
+S55,Series 2,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,32.0,inferred from paper text,approx / graph-derived
+S55,Series 3,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,43.0,inferred from paper text,approx / graph-derived
+S55,Series 4,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,44.0,inferred from paper text,approx / graph-derived
+S55,Series 5,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,29.5,inferred from paper text,approx / graph-derived
+S55,Series 6,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,41.5,inferred from paper text,approx / graph-derived
+S55,Series 7,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,34.0,inferred from paper text,approx / graph-derived
+S55,Series 8,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,38.0,inferred from paper text,approx / graph-derived
+S55,Series 9,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25.0,28.0,41.0,36.2,inferred from paper text,approx / graph-derived
+S56,M-0WCP/M-0WMP/M-0WPP,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,0.0,28.0,37.08,37.08,assumed 28 d,tabulated
+S56,M-30WCP-1000C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,31.55,assumed 28 d,tabulated
+S56,M-30WCP-1200C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,20.25,assumed 28 d,tabulated
+S56,M-30WCP-20C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,27.32,assumed 28 d,tabulated
+S56,M-30WCP-600C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,28.89,assumed 28 d,tabulated
+S56,M-30WCP-800C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,32.16,assumed 28 d,tabulated
+S56,M-30WMP-1000C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,23.89,assumed 28 d,tabulated
+S56,M-30WMP-1200C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,22.63,assumed 28 d,tabulated
+S56,M-30WMP-20C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,27.1,assumed 28 d,tabulated
+S56,M-30WMP-600C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,28.76,assumed 28 d,tabulated
+S56,M-30WMP-800C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,27.9,assumed 28 d,tabulated
+S56,M-30WPP-1000C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,31.16,assumed 28 d,tabulated
+S56,M-30WPP-1200C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,22.25,assumed 28 d,tabulated
+S56,M-30WPP-20C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,26.59,assumed 28 d,tabulated
+S56,M-30WPP-600C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,33.4,assumed 28 d,tabulated
+S56,M-30WPP-800C,recycled concrete powder (RCP),waste cement paste / mortar,thermal,1200.0,not reported,25.0,NR,NR,NR,NR,NR,NR,NR,0.0,0.5,30.0,28.0,37.08,31.83,assumed 28 d,tabulated
+S59,J0,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,0.0,28.0,31.7,31.7,assumed 28 d,approx / graph-derived
+S59,J1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,10.0,28.0,31.7,29.58,assumed 28 d,tabulated
+S59,JF12,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,15.0,28.0,31.7,36.0,assumed 28 d,approx / graph-derived
+S59,JF32,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,15.0,28.0,31.7,30.2,assumed 28 d,approx / graph-derived
+S59,J2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,20.0,28.0,31.7,24.0,assumed 28 d,approx / graph-derived
+S59,JF22,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,20.0,28.0,31.7,26.8,assumed 28 d,approx / graph-derived
+S59,JF11,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,21.0,28.0,31.7,24.2,assumed 28 d,approx / graph-derived
+S59,JF31,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,21.0,28.0,31.7,23.5,assumed 28 d,approx / graph-derived
+S59,JF21,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,28.0,28.0,31.7,19.5,assumed 28 d,approx / graph-derived
+S59,J3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,30.0,28.0,31.7,22.5,assumed 28 d,approx / graph-derived
+S59,J4,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,40.0,28.0,31.7,18.2,assumed 28 d,approx / graph-derived
+S59,JF41,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,60.0,28.0,31.7,18.5,assumed 28 d,approx / graph-derived
+S59,JF42,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,60.0,28.0,31.7,23.1,assumed 28 d,approx / graph-derived
+S61,PC,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,0.0,1.0,52.8,52.8,reported,approx / graph-derived
+S61,CR20,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,20.0,1.0,52.8,49.8,reported,approx / graph-derived
+S61,R20,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,20.0,1.0,52.8,48.1,reported,approx / graph-derived
+S61,CR40,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,40.0,1.0,52.8,47.1,reported,approx / graph-derived
+S61,R40,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,40.0,1.0,52.8,41.2,reported,approx / graph-derived
+S63,C-Control,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,0.0,28.0,43.5,43.5,assumed 28 d,approx / graph-derived
+S63,C-10ARP-600C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,10.0,28.0,43.5,42.0,assumed 28 d,approx / graph-derived
+S63,C-10ARP-800C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,10.0,28.0,43.5,44.0,assumed 28 d,approx / graph-derived
+S63,C-20ARP-600C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,20.0,28.0,43.5,38.5,assumed 28 d,approx / graph-derived
+S63,C-20ARP-800C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,20.0,28.0,43.5,40.5,assumed 28 d,approx / graph-derived
+S63,C-30ARP-600C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,30.0,28.0,43.5,32.5,assumed 28 d,approx / graph-derived
+S63,C-30ARP-800C,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,30.0,28.0,43.5,34.5,assumed 28 d,approx / graph-derived
+S64,OPC Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,0.0,7.0,8.0,8.0,reported,approx / graph-derived
+S64,OPC (Reference Paste/Mortar),mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,0.0,28.0,31.24,39.48,reported,tabulated
+S64,OPC Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,0.0,28.0,31.24,23.0,reported,approx / graph-derived
+S64,OPC Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,0.0,90.0,30.0,30.0,reported,approx / graph-derived
+S64,25CBW Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,25.0,7.0,8.0,19.5,reported,approx / graph-derived
+S64,25CBW (Paste/Mortar),mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,25.0,28.0,31.24,33.17,reported,tabulated
+S64,25CBW Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,25.0,28.0,31.24,28.5,reported,approx / graph-derived
+S64,25CBW Concrete,mixed C&D / brick powder,C&D / demolition waste,mechanical,NR,reported (unclassified),6.58,2.58,62.36,8.36,12.03,4.19,0.93,0.15,6.01,0.5,25.0,90.0,30.0,33.5,reported,approx / graph-derived
+S68,Control mix,recycled concrete powder (RCP),other,chemical,NR,low / non-reactive,14.5,2.6,46.9,19.3,11.7,5.62,2.17,1.49,5.9,0.5,0.0,28.0,63.7,63.7,reported,approx / graph-derived
+S68,FA,recycled concrete powder (RCP),other,chemical,NR,low / non-reactive,14.5,2.6,46.9,19.3,11.7,5.62,2.17,1.49,5.9,0.5,30.0,28.0,63.7,45.7,reported,approx / graph-derived
+S68,RP,recycled concrete powder (RCP),other,chemical,NR,low / non-reactive,14.5,2.6,46.9,19.3,11.7,5.62,2.17,1.49,5.9,0.5,30.0,28.0,63.7,45.4,reported,approx / graph-derived
+S69,REF,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,0.0,7.0,47.7,47.7,reported,tabulated
+S69,REF,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,0.0,28.0,61.1,61.1,reported,tabulated
+S69,REF,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,0.0,90.0,61.4,61.4,reported,tabulated
+S69,5CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,7.0,47.7,42.1,reported,tabulated
+S69,5CDW/45MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,7.0,47.7,54.1,reported,tabulated
+S69,5CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,28.0,61.1,51.3,reported,tabulated
+S69,5CDW/45MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,28.0,61.1,55.1,reported,tabulated
+S69,5CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,90.0,61.4,55.0,reported,tabulated
+S69,5CDW/45MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,5.0,90.0,61.4,52.8,reported,tabulated
+S69,10CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,7.0,47.7,31.2,reported,tabulated
+S69,10CDW/40MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,7.0,47.7,46.2,reported,tabulated
+S69,10CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,28.0,61.1,42.4,reported,tabulated
+S69,10CDW/40MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,28.0,61.1,53.4,reported,tabulated
+S69,10CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,90.0,61.4,43.7,reported,tabulated
+S69,10CDW/40MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,10.0,90.0,61.4,51.3,reported,tabulated
+S69,15CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,7.0,47.7,25.1,reported,tabulated
+S69,15CDW/35MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,7.0,47.7,43.6,reported,tabulated
+S69,15CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,28.0,61.1,42.6,reported,tabulated
+S69,15CDW/35MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,28.0,61.1,44.3,reported,tabulated
+S69,15CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,90.0,61.4,44.2,reported,tabulated
+S69,15CDW/35MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,15.0,90.0,61.4,41.6,reported,tabulated
+S69,20CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,7.0,47.7,30.2,reported,tabulated
+S69,20CDW/30MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,7.0,47.7,36.8,reported,tabulated
+S69,20CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,28.0,61.1,40.5,reported,tabulated
+S69,20CDW/30MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,28.0,61.1,44.1,reported,tabulated
+S69,20CDW,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,90.0,61.4,40.8,reported,tabulated
+S69,20CDW/30MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,20.0,90.0,61.4,45.3,reported,tabulated
+S69,30CDW/20MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,30.0,7.0,47.7,37.5,reported,tabulated
+S69,30CDW/20MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,30.0,28.0,61.1,41.7,reported,tabulated
+S69,30CDW/20MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,30.0,90.0,61.4,39.0,reported,tabulated
+S69,40CDW/10MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,40.0,7.0,47.7,27.2,reported,tabulated
+S69,40CDW/10MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,40.0,28.0,61.1,36.6,reported,tabulated
+S69,40CDW/10MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,40.0,90.0,61.4,36.2,reported,tabulated
+S69,50MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,50.0,7.0,47.7,52.5,reported,tabulated
+S69,50MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,50.0,28.0,61.1,53.8,reported,tabulated
+S69,50MK,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,50.0,90.0,61.4,51.7,reported,tabulated
+S70,O100-W0,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,0.0,28.0,39.7,39.7,assumed 28 d,tabulated
+S70,O85-W15,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,15.0,28.0,39.7,34.6,assumed 28 d,tabulated
+S70,O70-W30,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,30.0,28.0,39.7,26.8,assumed 28 d,tabulated
+S70,O60-W40,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,40.0,28.0,39.7,20.1,assumed 28 d,tabulated
+S70,O40-W60,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,60.0,28.0,39.7,15.8,assumed 28 d,tabulated
+S70,O25-W75,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,75.0,28.0,39.7,5.8,assumed 28 d,tabulated
+S70,O0-W100,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,100.0,28.0,39.7,1.6,assumed 28 d,tabulated
+S71,Reference,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,0.0,7.0,59.62,59.62,reported,tabulated
+S71,Reference,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,0.0,28.0,76.58,76.58,reported,tabulated
+S71,Reference,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,0.0,56.0,83.69,83.69,reported,tabulated
+S71,95PC5RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,7.0,59.62,60.91,reported,tabulated
+S71,95PC5RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,7.0,59.62,59.94,reported,tabulated
+S71,95PC5RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,7.0,59.62,61.7,reported,tabulated
+S71,95PC5RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,28.0,76.58,72.98,reported,tabulated
+S71,95PC5RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,28.0,76.58,69.69,reported,tabulated
+S71,95PC5RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,28.0,76.58,72.17,reported,tabulated
+S71,95PC5RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,56.0,83.69,80.55,reported,tabulated
+S71,95PC5RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,56.0,83.69,82.53,reported,tabulated
+S71,95PC5RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,5.0,56.0,83.69,80.68,reported,tabulated
+S71,90PC10RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,7.0,59.62,59.33,reported,tabulated
+S71,90PC10RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,7.0,59.62,57.98,reported,tabulated
+S71,90PC10RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,7.0,59.62,55.89,reported,tabulated
+S71,90PC10RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,28.0,76.58,68.31,reported,tabulated
+S71,90PC10RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,28.0,76.58,62.36,reported,tabulated
+S71,90PC10RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,28.0,76.58,70.56,reported,tabulated
+S71,90PC10RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,56.0,83.69,71.81,reported,tabulated
+S71,90PC10RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,56.0,83.69,73.85,reported,tabulated
+S71,90PC10RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,10.0,56.0,83.69,76.42,reported,tabulated
+S71,85PC15RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,7.0,59.62,52.88,reported,tabulated
+S71,85PC15RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,7.0,59.62,51.37,reported,tabulated
+S71,85PC15RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,7.0,59.62,53.05,reported,tabulated
+S71,85PC15RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,28.0,76.58,53.71,reported,tabulated
+S71,85PC15RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,28.0,76.58,62.64,reported,tabulated
+S71,85PC15RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,28.0,76.58,64.81,reported,tabulated
+S71,85PC15RCP1,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,56.0,83.69,70.4,reported,tabulated
+S71,85PC15RCP2,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,56.0,83.69,70.48,reported,tabulated
+S71,85PC15RCP3,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,15.0,56.0,83.69,67.87,reported,tabulated
+S74,Mref,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,0.0,7.0,82.0,82.0,reported,approx / graph-derived
+S74,Mref,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,0.0,28.0,88.0,88.0,reported,approx / graph-derived
+S74,Mref,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,0.0,56.0,92.0,92.0,reported,approx / graph-derived
+S74,MSF 10 / MSF10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,10.0,7.0,82.0,74.0,reported,approx / graph-derived
+S74,MSF 10 / MSF10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,10.0,28.0,88.0,89.0,reported,approx / graph-derived
+S74,MSF 10 / MSF10,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,10.0,56.0,92.0,92.0,reported,approx / graph-derived
+S74,MSF 20 / MSF20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,20.0,7.0,82.0,54.0,reported,approx / graph-derived
+S74,MSF 20 / MSF20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,20.0,28.0,88.0,71.0,reported,approx / graph-derived
+S74,MSF 20 / MSF20,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,20.0,56.0,92.0,74.0,reported,approx / graph-derived
+S74,MSF 30 / MSF30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,30.0,7.0,82.0,51.0,reported,approx / graph-derived
+S74,MSF 30 / MSF30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,30.0,28.0,88.0,59.0,reported,approx / graph-derived
+S74,MSF 30 / MSF30,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,30.0,56.0,92.0,65.0,reported,approx / graph-derived
+S76,Control group (CG),recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,0.0,1.0,9.56,9.56,reported,tabulated
+S76,Control group (CG),recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,0.0,3.0,22.1,22.1,reported,tabulated
+S76,Control group (CG),recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,0.0,7.0,34.1,34.1,reported,tabulated
+S76,Control group (CG),recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,0.0,14.0,41.2,41.2,reported,tabulated
+S76,Control group (CG),recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,0.0,28.0,45.2,45.2,reported,tabulated
+S76,K1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,17.3,1.0,9.56,9.61,reported,tabulated
+S76,K1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,17.3,3.0,22.1,22.3,reported,tabulated
+S76,K1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,17.3,7.0,34.1,34.3,reported,tabulated
+S76,K1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,17.3,14.0,41.2,41.4,reported,tabulated
+S76,K1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,17.3,28.0,45.2,45.4,reported,tabulated
+S76,F1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,25.0,1.0,9.56,9.1,reported,tabulated
+S76,F1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,25.0,3.0,22.1,21.2,reported,tabulated
+S76,F1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,25.0,7.0,34.1,33.1,reported,tabulated
+S76,F1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,25.0,14.0,41.2,42.5,reported,tabulated
+S76,F1,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,25.0,28.0,45.2,46.8,reported,tabulated
+S76,K2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,34.5,1.0,9.56,8.2,reported,tabulated
+S76,K2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,34.5,3.0,22.1,18.5,reported,tabulated
+S76,K2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,34.5,7.0,34.1,28.3,reported,tabulated
+S76,K2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,34.5,14.0,41.2,38.1,reported,tabulated
+S76,K2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,34.5,28.0,45.2,45.1,reported,tabulated
+S76,F2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,50.0,1.0,9.56,8.5,reported,tabulated
+S76,F2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,50.0,3.0,22.1,20.1,reported,tabulated
+S76,F2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,50.0,7.0,34.1,32.2,reported,tabulated
+S76,F2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,50.0,14.0,41.2,43.8,reported,tabulated
+S76,F2,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,50.0,28.0,45.2,48.2,reported,tabulated
+S76,K3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,69.1,1.0,9.56,5.9,reported,tabulated
+S76,K3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,69.1,3.0,22.1,14.5,reported,tabulated
+S76,K3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,69.1,7.0,34.1,22.7,reported,tabulated
+S76,K3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,69.1,14.0,41.2,33.2,reported,tabulated
+S76,K3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,69.1,28.0,45.2,44.8,reported,tabulated
+S76,F3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,100.0,1.0,9.56,9.8,reported,tabulated
+S76,F3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,100.0,3.0,22.1,22.5,reported,tabulated
+S76,F3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,100.0,7.0,34.1,34.5,reported,tabulated
+S76,F3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,100.0,14.0,41.2,45.1,reported,tabulated
+S76,F3,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,52.46,11.44,13.0,3.08,1.74,0.72,10.1,NR,100.0,28.0,45.2,50.8,reported,tabulated
+S77,Reference,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,0.0,28.0,54.0,54.0,assumed 28 d,approx / graph-derived
+S77,R1-200-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,51.9,assumed 28 d,approx / graph-derived
+S77,R1-400-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,52.5,assumed 28 d,approx / graph-derived
+S77,R1-600-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,55.2,assumed 28 d,approx / graph-derived
+S77,R1-800-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,55.5,assumed 28 d,approx / graph-derived
+S77,R1-RT-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,53.9,assumed 28 d,approx / graph-derived
+S77,R2-200-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,50.8,assumed 28 d,approx / graph-derived
+S77,R2-400-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,50.9,assumed 28 d,approx / graph-derived
+S77,R2-600-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,52.5,assumed 28 d,approx / graph-derived
+S77,R2-800-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,53.6,assumed 28 d,approx / graph-derived
+S77,R2-RT-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,52.1,assumed 28 d,approx / graph-derived
+S77,R3-200-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,49.4,assumed 28 d,approx / graph-derived
+S77,R3-400-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,48.6,assumed 28 d,approx / graph-derived
+S77,R3-600-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,50.2,assumed 28 d,approx / graph-derived
+S77,R3-800-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,52.8,assumed 28 d,approx / graph-derived
+S77,R3-RT-10,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,10.0,28.0,54.0,50.5,assumed 28 d,approx / graph-derived
+S77,R1-200-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,39.9,assumed 28 d,approx / graph-derived
+S77,R1-400-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,42.1,assumed 28 d,approx / graph-derived
+S77,R1-600-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,44.8,assumed 28 d,approx / graph-derived
+S77,R1-800-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,46.9,assumed 28 d,approx / graph-derived
+S77,R1-RT-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,41.6,assumed 28 d,approx / graph-derived
+S77,R2-200-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,38.1,assumed 28 d,approx / graph-derived
+S77,R2-400-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,38.6,assumed 28 d,approx / graph-derived
+S77,R2-600-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,40.1,assumed 28 d,approx / graph-derived
+S77,R2-800-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,43.5,assumed 28 d,approx / graph-derived
+S77,R2-RT-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,38.8,assumed 28 d,approx / graph-derived
+S77,R3-200-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,33.6,assumed 28 d,approx / graph-derived
+S77,R3-400-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,33.8,assumed 28 d,approx / graph-derived
+S77,R3-600-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,36.2,assumed 28 d,approx / graph-derived
+S77,R3-800-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,40.8,assumed 28 d,approx / graph-derived
+S77,R3-RT-20,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,20.0,28.0,54.0,34.3,assumed 28 d,approx / graph-derived
+S77,R1-200-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,35.4,assumed 28 d,approx / graph-derived
+S77,R1-400-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,36.1,assumed 28 d,approx / graph-derived
+S77,R1-600-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,38.3,assumed 28 d,approx / graph-derived
+S77,R1-800-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,40.7,assumed 28 d,approx / graph-derived
+S77,R1-RT-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,35.5,assumed 28 d,approx / graph-derived
+S77,R2-200-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,33.8,assumed 28 d,approx / graph-derived
+S77,R2-400-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,34.3,assumed 28 d,approx / graph-derived
+S77,R2-600-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,37.0,assumed 28 d,approx / graph-derived
+S77,R2-800-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,40.1,assumed 28 d,approx / graph-derived
+S77,R2-RT-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,34.1,assumed 28 d,approx / graph-derived
+S77,R3-200-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,30.2,assumed 28 d,approx / graph-derived
+S77,R3-400-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,31.0,assumed 28 d,approx / graph-derived
+S77,R3-600-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,33.1,assumed 28 d,approx / graph-derived
+S77,R3-800-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,35.0,assumed 28 d,approx / graph-derived
+S77,R3-RT-30,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,30.0,28.0,54.0,30.0,assumed 28 d,approx / graph-derived
+S79,Concrete-0% (REF),fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,0.0,28.0,40.0,40.0,reported,approx / graph-derived
+S79,Concrete-0% (REF),fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,0.0,91.0,45.5,45.5,reported,approx / graph-derived
+S79,Concrete RC4-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,28.0,40.0,34.5,reported,approx / graph-derived
+S79,Mortar RC2-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,28.0,40.0,32.0,reported,approx / graph-derived
+S79,Mortar RC3-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,28.0,40.0,31.0,reported,approx / graph-derived
+S79,Mortar RC4-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,28.0,40.0,34.0,reported,approx / graph-derived
+S79,Concrete RC4-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,91.0,45.5,38.2,reported,approx / graph-derived
+S79,Mortar RC4-15%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,15.0,91.0,45.5,33.5,reported,approx / graph-derived
+S79,Concrete RC4-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,28.0,40.0,31.5,reported,approx / graph-derived
+S79,Mortar RC2-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,28.0,40.0,28.0,reported,approx / graph-derived
+S79,Mortar RC3-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,28.0,40.0,25.5,reported,approx / graph-derived
+S79,Mortar RC4-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,28.0,40.0,29.0,reported,approx / graph-derived
+S79,Concrete RC4-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,91.0,45.5,36.5,reported,approx / graph-derived
+S79,Mortar RC4-25%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,25.0,91.0,45.5,32.0,reported,approx / graph-derived
+S79,Mortar RC4-50%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,50.0,28.0,40.0,15.8,reported,approx / graph-derived
+S79,Mortar RC4-50%,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,50.0,91.0,45.5,16.5,reported,approx / graph-derived
+S80,0% Control,mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,0.0,7.0,29.1,29.1,reported,approx / graph-derived
+S80,0% Control,mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,0.0,28.0,33.6,33.6,reported,approx / graph-derived
+S80,15% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,15.0,7.0,29.1,27.4,reported,approx / graph-derived
+S80,15% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,15.0,7.0,29.1,25.7,reported,approx / graph-derived
+S80,15% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,15.0,28.0,33.6,35.0,reported,approx / graph-derived
+S80,15% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,15.0,28.0,33.6,30.5,reported,approx / graph-derived
+S80,30% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,30.0,7.0,29.1,22.5,reported,approx / graph-derived
+S80,30% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,30.0,7.0,29.1,20.0,reported,approx / graph-derived
+S80,30% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,30.0,28.0,33.6,28.2,reported,approx / graph-derived
+S80,30% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,30.0,28.0,33.6,27.0,reported,approx / graph-derived
+S80,45% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,45.0,7.0,29.1,20.3,reported,approx / graph-derived
+S80,45% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,45.0,7.0,29.1,19.2,reported,approx / graph-derived
+S80,45% (6:4),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,45.0,28.0,33.6,24.2,reported,approx / graph-derived
+S80,45% (8:2),mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,45.0,28.0,33.6,21.2,reported,approx / graph-derived
+S81,Ref,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,0.0,7.0,26.6,26.6,reported,tabulated
+S81,Ref,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,0.0,28.0,36.8,36.8,reported,tabulated
+S81,Ref,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,0.0,90.0,45.8,45.8,reported,tabulated
+S81,RCCF 25,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,25.0,7.0,26.6,24.8,reported,tabulated
+S81,RCCF 25,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,25.0,28.0,36.8,32.7,reported,tabulated
+S81,RCCF 25,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,25.0,90.0,45.8,38.4,reported,tabulated
+S81,RCCF 50,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,50.0,7.0,26.6,10.7,reported,tabulated
+S81,RCCF 50,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,50.0,28.0,36.8,14.0,reported,tabulated
+S81,RCCF 50,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,50.0,90.0,45.8,16.4,reported,tabulated
+S81,RCCF 75,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,75.0,7.0,26.6,2.5,reported,tabulated
+S81,RCCF 75,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,75.0,28.0,36.8,5.7,reported,tabulated
+S81,RCCF 75,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,75.0,90.0,45.8,4.2,reported,tabulated
+S82,0% RFP Concrete (Control),recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,0.0,28.0,45.6,43.5,reported,approx / graph-derived
+S82,Control Group (Cement Mortar),recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,0.0,28.0,45.6,47.7,reported,tabulated
+S82,10% RFP Concrete,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,10.0,28.0,45.6,34.8,reported,approx / graph-derived
+S82,20% RFP Concrete,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,20.0,28.0,45.6,38.6,reported,tabulated
+S82,RA-RFP Composite Recycled Concrete,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,20.0,28.0,45.6,40.12,reported,tabulated
+S82,30% RFP Concrete,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,30.0,28.0,45.6,31.0,reported,approx / graph-derived
+S82,RFP10 Mortar,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,30.0,28.0,45.6,32.7,reported,tabulated
+S82,RFP15 Mortar,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,30.0,28.0,45.6,31.4,reported,tabulated
+S82,RFP5 Mortar,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,30.0,28.0,45.6,34.5,reported,tabulated
+S82,40% RFP Concrete,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,40.0,28.0,45.6,28.0,reported,approx / graph-derived
+S84,Control,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,0.0,7.0,18.73,18.73,reported,tabulated
+S84,Control,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,0.0,14.0,19.2,19.2,reported,tabulated
+S84,Control,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,0.0,28.0,22.71,22.71,reported,tabulated
+S84,RCP-1,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,20.0,7.0,18.73,12.9,reported,tabulated
+S84,RCP-1,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,20.0,14.0,19.2,16.07,reported,tabulated
+S84,RCP-1,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,20.0,28.0,22.71,18.01,reported,tabulated
+S84,RCP-2,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,25.0,7.0,18.73,8.57,reported,tabulated
+S84,RCP-2,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,25.0,14.0,19.2,8.73,reported,tabulated
+S84,RCP-2,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,25.0,28.0,22.71,11.3,reported,tabulated
+S84,RCP-3,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,30.0,7.0,18.73,8.48,reported,tabulated
+S84,RCP-3,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,30.0,14.0,19.2,8.63,reported,tabulated
+S84,RCP-3,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,30.0,28.0,22.71,9.89,reported,tabulated

@@ -1,0 +1,55 @@
+study_id,year,material_class,source_of_parent_material,activation_class,thermal_activation_temp_C,pozzolanic_reactivity,d50_um,specific_gravity,SiO2_pct,CaO_pct,Al2O3_pct,Fe2O3_pct,MgO_pct,SO3_pct,LOI_pct,water_binder_ratio,replacement_levels_tested_pct,optimum_replacement_pct,optimum_reported_as
+S01,2025,recycled/dehydrated cement,lab-made parent concrete,thermal,650.0,not reported,11.6,NR,19.46,56.58,3.92,3.15,2.78,2.54,9.6,0.5,"0, 10, 20, 30, 40",10.0,10
+S02,2018,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),9.06,NR,43.0,15.5,11.5,5.0,2.0,NR,NR,0.45,"0, 15, 30, 45",22.5,15% - 30%
+S03,2021,recycled concrete powder (RCP),structural element (precast/railway),none (as-crushed / ground only),NR,not reported,NR,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.475,"10, 20, 30, 40",15.0,15% RCP (when blended with 15% FA+SF at FA:SF = 3:2)
+S06,2010,recycled concrete fines (RCF),concrete plant washout / returned,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.42,"0, 2.5, 5, 7.5, 25, 37.5, 50",50.0,50% Slag mixtures: Type A: 5.0% Type B: 7.5% Type C: 2.5% Type D: 2.5% Type E: 2.5% Type F
+S07,2026,recycled concrete fines (RCF),C&D / demolition waste,thermal,900.0,moderate,NR,NR,25.75,52.18,2.38,1.86,2.51,2.16,11.65,0.5,"10, 20, 30, 40",25.0,20–30% (general optimal); 10–20% (best application strategy)
+S09,2020,other/unspecified,lab-made parent concrete,none (as-crushed / ground only),NR,not reported,NR,2.54,46.1,40.0,3.8,1.5,0.5,0.4,6.2,0.595,"10, 25",10.0,10
+S10,2023,recycled cement paste powder,lab-made parent concrete,carbonation + chemical + mechanical + thermal,1200.0,reported (unclassified),0.25,NR,37.38,36.86,6.03,4.06,2.5,1.8,13.41,NR,"2, 90",25.0,<20% to 30%
+S11,2023,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.484,"10, 20, 30",15.0,10% to 20% (for drying shrinkage suppression); NULL for mechanical strength
+S12,2025,other/unspecified,C&D / demolition waste,none (as-crushed / ground only),NR,reported (unclassified),10.6,NR,47.93,18.52,6.25,2.31,2.82,0.5,18.35,0.528,"10, 20, 30",10.0,10%
+S15,2026,recycled concrete powder (RCP),structural element (precast/railway),mechanical + thermal,1000.0,reported (unclassified),17.0,NR,45.38,19.85,12.43,9.87,2.32,0.95,4.15,0.4,"0, 10, 20, 30, 40, 50",20.0,20
+S16,2023,mixed C&D / brick powder,other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,"0, 10, 20, 30",30.0,30% (Optimum for flexural toughness/sustainability)
+S18,NR,recycled concrete powder (RCP),other,thermal,800.0,not reported,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,"10, 20, 30",25.0,GRAPH-DERIVED: 20-30% (for thermal activation efficiency); 10% (for matching standard mort
+S19,2026,recycled concrete fines (RCF),other,thermal,800.0,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,"5, 10, 20, 30",10.0,10
+S20,2017,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,12.0,NR,NR,NR,NR,NR,NR,NR,NR,0.358,"5, 10, 15, 20, 25",5.0,5% (compressive strength) / 15% (flexural strength)
+S23,2024,recycled concrete powder (RCP),C&D / demolition waste,other / unspecified,NR,high,78.7,2.5,36.91,30.77,8.2,4.51,1.55,1.67,12.44,0.5,"10, 20, 30",10.0,10% (for RFP)
+S26,2022,recycled concrete powder (RCP),other,chemical,NR,low / non-reactive,5.0,NR,33.4,44.9,8.4,1.0,5.4,NR,NR,0.5,"5, 10, 15, 20",10.0,10% or 15%
+S27,2023,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,25.29,2.5,48.69,30.94,9.0,4.35,2.73,1.04,17.13,0.5,"15, 30, 45",15.0,15
+S28,2024,recycled concrete powder (RCP),other,thermal,105.0,not reported,102.0,2.56,NR,NR,NR,NR,NR,NR,NR,0.475,"4, 8, 12, 16",12.0,12% (for paste substitution method)
+S29,2023,fine recycled aggregate (FRA),C&D / demolition waste,thermal,500.0,reported (unclassified),14.0,2.4,28.42,33.29,5.9,4.12,1.63,0.8,23.5,0.467,20,20.0,20
+S30,2021,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,19.0,NR,NR,NR,NR,NR,NR,NR,11.9,NR,"0, 10, 20, 30, 40, 50",10.0,10
+S31,2012,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,176.0,2.48,58.55,11.82,10.35,4.64,1.52,0.44,NR,0.55,"0, 15, 30, 45",15.0,Below 15
+S32,2023,recycled concrete powder (RCP),waste cement paste / mortar,none (as-crushed / ground only),NR,reported (unclassified),15.16,NR,48.82,27.08,11.76,3.5,3.04,0.71,0.88,0.35,"5.5, 11, 16.5, 22",11.0,11
+S36,2025,recycled concrete fines (RCF),other,mechanical,NR,not reported,24.0,2.71,36.3,46.22,5.91,3.25,2.17,NR,NR,0.448,"0, 5, 10, 15, 20, 25, 30",10.0,10
+S37,2023,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),14.42,2.68,34.32,36.76,8.94,5.22,NR,2.7,8.47,0.4,"10, 20, 30",20.0,20
+S38,2023,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,not reported,78.7,2.5,42.15,35.14,9.37,5.15,1.77,1.91,11.37,0.45,"10, 20, 30",10.0,10
+S40,2022,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.45,"10, 20, 30",20.0,20%
+S42,2022,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,reported (unclassified),75.0,NR,57.02,21.32,10.93,3.45,2.54,1.17,NR,0.6,"0, 10, 20, 30, 40",30.0,30
+S43,2024,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.475,"0, 2.5, 5, 7.5, 10, 12.5, 15, 20",10.0,10
+S45,2025,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,low / non-reactive,10.1,NR,60.53,17.51,12.15,2.72,1.17,1.37,NR,0.53,"15, 30, 45",45.0,45%
+S46,2022,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),22.7,NR,60.3,17.4,10.4,3.0,3.4,0.7,NR,0.5,"0, 10, 30, 50, 70, 90",10.0,10
+S47,2025,recycled concrete powder (RCP),other,mechanical + thermal,700.0,reported (unclassified),20.17,NR,44.89,26.23,13.28,4.48,5.27,1.07,NR,0.5,"13.9, 30, 45, 60",45.0,45% (GRAPH-DERIVED) / 45% (for TAURFP)
+S50,2026,recycled concrete powder (RCP),C&D / demolition waste,carbonation + chemical + mechanical + thermal,1200.0,low / non-reactive,150.0,NR,53.0,20.0,12.5,4.5,NR,NR,NR,NR,"5, 10, 15, 20, 25, 30, 40, 45, 50, 55, 60, 65, 70, 75, 100",12.5,≤ 10–15% (for overall durability/carbonation/cost efficiency); ≤ 20% (for drying shrinkage
+S51,2026,recycled concrete powder (RCP),C&D / demolition waste,mechanical + thermal,600.0,reported (unclassified),21.3,NR,58.3,22.6,6.7,4.2,0.0,0.0,NR,0.535,"5, 15, 25, 35",20.0,"15–25 (15% for overall optimal balance including capillary absorption, strength activity, "
+S52,2023,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,reported (unclassified),NR,NR,31.0,54.9,3.4,1.9,5.6,NR,NR,0.5,"5, 10, 20, 30",10.0,10
+S55,2019,recycled/dehydrated cement,lab-made parent concrete,mechanical + thermal,712.0,reported (unclassified),250.0,2.66,NR,NR,NR,NR,NR,NR,36.5,0.5,25,25.0,25% (Only replacement level evaluated)
+S57,2025,recycled concrete fines (RCF),C&D / demolition waste,chemical,NR,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.4,"30, 50, 70, 100",40.0,30%–50% (GRAPH-DERIVED)
+S58,2022,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,140.0,reported (unclassified),NR,NR,19.63,64.52,5.43,3.21,2.15,2.84,NR,0.4,20,20.0,20%
+S59,2022,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),42.6,NR,27.8,29.1,6.7,2.73,4.49,1.11,NR,0.45,"10, 20, 30, 40",15.0,15 (in synergy with 15% FA+SF)
+S61,2024,recycled concrete fines (RCF),waste cement paste / mortar,carbonation,NR,not reported,23.53,NR,NR,NR,NR,NR,NR,NR,NR,0.2,"20, 40",20.0,GRAPH-DERIVED: 20% (or up to 40%)
+S62,2024,recycled concrete powder (RCP),C&D / demolition waste,carbonation + chemical + mechanical + thermal,1200.0,reported (unclassified),17.8,2.49,21.0,7.8,1.8,0.5,NR,NR,6.0,0.4,"20, 25, 30",25.0,25% (or up to 30%)
+S63,2023,recycled concrete powder (RCP),lab-made parent concrete,mechanical + thermal,800.0,reported (unclassified),NR,NR,NR,NR,NR,NR,NR,NR,NR,0.5,"10, 20, 30",10.0,10 (for ARP-800C)
+S66,2022,recycled concrete powder (RCP),other,mechanical,NR,not reported,NR,NR,57.01,21.3,10.93,3.45,1.82,1.17,NR,0.45,"0, 10, 20, 30",10.0,10
+S67,2024,recycled/dehydrated cement,lab-made parent concrete,carbonation,140.0,high,NR,NR,NR,NR,NR,NR,NR,NR,NR,NR,"5, 10, 20, 30, 33",10.0,10% (for dry carbonated RCPP); 20% (for wet carbonated RCPP)
+S69,2024,recycled concrete fines (RCF),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,24.0,2.44,26.68,38.93,9.19,9.19,2.76,1.95,14.4,0.4,"5, 10, 15, 20, 30, 40",17.5,15–20% (in ternary blends with 35–30% MK)
+S70,2022,recycled concrete powder (RCP),other,none (as-crushed / ground only),NR,not reported,NR,2.61,34.82,24.48,8.52,6.99,3.19,0.21,17.89,0.6,"0, 15, 30, 40, 60, 75, 100",57.5,40-75
+S71,2025,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,reported (unclassified),74.79,2.69,18.23,50.67,11.64,5.11,NR,2.21,8.52,0.4,"5, 10, 15",10.0,"Up to 10% (using finest RCP fraction, RCP3)"
+S74,2023,recycled concrete powder (RCP),C&D / demolition waste,none (as-crushed / ground only),NR,low / non-reactive,14.2,2.33,17.08,11.39,1.89,0.57,0.53,0.4,67.58,0.415,"0, 7.6, 10, 15.6, 20, 24.1, 30",10.0,10
+S77,2024,recycled concrete powder (RCP),other,thermal,800.0,high,NR,NR,38.88,36.19,9.56,8.21,1.23,1.23,NR,0.5,"10, 20, 30",25.0,20–30 (GRAPH-DERIVED)
+S78,2017,recycled concrete powder (RCP),structural element (precast/railway),mechanical,NR,not reported,NR,NR,NR,NR,NR,NR,NR,NR,NR,0.375,"0, 10, 20, 30, 40, 50",25.0,20 to 30
+S79,2020,fine recycled aggregate (FRA),other,none (as-crushed / ground only),NR,low / non-reactive,90.53,2.52,38.8,23.7,8.0,12.5,2.8,1.1,8.3,0.515,"0, 15, 25, 50",25.0,Up to 25%
+S80,2022,mixed C&D / brick powder,other,mechanical,NR,low / non-reactive,18.56,2.62,63.47,1.84,17.51,8.26,1.19,0.13,NR,NR,"0, 15, 30, 45",15.0,15
+S81,2016,recycled concrete fines (RCF),other,none (as-crushed / ground only),NR,low / non-reactive,8.8,NR,NR,NR,NR,NR,NR,NR,NR,0.67,"25, 50, 75",25.0,Up to 25
+S82,2024,recycled concrete powder (RCP),other,mechanical,NR,high,23.08,NR,18.12,41.06,5.78,2.16,1.78,2.28,12.5,0.45,"0, 10, 20, 30, 40",20.0,20
+S84,2025,recycled concrete powder (RCP),other,mechanical,NR,reported (unclassified),23.1,NR,22.55,32.4,5.9,1.57,2.4,1.94,28.44,NR,"0, 1, 15, 20, 25, 30",20.0,20% (Experimental) / 23% (GRAPH-DERIVED from Sensitivity Analysis)

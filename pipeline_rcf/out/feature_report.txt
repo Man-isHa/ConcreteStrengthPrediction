@@ -1,0 +1,37 @@
+Feature availability among the 85 yielding papers
+
+  material_family          100.0%
+  processing_method         96.5%
+  wb_ratio                  87.1%
+  cao                       71.8%
+  al2o3                     68.2%
+  sio2                      68.2%
+  fe2o3                     67.1%
+  activation_method         65.9%
+  pozzolanic_reactivity     62.4%
+  mgo                       58.8%
+  so3                       56.5%
+  k2o                       52.9%
+  mineralogy                48.2%
+  loi                       48.2%
+  d50                       47.1%
+  na2o                      37.6%
+  grind_duration            32.9%
+  specific_gravity          29.4%
+  thermal_temp_c            29.4%
+  mean_particle_um          28.2%
+  thermal_duration          25.9%
+  d90                       24.7%
+  specific_surface          22.4%
+  d10                       20.0%
+  bulk_density              16.5%
+  water_absorption          11.8%
+  grind_speed               11.8%
+  blaine                     9.4%
+  bet_surface                8.2%
+  amorphous_pct              5.9%
+
+dropped (<5% filled): none
+
+reported_optimum_pct present : 59 papers
+empirical_optimum_pct present: 51 papers

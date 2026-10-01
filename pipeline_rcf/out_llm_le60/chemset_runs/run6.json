@@ -1,0 +1,1 @@
+{"run": 6, "attempts": 3, "elapsed_s": [43.6, 43.4, 41.1], "model": "gpt-oss:120b-cloud", "digest": "ac7f7a1e778577c4418f6a25e46e0b45dced6746c75422d4b343aa1495a022ed", "template_sha256": "eb6aa878ec34ad3484f6e6e04247be6467aa413aca8f35d96ece1ff5b4a25f8f", "prompt_sha256": "2a3b6f9e481ba8be6d3152d4d57fb6a54e8db32b92d8fb34abc66dea3e24edbe", "preds": null, "raw": ""}
