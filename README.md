@@ -17,11 +17,10 @@ Start the local chat app from the repository root:
 .venv/bin/python app.py
 ```
 
-Open `http://127.0.0.1:8000`. Select RHA or RCF, enter the three shared inputs,
-and optionally fill the RCF material descriptors. If a required field is blank, the app
-uses explicit example defaults (10% replacement, 28 days, 40 MPa control strength) and
-lists each assumption with the prediction. Blank optional RCF fields are passed to the
-model as unreported values. On macOS, RHA inference may require `brew install libomp`.
+Open `http://127.0.0.1:8000`. Select RHA or RCF and provide all three inputs:
+replacement level (0-30% by mass of cement), curing age (7 or 28 days), and control
+mixture strength (1-60 MPa) at the same age. Missing or out-of-range values are rejected
+before prediction. On macOS, RHA inference may require `brew install libomp`.
 
 The expected prediction target is compressive strength in MPa. Use control strength from
 the same mix at 0% replacement and the same curing age. Both models are research estimates,
@@ -36,9 +35,9 @@ Two ready-to-use models, one per material. Both need the same three core inputs:
 
 | Input | Meaning |
 |---|---|
-| `replacement_pct` | % of cement replaced by RHA / RCF |
-| `age_days` | curing age in days |
-| `ctrl_strength` | strength of the **same mix without** the additive (0% replacement), tested at the **same curing age**, in MPa |
+| `replacement_pct` | 0-30% of cement mass replaced by RHA / RCF |
+| `age_days` | 7 or 28 days |
+| `ctrl_strength` | control mixture strength (1-60 MPa) at the **same curing age** |
 
 The control strength is not cheating: the plain mix can always be cast and tested first,
 and it is the single most important input for both materials.

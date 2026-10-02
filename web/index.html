@@ -46,7 +46,7 @@
                 <div class="message-meta"><strong>Strength Desk</strong><span>MODEL ASSISTANT</span></div>
                 <div class="bubble assistant-bubble">
                   <p>I can estimate compressive strength for a mix containing <strong>rice-husk ash (RHA)</strong> or <strong>recycled concrete fines (RCF)</strong>.</p>
-                  <p>Enter the blend replacement, curing age, and the strength of the <strong>same mix without the additive, at the same age</strong>. If left blank, I’ll use clearly listed example assumptions and still run the prediction.</p>
+                  <p>Enter the replacement level, curing age, and <strong>control mixture strength at the same age</strong>. These three inputs are required for both models.</p>
                 </div>
               </div>
             </article>
@@ -78,45 +78,23 @@
             <div class="field-grid core-fields">
               <label class="field required-field">
                 <span>Replacement <i>REQUIRED</i></span>
-                <span class="input-wrap"><input name="replacement_pct" type="number" min="0" max="100" step="any" placeholder="e.g. 10"><span class="unit">%</span></span>
-                <small>Percent of cement replaced</small>
+                <span class="input-wrap"><input name="replacement_pct" type="number" min="0" max="30" step="any" placeholder="0 to 30" required><span class="unit">% by mass</span></span>
+                <small>By mass of cement (0-30%)</small>
               </label>
               <label class="field required-field">
                 <span>Curing age <i>REQUIRED</i></span>
-                <span class="input-wrap"><input name="age_days" type="number" min="0.01" step="any" placeholder="e.g. 28"><span class="unit">days</span></span>
-                <small>Age when strength is tested</small>
+                <select name="age_days" required><option value="">Choose age</option><option value="7">7 days</option><option value="28">28 days</option></select>
+                <small>Choose 7 or 28 days</small>
               </label>
               <label class="field required-field control-field">
-                <span>Plain-control strength <i>REQUIRED</i></span>
-                <span class="input-wrap"><input name="ctrl_strength" type="number" min="0.01" step="any" placeholder="e.g. 40"><span class="unit">MPa</span></span>
-                <small>Same mix, 0% replacement, same age</small>
+                <span>Control mixture strength <i>REQUIRED</i></span>
+                <span class="input-wrap"><input name="ctrl_strength" type="number" min="1" max="60" step="any" placeholder="1 to 60" required><span class="unit">MPa</span></span>
+                <small>Control mix at the same age (1-60 MPa)</small>
               </label>
-            </div>
-
-            <div class="optional-section" id="rcf-fields" hidden>
-              <div class="optional-heading"><span>RCF material descriptors</span><span>OPTIONAL / LEAVE BLANK IF UNKNOWN</span></div>
-              <div class="field-grid descriptor-grid">
-                <label class="field"><span>Material family</span><select name="material_family"><option value="">Not reported</option><option value="powder">Powder</option><option value="fines">Fines</option><option value="paste">Paste</option><option value="cdw">Construction waste (CDW)</option><option value="other">Other</option></select></label>
-                <label class="field"><span>Processing method</span><select name="processing_method"><option value="">Not reported</option><option value="crushing">Crushing</option><option value="milling">Milling</option><option value="thermal">Thermal</option><option value="combined">Combined</option><option value="other">Other</option></select></label>
-                <label class="field"><span>Activation method</span><select name="activation_method"><option value="">Not reported</option><option value="none">None</option><option value="carbonation">Carbonation</option><option value="chemical">Chemical</option><option value="mechanical">Mechanical</option><option value="multiple">Multiple</option><option value="thermal">Thermal</option></select></label>
-                <label class="field"><span>Mineralogy</span><select name="mineralogy"><option value="">Not reported</option><option value="calcite">Calcite</option><option value="mixed">Mixed</option><option value="portlandite">Portlandite</option><option value="quartz">Quartz</option><option value="other">Other</option></select></label>
-                <label class="field"><span>Pozzolanic reactivity</span><select name="pozzolanic_reactivity"><option value="">Not reported</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></label>
-                <label class="field"><span>d10 particle size</span><span class="input-wrap"><input name="d10" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
-                <label class="field"><span>d50 particle size</span><span class="input-wrap"><input name="d50" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
-                <label class="field"><span>d90 particle size</span><span class="input-wrap"><input name="d90" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
-                <label class="field"><span>Mean particle size</span><span class="input-wrap"><input name="mean_particle_um" type="number" step="any" placeholder="Optional"><span class="unit">µm</span></span></label>
-                <label class="field"><span>Specific surface area</span><span class="input-wrap"><input name="specific_surface" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
-                <label class="field"><span>BET surface area</span><span class="input-wrap"><input name="bet_surface" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
-                <label class="field"><span>Blaine fineness</span><span class="input-wrap"><input name="blaine" type="number" step="any" placeholder="Optional"><span class="unit">m²/kg</span></span></label>
-                <label class="field"><span>Specific gravity</span><span class="input-wrap"><input name="specific_gravity" type="number" step="any" placeholder="Optional"><span class="unit">unitless</span></span></label>
-                <label class="field"><span>Bulk density</span><span class="input-wrap"><input name="bulk_density" type="number" step="any" placeholder="Optional"><span class="unit">kg/m³</span></span></label>
-                <label class="field"><span>Water absorption</span><span class="input-wrap"><input name="water_absorption" type="number" step="any" placeholder="Optional"><span class="unit">%</span></span></label>
-              </div>
-              <p class="unit-note">Use the model's canonical units shown. Convert reported values before entering them.</p>
             </div>
 
             <div class="submit-row">
-              <div class="default-note"><span class="info-mark">i</span><span>Blank core fields use example values: 10%, 28 days, 40 MPa.</span></div>
+              <div class="default-note"><span class="info-mark">i</span><span>All three values are required and validated before prediction.</span></div>
               <button class="submit-button" type="submit"><span>Predict strength</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12m-5-5 5 5-5 5"/></svg></button>
             </div>
             <p class="form-error" id="form-error" role="alert" hidden></p>
@@ -130,7 +108,7 @@
           <div class="context-block">
             <div class="context-icon control-icon">C</div>
             <h2>The control matters</h2>
-            <p>Enter the strength of the plain mix at the <em>same curing age</em>. It is the model's most important reference input.</p>
+            <p>Enter control mixture strength at the <em>same curing age</em> (1-60 MPa). It is the model's most important reference input.</p>
           </div>
           <div class="context-divider"></div>
           <div class="context-block accuracy-block">
@@ -141,8 +119,8 @@
           </div>
           <div class="context-divider"></div>
           <div class="context-block scope-block">
-            <div class="scope-heading"><span class="scope-dot"></span>MODEL SCOPE</div>
-            <p>Both models were trained on concrete strengths up to <strong>60 MPa</strong>. Predictions beyond the training range are flagged as extrapolations.</p>
+            <div class="scope-heading"><span class="scope-dot"></span>REQUIRED INPUT RANGES</div>
+            <p>Replacement: <strong>0-30% by cement mass</strong>. Curing age: <strong>7 or 28 days</strong>. Control mixture strength: <strong>1-60 MPa</strong>.</p>
           </div>
           <div class="context-bottom"><span class="mini-grid"></span><span>LOCAL MODEL INFERENCE</span></div>
         </aside>

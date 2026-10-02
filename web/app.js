@@ -1,6 +1,5 @@
 const form = document.querySelector("#prediction-form");
 const materialButtons = [...document.querySelectorAll(".material-option")];
-const rcfFields = document.querySelector("#rcf-fields");
 const resultMessages = document.querySelector("#result-messages");
 const progressFill = document.querySelector("#progress-fill");
 const progressCopy = document.querySelector("#progress-copy");
@@ -18,7 +17,6 @@ materialButtons.forEach((button) => {
       option.setAttribute("aria-pressed", String(selected));
       option.querySelector(".material-check").textContent = selected ? "Selected" : "Select";
     });
-    rcfFields.hidden = selectedMaterial !== "RCF";
     updateProgress();
   });
 });
@@ -79,15 +77,7 @@ function appendMessage({ kind, label, text, result, error }) {
     model.append(modelName, document.createTextNode(` · typical held-out MAE ${result.expected_mae_mpa} MPa`));
     const inputSummary = document.createElement("div");
     inputSummary.className = "used-inputs";
-    const coreValues = [
-      `${result.inputs.replacement_pct}% replacement`,
-      `${result.inputs.age_days} days`,
-      `${result.inputs.ctrl_strength} MPa control`,
-    ];
-    const providedDescriptors = Object.entries(result.inputs)
-      .filter(([name, value]) => !["replacement_pct", "age_days", "ctrl_strength"].includes(name) && value !== null)
-      .map(([name, value]) => `${name.replaceAll("_", " ")}: ${value}`);
-    inputSummary.textContent = `Inputs used: ${[...coreValues, ...providedDescriptors].join(" · ")}`;
+    inputSummary.textContent = `Inputs used: ${result.inputs.replacement_pct}% by mass of cement · ${result.inputs.age_days} days · ${result.inputs.ctrl_strength} MPa control mixture strength`;
     bubble.append(top, model, inputSummary);
     const notes = document.createElement("div");
     notes.className = "result-notes";

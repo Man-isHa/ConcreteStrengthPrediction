@@ -9,4 +9,5 @@ pipeline
 pipeline_rcf
 reports
 docs
+local_chatbot
 *.ipynb

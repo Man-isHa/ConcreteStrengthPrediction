@@ -15,19 +15,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent
 WEB_DIR = ROOT / "web"
-DEFAULTS = {"replacement_pct": 10.0, "age_days": 28.0, "ctrl_strength": 40.0}
-RCF_NUMERIC = [
-    "pozzolanic_reactivity", "d10", "d50", "d90", "mean_particle_um",
-    "specific_surface", "bet_surface", "blaine", "specific_gravity",
-    "bulk_density", "water_absorption",
-]
-RCF_CATEGORIES = {
-    "activation_method": {"carbonation", "chemical", "mechanical", "multiple", "none", "thermal"},
-    "processing_method": {"combined", "crushing", "milling", "other", "thermal"},
-    "mineralogy": {"calcite", "mixed", "other", "portlandite", "quartz"},
-    "material_family": {"cdw", "fines", "other", "paste", "powder"},
-}
-RCF_FIELDS = list(RCF_CATEGORIES) + RCF_NUMERIC
+REQUIRED = ("replacement_pct", "age_days", "ctrl_strength")
 
 
 @lru_cache(maxsize=2)
@@ -44,16 +32,16 @@ def load_model(material: str):
     return predict_rcf, model, metadata
 
 
-def _number(value, field: str, fallback: float | None = None) -> tuple[float | None, bool]:
+def _number(value, field: str) -> float:
     if value is None or (isinstance(value, str) and not value.strip()):
-        return fallback, fallback is not None
+        raise ValueError(f"{field} is required.")
     try:
         result = float(value)
     except (TypeError, ValueError) as exc:
         raise ValueError(f"{field} must be a number.") from exc
     if not math.isfinite(result):
         raise ValueError(f"{field} must be a finite number.")
-    return result, False
+    return result
 
 
 def predict(payload: dict) -> dict:
@@ -66,44 +54,13 @@ def predict(payload: dict) -> dict:
     if not isinstance(raw_inputs, dict):
         raise ValueError("Inputs must be sent as an object.")
 
-    values: dict[str, float | str | None] = {}
-    assumptions: list[str] = []
-    if not raw_material:
-        assumptions.append("No material was selected; RHA was used.")
-
-    for field, fallback in DEFAULTS.items():
-        value, assumed = _number(raw_inputs.get(field), field, fallback)
-        values[field] = value
-        if assumed:
-            assumptions.append(f"{field} defaulted to {fallback:g}.")
-
-    if values["replacement_pct"] is not None and not 0 <= values["replacement_pct"] <= 100:
-        raise ValueError("Replacement must be between 0 and 100%.")
-    if values["age_days"] is not None and values["age_days"] <= 0:
-        raise ValueError("Curing age must be greater than 0 days.")
-    if values["ctrl_strength"] is not None and values["ctrl_strength"] <= 0:
-        raise ValueError("Control strength must be greater than 0 MPa.")
-
-    if material == "RCF":
-        for field in RCF_FIELDS:
-            raw_value = raw_inputs.get(field)
-            if field in RCF_CATEGORIES:
-                normalized = str(raw_value or "").strip().lower()
-                if normalized and normalized not in RCF_CATEGORIES[field]:
-                    raise ValueError(f"Unsupported {field.replace('_', ' ')} value: {raw_value}.")
-                values[field] = normalized or None
-            else:
-                value, assumed = _number(raw_value, field)
-                values[field] = value
-                if assumed:
-                    assumptions.append(f"{field.replace('_', ' ')} was left unreported.")
-
-        unreported = sum(value is None for field, value in values.items() if field in RCF_FIELDS)
-        if unreported:
-            assumptions.append(
-                f"{unreported} optional RCF material descriptor(s) were not reported; "
-                "the model's missing-value handling was used."
-            )
+    values = {field: _number(raw_inputs.get(field), field) for field in REQUIRED}
+    if not 0 <= values["replacement_pct"] <= 30:
+        raise ValueError("Replacement must be between 0 and 30% by mass of cement.")
+    if values["age_days"] not in {7, 28}:
+        raise ValueError("Curing age must be either 7 or 28 days.")
+    if not 1 <= values["ctrl_strength"] <= 60:
+        raise ValueError("Control mixture strength must be between 1 and 60 MPa.")
 
     predictor, model, metadata = load_model(material)
     frame = pd.DataFrame([values])
@@ -136,7 +93,7 @@ def predict(payload: dict) -> dict:
         "strength_mpa": round(strength, 2),
         "expected_mae_mpa": mae,
         "inputs": values,
-        "assumptions": assumptions,
+        "assumptions": [],
         "warnings": warnings,
     }
 
